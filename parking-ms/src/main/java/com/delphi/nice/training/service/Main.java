@@ -1,16 +1,16 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.model.cards.ParkingCardDto;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 //        ApplicationContext app = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 //        ClientDto clientDto = app.getBean(ClientDto.class);
 //        clientDto.setCardNumber(123L);
@@ -39,21 +39,23 @@ public class Main {
 //        } catch (IOException e) {
 //            System.out.println("Something went wrong");
 //        }
-        try (FileWriter outputStreamWriter = new FileWriter("parkingArea.json", true)) {
-            outputStreamWriter.write('[');
-            for (int i = 1; i <= 30; i++) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("parkingSpot", i);
-                jsonObject.put("isParked", false);
+        JSONParser jsonParser = new JSONParser();
 
-                outputStreamWriter.write(jsonObject + "," + System.lineSeparator());
+        try (FileReader reader = new FileReader("parkingArea.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
 
-            }
-            outputStreamWriter.write(']');
-        } catch (IOException e) {
+            JSONArray employeeList = (JSONArray) obj;
+            System.out.println(employeeList);
+            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-
+    }
+    private static void parseEmployeeObject(JSONObject employee)
+    {
+        System.out.println(employee.get("parkingSpot").toString());
+        System.out.println(employee.get("isParked").toString());
     }
 }
 
