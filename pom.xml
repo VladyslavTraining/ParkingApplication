@@ -7,7 +7,7 @@
     <artifactId>parkingApplication</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>parking-api</module>
+        <module>parking-ms</module>
         <module>parking-core</module>
     </modules>
     <packaging>pom</packaging>
