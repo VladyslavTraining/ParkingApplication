@@ -1,18 +1,16 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.model.cards.ParkingCardDto;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 //        ApplicationContext app = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 //        ClientDto clientDto = app.getBean(ClientDto.class);
 //        clientDto.setCardNumber(123L);
@@ -41,28 +39,23 @@ public class Main {
 //        } catch (IOException e) {
 //            System.out.println("Something went wrong");
 //        }
-
-
         JSONParser jsonParser = new JSONParser();
+
         try (FileReader reader = new FileReader("parkingArea.json")) {
-            Object obj;
-            try {
-                obj = jsonParser.parse(reader);
-                JSONArray employeeList = (JSONArray) obj;
-                for (Object a : employeeList) {
-                    System.out.println(a);
-                }
-                employeeList.forEach(emp -> parseObject((JSONObject) emp));
-            } catch (IOException | ParseException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray employeeList = (JSONArray) obj;
+            System.out.println(employeeList);
+            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
-
-    private static void parseObject(JSONObject obj) {
-        System.out.println(obj.get("parkingSpot").toString());
-        System.out.println(obj.get("isParked").toString());
+    private static void parseEmployeeObject(JSONObject employee)
+    {
+        System.out.println(employee.get("parkingSpot").toString());
+        System.out.println(employee.get("isParked").toString());
     }
 }
+
