@@ -1,11 +1,13 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.model.cards.ParkingCardDto;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import java.io.*;
 
@@ -39,21 +41,28 @@ public class Main {
 //        } catch (IOException e) {
 //            System.out.println("Something went wrong");
 //        }
-        try (FileWriter outputStreamWriter = new FileWriter("parkingArea.json", true)) {
-            outputStreamWriter.write('[');
-            for (int i = 1; i <= 30; i++) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("parkingSpot", i);
-                jsonObject.put("isParked", false);
 
-                outputStreamWriter.write(jsonObject + "," + System.lineSeparator());
 
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader("parkingArea.json")) {
+            Object obj;
+            try {
+                obj = jsonParser.parse(reader);
+                JSONArray employeeList = (JSONArray) obj;
+                for (Object a : employeeList) {
+                    System.out.println(a);
+                }
+                employeeList.forEach(emp -> parseObject((JSONObject) emp));
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
             }
-            outputStreamWriter.write(']');
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    private static void parseObject(JSONObject obj) {
+        System.out.println(obj.get("parkingSpot").toString());
+        System.out.println(obj.get("isParked").toString());
     }
 }
-
