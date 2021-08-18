@@ -1,19 +1,19 @@
-package com.delphi.nice.training.model;
+package com.delphi.nice.training.model.cards;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
 @Component("client")
 @Data
-public class ClientDto {
+public class ParkingCardDto {
 
     private String licencePlate;
-    private long cardNumber;
+    private long parkingCardNumber;
 
 //    public ClientDto(String licencePlate, long cardNumber) {
 //        this.licencePlate = licencePlate;
 //        this.cardNumber = cardNumber;
 //    }
-
 
 
 }
