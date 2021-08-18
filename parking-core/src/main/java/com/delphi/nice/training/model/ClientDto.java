@@ -1,7 +1,8 @@
 package com.delphi.nice.training.model;
 
 import lombok.Data;
-
+import org.springframework.stereotype.Component;
+@Component("client")
 @Data
 public class ClientDto {
 
@@ -12,6 +13,7 @@ public class ClientDto {
 //        this.licencePlate = licencePlate;
 //        this.cardNumber = cardNumber;
 //    }
+
 
 
 }
