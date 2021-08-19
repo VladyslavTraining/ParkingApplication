@@ -2,9 +2,10 @@ package com.delphi.nice.training.model;
 
 import lombok.Data;
 
-@Data
-public class ParkingSlotDto {
-    private int slotNumber;
-    private boolean isEmpty;
+import java.io.Serializable;
 
+@Data
+public class ParkingSlotDto implements Serializable {
+    private int parkingSpot;
+    private boolean isParked;
 }

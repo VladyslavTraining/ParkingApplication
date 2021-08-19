@@ -1,16 +1,18 @@
 package com.delphi.nice.training.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
+@Data
 public class TicketDto implements Serializable {
     private long uuid;
     private LocalDateTime entranceDateTime;
-
-//    public TicketDto(ClientDto client, LocalDateTime entranceDateTime) {
-//        this.entranceDateTime = entranceDateTime;
-//        this.uuid = System.currentTimeMillis() << 7;
-//    }
+//    private Card clientCard;
+    public TicketDto() {
+        this.entranceDateTime = LocalDateTime.now();
+        this.uuid = System.currentTimeMillis();
+    }
 
 
 }
