@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ParkingSlotDto {
-    private int slotNumber;
-    private boolean isEmpty;
+    private int parkingSpot;
+    private boolean isParked;
 
 }

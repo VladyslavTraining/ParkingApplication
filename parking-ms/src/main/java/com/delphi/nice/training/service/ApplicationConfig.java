@@ -7,12 +7,6 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class ApplicationConfig {
-//    @Bean
-//    @Scope("Prototype")
-//    public ClientDto clientDto() {
-//        return new ClientDto();
-//    }
-
     @Bean
     @Scope("Prototype")
     public TicketDto ticketDto() {

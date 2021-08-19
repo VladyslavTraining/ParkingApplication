@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class TicketDto implements Serializable {
+
     private long uuid;
     private LocalDateTime entranceDateTime;
 
