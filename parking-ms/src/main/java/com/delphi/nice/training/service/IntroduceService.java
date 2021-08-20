@@ -1,7 +1,6 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.service.ParkingService;
-import com.delphi.nice.training.service.TicketService;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;

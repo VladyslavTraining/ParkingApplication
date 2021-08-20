@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 public class ExitService {
 
-    private static JSONArray ticketArray = new JSONArray();
+    private static JSONArray ticketArray;
 
     public ExitService() {
         ticketArray = new ParkingSlotReader().getJsonArr("ticketData.json");

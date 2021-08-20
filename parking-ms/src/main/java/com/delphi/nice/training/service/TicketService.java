@@ -12,7 +12,7 @@ import java.io.IOException;
 public class TicketService {
 
     private final TicketDto ticketDto = new TicketDto();
-    private static JSONArray ticketArray = new JSONArray();
+    private static JSONArray ticketArray;
 
     public TicketService() {
         if (!new File("ticketData.json").exists()) {
@@ -22,14 +22,14 @@ public class TicketService {
         }
     }
 
-    public String generateTicket() {
+    public void generateTicket() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("uuid", ticketDto.getUuid());
         jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
         jsonObject.put("parkingSlot", new ParkingService().park());
         ticketArray.add(jsonObject);
         writeToFile();
-        return jsonObject.toJSONString();
+        System.out.println("Your ID " + jsonObject.get("uuid").toString());
     }
 
     private void writeToFile() {
@@ -40,16 +40,4 @@ public class TicketService {
         }
     }
 
-//    public String generateTicket() {
-//        JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("uuid", ticketDto.getUuid());
-//        jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-//        jsonObject.put("parkingSlot", new ParkingService().park());
-//        try (FileWriter fw = new FileWriter("ticketData.json")) {
-//            jsonObject.writeJSONString(fw);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return jsonObject.toJSONString();
-//    }
 }
