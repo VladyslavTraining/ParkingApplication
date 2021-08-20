@@ -1,9 +1,6 @@
 package com.delphi.nice.training.service.readers;
 
-import com.delphi.nice.training.model.ParkingSlotDto;
-import com.google.gson.Gson;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 

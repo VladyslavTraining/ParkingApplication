@@ -1,5 +1,32 @@
-{
-  "entranceTime": "2021-08-19T15:52:37.676",
-  "parkingSlot": 14,
-  "uuid": 1629377557721
-}
+[
+  {
+    "entranceTime": "2021-08-20T10:57:40.351",
+    "parkingSlot": 18,
+    "uuid": 1629446260398
+  },
+  {
+    "entranceTime": "2021-08-20T10:57:54.607",
+    "parkingSlot": 19,
+    "uuid": 1629446274654
+  },
+  {
+    "entranceTime": "2021-08-20T10:57:59.337",
+    "parkingSlot": 20,
+    "uuid": 1629446279384
+  },
+  {
+    "entranceTime": "2021-08-20T11:06:24.534",
+    "parkingSlot": 21,
+    "uuid": 1629446784580
+  },
+  {
+    "entranceTime": "2021-08-20T12:22:06.496",
+    "parkingSlot": 23,
+    "uuid": 1629451326549
+  },
+  {
+    "entranceTime": "2021-08-20T12:22:22.930",
+    "parkingSlot": 24,
+    "uuid": 1629451342976
+  }
+]
