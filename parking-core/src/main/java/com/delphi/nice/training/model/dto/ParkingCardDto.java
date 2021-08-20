@@ -1,4 +1,4 @@
-package com.delphi.nice.training.model.cards;
+package com.delphi.nice.training.model.dto;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

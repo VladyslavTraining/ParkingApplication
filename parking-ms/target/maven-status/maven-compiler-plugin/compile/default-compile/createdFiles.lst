@@ -1,3 +1,6 @@
-com\delphi\nice\training\service\ApplicationConfig.class
+com\delphi\nice\training\service\readers\ParkingSlotReader.class
 com\delphi\nice\training\service\TicketService.class
-com\delphi\nice\training\service\Main.class
+com\delphi\nice\training\configuration\ApplicationConfig.class
+com\delphi\nice\training\service\readers\Reader.class
+com\delphi\nice\training\controller\Main.class
+com\delphi\nice\training\service\ParkingService.class

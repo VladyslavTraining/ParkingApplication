@@ -1,6 +1,6 @@
 package com.delphi.nice.training.configuration;
 
-import com.delphi.nice.training.model.TicketDto;
+import com.delphi.nice.training.model.dto.TicketDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

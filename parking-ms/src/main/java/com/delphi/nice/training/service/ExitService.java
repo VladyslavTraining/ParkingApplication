@@ -1,7 +1,6 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.model.TicketDto;
-import com.delphi.nice.training.service.readers.ParkingSlotReader;
+import com.delphi.nice.training.reader.JSONReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,24 +10,24 @@ import java.time.LocalDateTime;
 
 public class ExitService {
 
-    private static JSONArray ticketArray;
-
+    private final JSONArray ticketArray;
+    private JSONObject exitVehicle;
     public ExitService() {
-        ticketArray = new ParkingSlotReader().getJsonArr("ticketData.json");
+        ticketArray = new JSONReader().getJsonArr("ticketData.json");
     }
 
-    public void amountForPay(long id) {
-        for (int i = 0; i < ticketArray.size(); i++) {
-            long uuid = (long) ((JSONObject) ticketArray.get(i)).get("uuid");
+    private void amountForPay(long id) {
+        for (Object o : ticketArray) {
+            long uuid = (long) ((JSONObject) o).get("uuid");
             if (id == uuid) {
-                String time = (String) ((JSONObject) ticketArray.get(i)).get("entranceTime");
+                String time = (String) ((JSONObject) o).get("entranceTime");
                 LocalDateTime enter = LocalDateTime.parse(time);
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
                 String correctAmount = String.format("%.2f", cost);
                 System.out.println("Need to pay ---> " + correctAmount + "$");
-                break;
+                exitVehicle = (JSONObject) o;
             }
         }
     }
@@ -37,6 +36,10 @@ public class ExitService {
         Duration duration = Duration.between(enter, exit);
         return duration.getSeconds();
     }
-
-
+    public void exit(long id)
+    {
+        amountForPay(id);
+        new ParkingService().leaveParking(exitVehicle);
+        new TicketService().removeTicket(exitVehicle);
+    }
 }

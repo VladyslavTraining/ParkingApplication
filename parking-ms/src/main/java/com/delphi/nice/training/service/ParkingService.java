@@ -1,7 +1,7 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.model.ParkingSlotDto;
-import com.delphi.nice.training.service.readers.ParkingSlotReader;
+import com.delphi.nice.training.model.dto.ParkingSlotDto;
+import com.delphi.nice.training.reader.JSONReader;
 import com.google.gson.Gson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,7 +16,7 @@ public class ParkingService {
     private final JSONArray jsonArray;
 
     public ParkingService() {
-        this.jsonArray = new ParkingSlotReader().getJsonArr(PARKING_AREA_FILE_PATH);
+        this.jsonArray = new JSONReader().getJsonArr(PARKING_AREA_FILE_PATH);
     }
 
     public int park() {
@@ -37,14 +37,14 @@ public class ParkingService {
         for (int i = 0; i < jsonArray.size(); i++) {
             if (takeFreeParkSpot((JSONObject) jsonArray.get(i))) {
                 System.out.println(jsonArray.get(i));
-                updateParking(jsonArray);
+                updateParking();
                 return i;
             }
         }
         throw new RuntimeException();
     }
 
-    private void updateParking(JSONArray jsonArray) {
+    private void updateParking() {
         try (FileWriter fileWriter = new FileWriter(PARKING_AREA_FILE_PATH)) {
             jsonArray.writeJSONString(fileWriter);
         } catch (IOException e) {
@@ -58,5 +58,15 @@ public class ParkingService {
             return true;
         }
         return false;
+    }
+    private void leave(JSONObject object)
+    {
+            object.replace("isParked", false);
+    }
+    void leaveParking(JSONObject object)
+    {
+        int parkPlace = Integer.parseInt(object.get("parkingSlot").toString())-1;
+        leave((JSONObject) jsonArray.get(parkPlace));
+        updateParking();
     }
 }

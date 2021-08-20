@@ -10,7 +10,7 @@
     <context:property-placeholder location="classpath:car.properties"/>
     <context:component-scan base-package="com.delphi.nice.training.model"/>
 
-    <bean id="ticket" class="com.delphi.nice.training.model.TicketDto"
+    <bean id="ticket" class="com.delphi.nice.training.model.dto.TicketDto"
           scope="prototype">
 
     </bean>

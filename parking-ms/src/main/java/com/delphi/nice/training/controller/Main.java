@@ -1,19 +1,15 @@
 package com.delphi.nice.training.controller;
 
+import com.delphi.nice.training.service.ExitService;
+import com.delphi.nice.training.service.TicketService;
+
 
 public class Main {
-
     public static void main(String[] args) {
-        Gate gate = new Gate();
-
-        Command switchUp = new OpenParking(gate);
-        Command switchDown = new CloseParking(gate);
-
-        Manager manager = new Manager(switchUp, switchDown);
-
-        manager.openParking();
-        manager.closeParking();
+        new TicketService().generateTicket();
+        new ExitService().exit(1629457601949L);
     }
+
 
 }
 
