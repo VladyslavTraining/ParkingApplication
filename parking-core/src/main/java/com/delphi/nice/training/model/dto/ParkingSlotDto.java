@@ -1,4 +1,4 @@
-package com.delphi.nice.training.model;
+package com.delphi.nice.training.model.dto;
 
 import lombok.Data;
 

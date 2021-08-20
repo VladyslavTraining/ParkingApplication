@@ -1,6 +1,5 @@
-package com.delphi.nice.training.service.readers;
+package com.delphi.nice.training.reader;
 
-import com.google.gson.Gson;
 import org.json.simple.JSONArray;
 
 public interface Reader {
