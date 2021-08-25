@@ -13,7 +13,7 @@ public class TicketService {
 
     private final TicketDto ticketDto = new TicketDto();
     private JSONArray ticketArray = new JSONArray();
-    private static final String TICKET_DATA_FILE_NAME = "ticketData.json";
+    private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
 
     public TicketService() {
         if (!new File(TICKET_DATA_FILE_NAME).exists()) {
@@ -23,18 +23,18 @@ public class TicketService {
         }
     }
 
-    public TicketDto getTicket() {
-        return ticketDto;
-    }
-
     public String generateTicket() {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("uuid", ticketDto.getUuid());
-        jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-        jsonObject.put("parkingSlot", new ParkingService().park());
-        ticketArray.add(jsonObject);
-        writeToFile();
-        return jsonObject.toJSONString();
+        ParkingService parkingService = new ParkingService();
+        if(parkingService.isFreeSlotPresent()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("uuid", ticketDto.getUuid());
+            jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+            jsonObject.put("parkingSlot", parkingService.park());
+            ticketArray.add(jsonObject);
+            writeToFile();
+            return jsonObject.toJSONString();
+        }
+        return "All parking spot is busy";
     }
 
     private void writeToFile() {
@@ -45,29 +45,8 @@ public class TicketService {
         }
     }
 
-    //    JSONObject searchTicket()
-//    {
-//        for(Object o : ticketArray)
-//        {
-//            return (JSONObject) o;
-//        }
-//        return null;
-//    }
     void removeTicket(JSONObject jsonObject) {
-//        if(searchTicket().equals(jsonObject))
         ticketArray.remove(jsonObject);
         writeToFile();
     }
-//    public String generateTicket() {
-//        JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("uuid", ticketDto.getUuid());
-//        jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-//        jsonObject.put("parkingSlot", new ParkingService().park());
-//        try (FileWriter fw = new FileWriter("ticketData.json")) {
-//            jsonObject.writeJSONString(fw);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return jsonObject.toJSONString();
-//    }
 }

@@ -1,8 +1,6 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.model.dto.ParkingSlotDto;
 import com.delphi.nice.training.reader.JSONReader;
-import com.google.gson.Gson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -12,7 +10,7 @@ import java.io.IOException;
 
 public class ParkingService {
 
-    private static final String PARKING_AREA_FILE_PATH = "parkingArea.json";
+    private static final String PARKING_AREA_FILE_PATH = "parking-ms/src/main/resources/parkingArea.json";
     private final JSONArray jsonArray;
 
     public ParkingService() {
@@ -20,28 +18,23 @@ public class ParkingService {
     }
 
     public int park() {
-        return searchForFreePlaces();
-    }
-
-    public void showFreePlaces() {
-        for (int i = 0; i < jsonArray.size(); i++) {
-            String parkingSlotDto = String.valueOf(jsonArray.get(i));
-            ParkingSlotDto dto = new Gson().fromJson(parkingSlotDto, ParkingSlotDto.class);
-            if (!dto.isParked()) {
-                System.out.println("Free spot is ---> " + dto.getParkingSpot());
-            }
-        }
-    }
-
-    private int searchForFreePlaces() {
         for (int i = 0; i < jsonArray.size(); i++) {
             if (takeFreeParkSpot((JSONObject) jsonArray.get(i))) {
+                System.out.println(jsonArray.get(i));
                 updateParking();
-                System.out.println(i + 1);
-                return ++i;
+                return i+1;
             }
         }
         throw new RuntimeException();
+    }
+
+    public boolean isFreeSlotPresent() {
+        for (Object o : jsonArray) {
+            JSONObject jsonObject = (JSONObject) o;
+            if (!(boolean) jsonObject.get("isParked"))
+                return true;
+        }
+        return false;
     }
 
     private void updateParking() {
@@ -59,13 +52,13 @@ public class ParkingService {
         }
         return false;
     }
-
-    private void leave(JSONObject object) {
-        object.replace("isParked", false);
+    private void leave(JSONObject object)
+    {
+            object.replace("isParked", false);
     }
-
-    void leaveParking(JSONObject object) {
-        int parkPlace = Integer.parseInt(object.get("parkingSlot").toString()) - 1;
+    void leaveParking(JSONObject object)
+    {
+        int parkPlace = Integer.parseInt(object.get("parkingSlot").toString());
         leave((JSONObject) jsonArray.get(parkPlace));
         updateParking();
     }

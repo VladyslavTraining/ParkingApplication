@@ -10,10 +10,4 @@ public class ParkingCardDto {
     private String licencePlate;
     private long parkingCardNumber;
 
-//    public ClientDto(String licencePlate, long cardNumber) {
-//        this.licencePlate = licencePlate;
-//        this.cardNumber = cardNumber;
-//    }
-
-
 }

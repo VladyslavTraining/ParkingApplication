@@ -14,7 +14,7 @@ public class ExitService {
     private JSONObject exitVehicle;
 
     public ExitService() {
-        ticketArray = new JSONReader().getJsonArr("ticketData.json");
+        ticketArray = new JSONReader().getJsonArr("parking-ms/src/main/resources/ticketData.json");
     }
 
     private void amountForPay(long id) {
