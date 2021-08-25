@@ -1,5 +1,6 @@
 package com.delphi.nice.training.service;
 
+import com.delphi.nice.training.model.dto.ClientCardDto;
 import com.delphi.nice.training.model.dto.TicketDto;
 import com.delphi.nice.training.reader.JSONReader;
 import org.json.simple.JSONArray;
@@ -10,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TicketService {
-
+    private ClientCardDto clientCardDto;
     private final TicketDto ticketDto = new TicketDto();
     private JSONArray ticketArray = new JSONArray();
     private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
@@ -23,18 +24,23 @@ public class TicketService {
         }
     }
 
-    public String generateTicket() {
+    public TicketDto getTicket() {
+        return ticketDto;
+    }
+
+    public boolean generateTicket() {
         ParkingService parkingService = new ParkingService();
-        if(parkingService.isFreeSlotPresent()) {
+        if (parkingService.isFreeSlotPresent()) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("uuid", ticketDto.getUuid());
             jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
             jsonObject.put("parkingSlot", parkingService.park());
             ticketArray.add(jsonObject);
             writeToFile();
-            return jsonObject.toJSONString();
+            return true;
         }
-        return "All parking spot is busy";
+        System.out.println("All parking spot is busy");
+        return false;
     }
 
     private void writeToFile() {

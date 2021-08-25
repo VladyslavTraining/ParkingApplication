@@ -17,13 +17,14 @@ public class IntroduceService {
                 String line = br.readLine();
                 if (line.equalsIgnoreCase("Y")) {
                     TicketService ticketService = new TicketService();
-                    ticketService.generateTicket();
-                    TicketDto ticket = ticketService.getTicket();
-                    System.out.println("---------------------------------");
-                    System.out.println("Your ticket id " + ticket.getUuid());
-                    System.out.println("Have a nice day");
-                    System.out.println("---------------------------------");
-                    break;
+                    if (ticketService.generateTicket()) {
+                        TicketDto ticket = ticketService.getTicket();
+                        System.out.println("---------------------------------");
+                        System.out.println("Your ticket id " + ticket.getUuid());
+                        System.out.println("Have a nice day");
+                        System.out.println("---------------------------------");
+                        break;
+                    }
                 }
                 System.out.println("Have a nice day");
                 break;
