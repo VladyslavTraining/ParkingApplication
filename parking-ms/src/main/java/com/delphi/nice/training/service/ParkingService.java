@@ -36,9 +36,9 @@ public class ParkingService {
     private int searchForFreePlaces() {
         for (int i = 0; i < jsonArray.size(); i++) {
             if (takeFreeParkSpot((JSONObject) jsonArray.get(i))) {
-                System.out.println(jsonArray.get(i));
                 updateParking();
-                return i;
+                System.out.println(i + 1);
+                return ++i;
             }
         }
         throw new RuntimeException();
@@ -59,13 +59,13 @@ public class ParkingService {
         }
         return false;
     }
-    private void leave(JSONObject object)
-    {
-            object.replace("isParked", false);
+
+    private void leave(JSONObject object) {
+        object.replace("isParked", false);
     }
-    void leaveParking(JSONObject object)
-    {
-        int parkPlace = Integer.parseInt(object.get("parkingSlot").toString())-1;
+
+    void leaveParking(JSONObject object) {
+        int parkPlace = Integer.parseInt(object.get("parkingSlot").toString()) - 1;
         leave((JSONObject) jsonArray.get(parkPlace));
         updateParking();
     }

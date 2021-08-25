@@ -14,12 +14,17 @@ public class TicketService {
     private final TicketDto ticketDto = new TicketDto();
     private JSONArray ticketArray = new JSONArray();
     private static final String TICKET_DATA_FILE_NAME = "ticketData.json";
+
     public TicketService() {
         if (!new File(TICKET_DATA_FILE_NAME).exists()) {
             new File(TICKET_DATA_FILE_NAME);
         } else {
             ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
         }
+    }
+
+    public TicketDto getTicket() {
+        return ticketDto;
     }
 
     public String generateTicket() {
@@ -39,7 +44,8 @@ public class TicketService {
             e.printStackTrace();
         }
     }
-//    JSONObject searchTicket()
+
+    //    JSONObject searchTicket()
 //    {
 //        for(Object o : ticketArray)
 //        {
@@ -47,11 +53,10 @@ public class TicketService {
 //        }
 //        return null;
 //    }
-    void removeTicket(JSONObject jsonObject)
-    {
+    void removeTicket(JSONObject jsonObject) {
 //        if(searchTicket().equals(jsonObject))
-            ticketArray.remove(jsonObject);
-            writeToFile();
+        ticketArray.remove(jsonObject);
+        writeToFile();
     }
 //    public String generateTicket() {
 //        JSONObject jsonObject = new JSONObject();

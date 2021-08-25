@@ -12,6 +12,7 @@ public class ExitService {
 
     private final JSONArray ticketArray;
     private JSONObject exitVehicle;
+
     public ExitService() {
         ticketArray = new JSONReader().getJsonArr("ticketData.json");
     }
@@ -36,10 +37,11 @@ public class ExitService {
         Duration duration = Duration.between(enter, exit);
         return duration.getSeconds();
     }
-    public void exit(long id)
-    {
+
+    public void exit(long id) {
         amountForPay(id);
         new ParkingService().leaveParking(exitVehicle);
         new TicketService().removeTicket(exitVehicle);
     }
+
 }

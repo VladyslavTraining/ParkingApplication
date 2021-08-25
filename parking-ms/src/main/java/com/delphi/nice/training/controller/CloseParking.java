@@ -12,4 +12,5 @@ public class CloseParking implements Command {
     public void execute() {
         gate.closeParkingDoor();
     }
+
 }

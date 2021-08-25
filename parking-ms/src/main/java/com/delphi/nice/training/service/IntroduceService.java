@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 
+import com.delphi.nice.training.model.dto.TicketDto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +16,13 @@ public class IntroduceService {
                 System.out.println("Hello, do you want stay at parking area?(Y/N)");
                 String line = br.readLine();
                 if (line.equalsIgnoreCase("Y")) {
-                    new TicketService();
+                    TicketService ticketService = new TicketService();
+                    ticketService.generateTicket();
+                    TicketDto ticket = ticketService.getTicket();
+                    System.out.println("---------------------------------");
+                    System.out.println("Your ticket id " + ticket.getUuid());
+                    System.out.println("Have a nice day");
+                    System.out.println("---------------------------------");
                     break;
                 }
                 System.out.println("Have a nice day");
@@ -25,7 +32,6 @@ public class IntroduceService {
             }
         }
     }
-
 
 
 }

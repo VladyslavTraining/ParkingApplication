@@ -4,6 +4,7 @@ package com.delphi.nice.training.controller;
 public class Gate {
 
     public Gate() {
+
     }
 
     public void openParkingDoor() {
