@@ -12,8 +12,12 @@ public class ExitService {
 
     private final JSONArray ticketArray;
     private JSONObject exitVehicle;
+    ParkingService parkingService;
+    TicketService ticketService;
 
-    public ExitService() {
+    public ExitService(ParkingService parkingService, TicketService ticketService) {
+        this.ticketService = ticketService;
+        this.parkingService = parkingService;
         ticketArray = new JSONReader().getJsonArr("parking-ms/src/main/resources/ticketData.json");
     }
 
@@ -40,8 +44,8 @@ public class ExitService {
 
     public void exit(long id) {
         amountForPay(id);
-        new ParkingService().leaveParking(exitVehicle);
-        new TicketService().removeTicket(exitVehicle);
+        parkingService.leaveParking(exitVehicle);
+        ticketService.removeTicket(exitVehicle);
     }
 
 }

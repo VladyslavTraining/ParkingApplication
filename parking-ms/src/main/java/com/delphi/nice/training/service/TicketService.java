@@ -11,12 +11,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TicketService {
-    private ClientCardDto clientCardDto;
-    private final TicketDto ticketDto = new TicketDto();
+    private TicketDto ticketDto;
     private JSONArray ticketArray = new JSONArray();
     private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
 
     public TicketService() {
+    }
+
+    public TicketService(TicketDto ticketDto) {
+        this.ticketDto = ticketDto;
         if (!new File(TICKET_DATA_FILE_NAME).exists()) {
             new File(TICKET_DATA_FILE_NAME);
         } else {

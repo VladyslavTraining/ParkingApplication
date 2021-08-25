@@ -1,12 +1,12 @@
 package com.delphi.nice.training.model.dto;
 
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 @Component
-@Data
+@Getter
 public class ParkingSlotDto implements Serializable {
     private int parkingSpot;
     private boolean isParked;

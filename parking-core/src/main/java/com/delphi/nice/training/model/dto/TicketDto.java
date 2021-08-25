@@ -1,10 +1,14 @@
 package com.delphi.nice.training.model.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Data
+@Component
+@Getter
+@ToString
 public class TicketDto {
 
     private long uuid;
@@ -12,7 +16,7 @@ public class TicketDto {
 
     public TicketDto() {
         this.entranceDateTime = LocalDateTime.now();
-        this.uuid = System.currentTimeMillis() >> 23;
+        this.uuid = System.currentTimeMillis()>>22;
     }
 
 }
