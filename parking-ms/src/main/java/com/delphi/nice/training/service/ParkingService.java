@@ -20,7 +20,6 @@ public class ParkingService {
     public int park() {
         for (int i = 0; i < jsonArray.size(); i++) {
             if (takeFreeParkSpot((JSONObject) jsonArray.get(i))) {
-                System.out.println(jsonArray.get(i));
                 updateParking();
                 return i + 1;
             }
@@ -62,4 +61,5 @@ public class ParkingService {
         leave((JSONObject) jsonArray.get(parkPlace));
         updateParking();
     }
+
 }

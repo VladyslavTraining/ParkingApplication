@@ -8,6 +8,6 @@ import java.io.Serializable;
 @Component
 @Getter
 public class ParkingSlotDto implements Serializable {
-    private int parkingSpot;
+    private int parkingSlot;
     private boolean isParked;
 }

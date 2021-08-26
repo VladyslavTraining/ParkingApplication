@@ -30,8 +30,7 @@ public class ExitService {
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
-                String correctAmount = String.format("%.2f", cost);
-                System.out.println("Need to pay ---> " + correctAmount + "$");
+                System.out.printf("Need to pay ---> %.2f$\n", cost);
                 exitVehicle = (JSONObject) o;
             }
         }
