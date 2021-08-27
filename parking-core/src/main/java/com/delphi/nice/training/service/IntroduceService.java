@@ -1,8 +1,6 @@
 package com.delphi.nice.training.service;
 
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +8,6 @@ import java.io.InputStreamReader;
 
 public class IntroduceService {
 
-    private static final Logger log = LogManager.getLogger(IntroduceService.class.getName());
     private final TicketService ticketService;
     private final ExitService exitService;
 
@@ -41,7 +38,7 @@ public class IntroduceService {
                 }
             }
         } catch (IOException e) {
-            log.error(e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -51,11 +48,12 @@ public class IntroduceService {
             System.out.println("Input you ID please");
             String line = br.readLine();
             long id = Long.parseLong(line);
+            System.out.println(id);
             exitService.exit(id);
         } catch (NullPointerException e) {
             System.out.println("Incorrect id, try again");
         } catch (IOException e) {
-            log.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

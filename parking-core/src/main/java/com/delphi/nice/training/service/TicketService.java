@@ -11,25 +11,25 @@ import java.io.File;
 
 @Getter
 public class TicketService {
-    private final TicketDto ticketDto;
+    private ParkingService parkingService;
+    private TicketDto ticketDto;
     private JSONArray ticketArray;
     private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
     JSONWriter jsonWriter;
-    private int parkingSlot;
+    private long parkingSlot;
 
-    public TicketService(TicketDto ticketDto) {
-        if (!new File(TICKET_DATA_FILE_NAME).exists()) {
-            new File(TICKET_DATA_FILE_NAME);
-        } else {
+
+    public TicketService(ParkingService parkingService) {
+        this.parkingService = parkingService;
+        if(new File(TICKET_DATA_FILE_NAME).length()!=0)
             ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
-        }
-        this.ticketDto = ticketDto;
+        else ticketArray = new JSONArray();
         jsonWriter = new JSONWriter(ticketArray, TICKET_DATA_FILE_NAME);
     }
 
     public boolean generateTicket() {
-        ParkingService parkingService = new ParkingService();
         if (parkingService.isFreeSlotPresent()) {
+            ticketDto = new TicketDto();
             parkingSlot = parkingService.park();
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("uuid", ticketDto.getUuid());

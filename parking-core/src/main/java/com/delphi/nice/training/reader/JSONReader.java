@@ -12,7 +12,6 @@ public class JSONReader implements Reader {
     @Override
     public JSONArray getJsonArr(String filepath) {
         JSONParser jsonParser = new JSONParser();
-
         try (FileReader reader = new FileReader(filepath)) {
             Object obj = jsonParser.parse(reader);
             return (JSONArray) obj;

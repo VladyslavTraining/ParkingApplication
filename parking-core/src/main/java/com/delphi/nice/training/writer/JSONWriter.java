@@ -15,7 +15,7 @@ public class JSONWriter {
     }
 
     public void writeToFile() {
-        try (FileWriter fw = new FileWriter(filepath)) {
+        try(FileWriter fw = new FileWriter(filepath)) {
             jsonArray.writeJSONString(fw);
         } catch (IOException e) {
             e.printStackTrace();

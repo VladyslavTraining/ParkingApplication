@@ -1,4 +1,3 @@
-com\delphi\nice\training\model\ParkingSlotDto.class
-com\delphi\nice\training\model\cards\Card.class
-com\delphi\nice\training\model\TicketDto.class
-com\delphi\nice\training\model\cards\ParkingCardDto.class
+com\delphi\nice\training\model\dto\ClientCardDto.class
+com\delphi\nice\training\model\dto\ParkingSlotDto.class
+com\delphi\nice\training\model\dto\TicketDto.class
