@@ -19,7 +19,7 @@ public class ExitServiceImpl implements ExitService {
         this.parkingServiceImpl = parkingServiceImpl;
     }
 
-    private void amountForPay(long id) {
+    private String amountForPay(long id) {
         JSONArray ticketArray = new JSONReader().getJsonArr("parking-ms/src/main/resources/ticketData.json");
         for (Object o : ticketArray) {
             long uuid = (long) ((JSONObject) o).get("uuid");
@@ -29,10 +29,12 @@ public class ExitServiceImpl implements ExitService {
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
-                System.out.printf("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
+//                System.out.printf("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
                 exitVehicle = (JSONObject) o;
+                return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
             }
         }
+        return null;
     }
 
     private long getTime(LocalDateTime enter, LocalDateTime exit) {
@@ -40,10 +42,15 @@ public class ExitServiceImpl implements ExitService {
         return duration.getSeconds();
     }
 
-    public void exit(long id) {
-        amountForPay(id);
+    @Override
+    public boolean exit(long id) {
+        String payMessage = amountForPay(id);
+        if (payMessage == null)
+            return false;
         parkingServiceImpl.leaveParking(exitVehicle);
         ticketServiceImpl.removeTicket(exitVehicle);
+        System.out.println(payMessage);
+        return true;
     }
 
 }

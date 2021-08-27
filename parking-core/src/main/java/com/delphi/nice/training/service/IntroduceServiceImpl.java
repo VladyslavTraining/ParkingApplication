@@ -1,7 +1,5 @@
 package com.delphi.nice.training.service;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -48,8 +46,8 @@ public class IntroduceServiceImpl implements IntroduceService {
             System.out.println("Input you ID please");
             String line = br.readLine();
             long id = Long.parseLong(line);
-            System.out.println(id);
-            exitServiceImpl.exit(id);
+            exitServiceImpl.exit(id
+            );
         } catch (NullPointerException e) {
             System.out.println("Incorrect id, try again");
         } catch (IOException e) {
