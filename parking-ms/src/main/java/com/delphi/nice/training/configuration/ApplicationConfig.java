@@ -1,9 +1,9 @@
 package com.delphi.nice.training.configuration;
 
-import com.delphi.nice.training.service.ExitService;
-import com.delphi.nice.training.service.IntroduceService;
-import com.delphi.nice.training.service.ParkingService;
-import com.delphi.nice.training.service.TicketService;
+import com.delphi.nice.training.service.ExitServiceImpl;
+import com.delphi.nice.training.service.IntroduceServiceImpl;
+import com.delphi.nice.training.service.ParkingServiceImpl;
+import com.delphi.nice.training.service.TicketServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,23 +12,23 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
     @Bean
-    public TicketService ticketService(ParkingService parkingService) {
-        return new TicketService(parkingService);
+    public TicketServiceImpl ticketService(ParkingServiceImpl parkingServiceImpl) {
+        return new TicketServiceImpl(parkingServiceImpl);
     }
 
     @Bean
-    public ParkingService parkingService() {
-        return new ParkingService();
+    public ParkingServiceImpl parkingService() {
+        return new ParkingServiceImpl();
     }
 
     @Bean
-    public ExitService exitService(ParkingService parkingService, TicketService ticketService) {
-        return new ExitService(parkingService, ticketService);
+    public ExitServiceImpl exitService(ParkingServiceImpl parkingServiceImpl, TicketServiceImpl ticketServiceImpl) {
+        return new ExitServiceImpl(parkingServiceImpl, ticketServiceImpl);
     }
 
     @Bean
-    public IntroduceService intro(TicketService ticketService, ExitService exitService) {
-        return new IntroduceService(ticketService, exitService);
+    public IntroduceServiceImpl intro(TicketServiceImpl ticketServiceImpl, ExitServiceImpl exitServiceImpl) {
+        return new IntroduceServiceImpl(ticketServiceImpl, exitServiceImpl);
     }
 
 }

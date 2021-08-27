@@ -1,4 +1,4 @@
-package com.delphi.nice.training.model.dto;
+package com.delphi.nice.training.dto;
 
 import lombok.Builder;
 import lombok.Getter;
