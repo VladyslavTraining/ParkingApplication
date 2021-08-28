@@ -9,24 +9,24 @@ import org.json.simple.JSONObject;
 
 @Getter
 public class TicketServiceImpl implements TicketService {
-    private ParkingServiceImpl parkingServiceImpl;
-    private TicketDto ticketDto;
+    private ParkingService parkingService;
     private JSONArray ticketArray;
+    private TicketDto ticketDto;
     private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
-    JSONWriter jsonWriter;
+    private JSONWriter jsonWriter;
     private long parkingSlot;
 
 
-    public TicketServiceImpl(ParkingServiceImpl parkingServiceImpl) {
-        this.parkingServiceImpl = parkingServiceImpl;
+    public TicketServiceImpl(ParkingService parkingService) {
+        this.parkingService = parkingService;
         ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
         jsonWriter = new JSONWriter(ticketArray, TICKET_DATA_FILE_NAME);
     }
 
     public boolean generateTicket() {
-        if (parkingServiceImpl.isFreeSlotPresent()) {
+        if (parkingService.isFreeSlotPresent()) {
             ticketDto = new TicketDto();
-            parkingSlot = parkingServiceImpl.park();
+            parkingSlot = parkingService.park();
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("uuid", ticketDto.getUuid());
             jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
@@ -39,8 +39,14 @@ public class TicketServiceImpl implements TicketService {
         return false;
     }
 
-    public void removeTicket(JSONObject jsonObject) {
-        ticketArray.remove(jsonObject);
-        jsonWriter.writeToFile();
+    @Override
+    public long getParkingSlot()
+    {
+        return parkingSlot;
     }
+    @Override
+    public long getTicketID() {
+        return ticketDto.getUuid();
+    }
+
 }

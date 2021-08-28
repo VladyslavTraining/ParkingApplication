@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -9,18 +10,15 @@ import java.time.LocalDateTime;
 
 
 public class ExitServiceImpl implements ExitService {
-
+    private JSONArray ticketArray;
+    private JSONArray parkingArray;
     private JSONObject exitVehicle;
-    ParkingServiceImpl parkingServiceImpl;
-    TicketServiceImpl ticketServiceImpl;
-
-    public ExitServiceImpl(ParkingServiceImpl parkingServiceImpl, TicketServiceImpl ticketServiceImpl) {
-        this.ticketServiceImpl = ticketServiceImpl;
-        this.parkingServiceImpl = parkingServiceImpl;
-    }
+    private static final String TICKET_DATA_PATH = "parking-ms/src/main/resources/ticketData.json";
+    private static final String PARKING_AREA_PATH = "parking-ms/src/main/resources/parkingArea.json";
 
     private String amountForPay(long id) {
-        JSONArray ticketArray = new JSONReader().getJsonArr("parking-ms/src/main/resources/ticketData.json");
+        ticketArray = new JSONReader().getJsonArr(TICKET_DATA_PATH);
+        parkingArray = new JSONReader().getJsonArr(PARKING_AREA_PATH);
         for (Object o : ticketArray) {
             long uuid = (long) ((JSONObject) o).get("uuid");
             if (id == uuid) {
@@ -47,8 +45,11 @@ public class ExitServiceImpl implements ExitService {
         String payMessage = amountForPay(id);
         if (payMessage == null)
             return false;
-        parkingServiceImpl.leaveParking(exitVehicle);
-        ticketServiceImpl.removeTicket(exitVehicle);
+        ticketArray.remove(exitVehicle);
+        exitVehicle = (JSONObject) parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
+        exitVehicle.replace("isParked", false);
+        new JSONWriter(ticketArray, TICKET_DATA_PATH).writeToFile();
+        new JSONWriter(parkingArray, PARKING_AREA_PATH).writeToFile();
         System.out.println(payMessage);
         return true;
     }
