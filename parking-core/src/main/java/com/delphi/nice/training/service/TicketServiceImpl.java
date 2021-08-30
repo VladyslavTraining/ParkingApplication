@@ -10,24 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+
 @Getter
 @Component
 public class TicketServiceImpl implements TicketService {
     @Autowired
-    private ParkingService parkingService;
-    private String TICKET_DATA_FILE_NAME;
-    private JSONArray ticketArray;
+    private final ParkingService parkingService;
+    private final String ticketDataFileName;
+    private final JSONArray ticketArray;
     private TicketDto ticketDto;
-    private JSONWriter jsonWriter;
+    private final JSONWriter jsonWriter;
     private long parkingSlot;
 
 
 
     public TicketServiceImpl(ParkingService parkingService,@Value("${path.ticket}")String filename) {
-        TICKET_DATA_FILE_NAME = filename;
+        ticketDataFileName = filename;
         this.parkingService = parkingService;
-        ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
-        jsonWriter = new JSONWriter(ticketArray, TICKET_DATA_FILE_NAME);
+        ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
+        jsonWriter = new JSONWriter(ticketArray, ticketDataFileName);
     }
 
     public boolean generateTicket() {
@@ -35,11 +37,11 @@ public class TicketServiceImpl implements TicketService {
         if (parkingService.isFreeSlotPresent()) {
             ticketDto = new TicketDto();
             parkingSlot = parkingService.park();
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("uuid", ticketDto.getUuid());
-            jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-            jsonObject.put("parkingSlot", parkingSlot);
-            ticketArray.add(jsonObject);
+            HashMap<String, Object> ticketFields = new HashMap<>();
+            ticketFields.put("uuid", ticketDto.getUuid());
+            ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+            ticketFields.put("parkingSlot", parkingSlot);
+            ticketArray.add(new JSONObject(ticketFields));
             jsonWriter.writeToFile();
             return true;
         }
