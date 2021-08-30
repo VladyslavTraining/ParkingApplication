@@ -28,5 +28,10 @@
     "entranceTime": "2021-08-30T12:20:53.808",
     "parkingSlot": 3,
     "uuid": 3156250
+  },
+  {
+    "entranceTime": "2021-08-30T12:22:51.496",
+    "parkingSlot": 8,
+    "uuid": 1937500
   }
 ]

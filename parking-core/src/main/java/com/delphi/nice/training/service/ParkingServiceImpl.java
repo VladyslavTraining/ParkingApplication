@@ -13,14 +13,14 @@ import java.io.IOException;
 public class ParkingServiceImpl implements ParkingService {
 
     private JSONObject jsonObject;
-    private JSONArray jsonArray;
+    private final JSONArray jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private static final String PARKING_SLOT_FIELD = "parkingSlot";
-    private String PARKING_AREA_FILE_PATH;
+    private final String parkingAreaFilePath;
 
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
-        PARKING_AREA_FILE_PATH = filepath;
-        this.jsonArray = new JSONReader().getJsonArr(PARKING_AREA_FILE_PATH);
+        parkingAreaFilePath = filepath;
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
     public long park() {
@@ -52,7 +52,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     private void updateParking() {
-        try (FileWriter fileWriter = new FileWriter(PARKING_AREA_FILE_PATH)) {
+        try (FileWriter fileWriter = new FileWriter(parkingAreaFilePath)) {
             jsonArray.writeJSONString(fileWriter);
         } catch (IOException e) {
             e.printStackTrace();
