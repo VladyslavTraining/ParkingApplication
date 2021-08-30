@@ -3,20 +3,23 @@ package com.delphi.nice.training.service;
 import com.delphi.nice.training.reader.JSONReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-
+@Component
 public class ParkingServiceImpl implements ParkingService {
 
     private JSONObject jsonObject;
-    private final JSONArray jsonArray;
+    private JSONArray jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private static final String PARKING_SLOT_FIELD = "parkingSlot";
-    private static final String PARKING_AREA_FILE_PATH = "parking-ms/src/main/resources/parkingArea.json";
+    private String PARKING_AREA_FILE_PATH;
 
-    public ParkingServiceImpl() {
+    public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
+        PARKING_AREA_FILE_PATH = filepath;
         this.jsonArray = new JSONReader().getJsonArr(PARKING_AREA_FILE_PATH);
     }
 

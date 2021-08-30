@@ -1,18 +1,17 @@
 package com.delphi.nice.training.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+@Component
 public class IntroduceServiceImpl implements IntroduceService {
-
-    private final TicketService ticketService;
-    private final ExitService exitService;
-
-    public IntroduceServiceImpl(TicketService ticketService, ExitService exitService) {
-        this.ticketService = ticketService;
-        this.exitService = exitService;
-    }
+    @Autowired
+    private TicketService ticketService;
+    @Autowired
+    private ExitService exitService;
 
     public void welcomeMessage() {
         try (BufferedReader br = new BufferedReader(

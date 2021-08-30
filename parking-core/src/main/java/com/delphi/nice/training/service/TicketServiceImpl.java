@@ -6,24 +6,32 @@ import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Getter
+@Component
 public class TicketServiceImpl implements TicketService {
+    @Autowired
     private ParkingService parkingService;
+    private String TICKET_DATA_FILE_NAME;
     private JSONArray ticketArray;
     private TicketDto ticketDto;
-    private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
     private JSONWriter jsonWriter;
     private long parkingSlot;
 
 
-    public TicketServiceImpl(ParkingService parkingService) {
+
+    public TicketServiceImpl(ParkingService parkingService,@Value("${path.ticket}")String filename) {
+        TICKET_DATA_FILE_NAME = filename;
         this.parkingService = parkingService;
         ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
         jsonWriter = new JSONWriter(ticketArray, TICKET_DATA_FILE_NAME);
     }
 
     public boolean generateTicket() {
+
         if (parkingService.isFreeSlotPresent()) {
             ticketDto = new TicketDto();
             parkingSlot = parkingService.park();

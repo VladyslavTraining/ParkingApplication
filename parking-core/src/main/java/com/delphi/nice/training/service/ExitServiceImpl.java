@@ -4,17 +4,21 @@ import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-
+@Component
 public class ExitServiceImpl implements ExitService {
     private JSONArray ticketArray;
     private JSONArray parkingArray;
     private JSONObject exitVehicle;
-    private static final String TICKET_DATA_PATH = "parking-ms/src/main/resources/ticketData.json";
-    private static final String PARKING_AREA_PATH = "parking-ms/src/main/resources/parkingArea.json";
+    @Value("${path.ticket}")
+    private String TICKET_DATA_PATH;
+    @Value("${path.parking}")
+    private String PARKING_AREA_PATH;
 
     private String amountForPay(long id) {
         ticketArray = new JSONReader().getJsonArr(TICKET_DATA_PATH);
