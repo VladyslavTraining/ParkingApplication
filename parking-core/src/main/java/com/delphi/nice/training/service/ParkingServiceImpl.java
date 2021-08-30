@@ -56,11 +56,4 @@ public class ParkingServiceImpl implements ParkingService {
         }
     }
 
-    public void leaveParking(JSONObject object) {
-        int parkPlace = Integer.parseInt(object.get(PARKING_SLOT_FIELD).toString()) - 1;
-        jsonObject = (JSONObject) jsonArray.get(parkPlace);
-        jsonObject.replace(IS_PARKED_FIELD, false);
-        updateParking();
-    }
-
 }
