@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.validator.FileValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ public class ParkingServiceImpl implements ParkingService {
 
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
         parkingAreaFilePath = filepath;
+        new FileValidator().validate(filepath);
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
@@ -28,7 +30,7 @@ public class ParkingServiceImpl implements ParkingService {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
         }
-        throw new RuntimeException();
+        throw new IndexOutOfBoundsException();
     }
 
     public boolean isFreeSlotPresent() {
