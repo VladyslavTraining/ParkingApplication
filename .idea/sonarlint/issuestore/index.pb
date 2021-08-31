@@ -23,7 +23,5 @@ z
 Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
 b
 2parking-ms/src/test/java/IntroduceServiceTest.java,f\3\f3243210be4f3f7e74215f6b6e2e881e9a3b3a43
-_
-/parking-ms/src/test/java/TicketServiceTest.java,1\b\1bcd71aa7022bdb3410c0316bd0b535c584f96b4
 ]
 -parking-ms/src/test/java/ExitServiceTest.java,b\3\b35567ede2af1a6cbdf2cbc2ba1b5dd6ecd3d2e9

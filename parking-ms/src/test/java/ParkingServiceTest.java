@@ -5,13 +5,15 @@ import com.delphi.nice.training.service.ParkingServiceImpl;
 import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
+import java.io.File;
 import java.util.HashMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParkingServiceTest {
 
 
@@ -22,17 +24,16 @@ public class ParkingServiceTest {
     }
 
     @Test
-    public void shouldParkOnFirstSpot() {
+    public void aShouldParkOnFirstSpot() {
         ParkingService parkingService = new ParkingServiceImpl("src/test/resources/testParkArea.json");
         Assert.assertEquals(1, parkingService.park());
-        Assert.assertTrue(changeIsParkedOnTrue());
     }
-
-    public boolean changeIsParkedOnTrue() {
+    @Test
+    public void bChangeIsParkedOnTrue() {
         Reader reader = new JSONReader();
         JSONArray array = reader.getJsonArr("src/test/resources/testParkArea.json");
         JSONObject jsonObject = (JSONObject) array.get(0);
-        return (boolean) jsonObject.get("isParked");
+        Assert.assertTrue((boolean) jsonObject.get("isParked"));
     }
 
     @AfterClass
@@ -43,5 +44,6 @@ public class ParkingServiceTest {
         JSONArray jsonArray = new JSONArray();
         jsonArray.add(new JSONObject(parkSpot));
         new JSONWriter(jsonArray, "src/test/resources/testParkArea.json").writeToFile();
+        new File("src/test/resources/emptyParkArea.json").delete();
     }
 }

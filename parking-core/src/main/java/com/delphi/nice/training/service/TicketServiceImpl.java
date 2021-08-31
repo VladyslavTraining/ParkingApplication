@@ -2,6 +2,8 @@ package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.validator.TicketServiceValidator;
+import com.delphi.nice.training.validator.Validator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import org.json.simple.JSONArray;
@@ -26,6 +28,7 @@ public class TicketServiceImpl implements TicketService {
 
 
     public TicketServiceImpl(ParkingService parkingService,@Value("${path.ticket}")String filename) {
+        new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
         this.parkingService = parkingService;
         ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
