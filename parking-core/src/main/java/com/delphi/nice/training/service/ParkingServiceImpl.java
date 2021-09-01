@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.validator.ParkAreaValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,14 +14,15 @@ import java.io.IOException;
 public class ParkingServiceImpl implements ParkingService {
 
     private JSONObject jsonObject;
-    private JSONArray jsonArray;
+    private final JSONArray jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private static final String PARKING_SLOT_FIELD = "parkingSlot";
-    private String PARKING_AREA_FILE_PATH;
+    private final String parkingAreaFilePath;
 
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
-        PARKING_AREA_FILE_PATH = filepath;
-        this.jsonArray = new JSONReader().getJsonArr(PARKING_AREA_FILE_PATH);
+        parkingAreaFilePath = filepath;
+        new ParkAreaValidator().validate(filepath);
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
     public long park() {
@@ -28,7 +30,7 @@ public class ParkingServiceImpl implements ParkingService {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
         }
-        throw new RuntimeException();
+        throw new IndexOutOfBoundsException();
     }
 
     public boolean isFreeSlotPresent() {
@@ -52,7 +54,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     private void updateParking() {
-        try (FileWriter fileWriter = new FileWriter(PARKING_AREA_FILE_PATH)) {
+        try (FileWriter fileWriter = new FileWriter(parkingAreaFilePath)) {
             jsonArray.writeJSONString(fileWriter);
         } catch (IOException e) {
             e.printStackTrace();

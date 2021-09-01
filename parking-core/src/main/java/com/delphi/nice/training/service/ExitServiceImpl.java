@@ -16,13 +16,13 @@ public class ExitServiceImpl implements ExitService {
     private JSONArray parkingArray;
     private JSONObject exitVehicle;
     @Value("${path.ticket}")
-    private String TICKET_DATA_PATH;
+    private String ticketDataPath;
     @Value("${path.parking}")
-    private String PARKING_AREA_PATH;
+    private String parkingAreaPath;
 
     private String amountForPay(long id) {
-        ticketArray = new JSONReader().getJsonArr(TICKET_DATA_PATH);
-        parkingArray = new JSONReader().getJsonArr(PARKING_AREA_PATH);
+        ticketArray = new JSONReader().getJsonArr(ticketDataPath);
+        parkingArray = new JSONReader().getJsonArr(parkingAreaPath);
         for (Object o : ticketArray) {
             long uuid = (long) ((JSONObject) o).get("uuid");
             if (id == uuid) {
@@ -31,7 +31,6 @@ public class ExitServiceImpl implements ExitService {
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
-//                System.out.printf("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
                 exitVehicle = (JSONObject) o;
                 return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
             }
@@ -52,8 +51,8 @@ public class ExitServiceImpl implements ExitService {
         ticketArray.remove(exitVehicle);
         exitVehicle = (JSONObject) parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
-        new JSONWriter(ticketArray, TICKET_DATA_PATH).writeToFile();
-        new JSONWriter(parkingArray, PARKING_AREA_PATH).writeToFile();
+        new JSONWriter(ticketArray, ticketDataPath).writeToFile();
+        new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
         System.out.println(payMessage);
         return true;
     }
