@@ -12,13 +12,18 @@ import java.time.LocalDateTime;
 
 @Component
 public class ExitServiceImpl implements ExitService {
+
     private JSONArray ticketArray;
     private JSONArray parkingArray;
     private JSONObject exitVehicle;
-    @Value("${path.ticket}")
-    private String ticketDataPath;
-    @Value("${path.parking}")
-    private String parkingAreaPath;
+
+    private final String ticketDataPath;
+    private final String parkingAreaPath;
+
+    public ExitServiceImpl(@Value("${path.ticket}") String ticketDataPath, @Value("${path.parking}") String parkingAreaPath) {
+        this.ticketDataPath = ticketDataPath;
+        this.parkingAreaPath = parkingAreaPath;
+    }
 
     private String amountForPay(long id) {
         ticketArray = new JSONReader().getJsonArr(ticketDataPath);

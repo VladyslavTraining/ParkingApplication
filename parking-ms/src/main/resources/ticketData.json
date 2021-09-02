@@ -1,10 +1,5 @@
 [
   {
-    "entranceTime": "2021-08-28T11:32:21.571",
-    "parkingSlot": 4,
-    "uuid": 2230468
-  },
-  {
     "entranceTime": "2021-08-30T11:25:01.115",
     "parkingSlot": 1,
     "uuid": 449218
@@ -38,5 +33,10 @@
     "entranceTime": "2021-08-30T13:42:26.482",
     "parkingSlot": 9,
     "uuid": 1882812
+  },
+  {
+    "entranceTime": "2021-09-01T13:11:49.805",
+    "parkingSlot": 10,
+    "uuid": 3144531
   }
 ]

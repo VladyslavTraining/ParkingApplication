@@ -12,7 +12,10 @@ import java.util.HashMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TicketServiceTest {
-    private TicketService ticketService = new TicketServiceImpl(new ParkingServiceImpl("src/test/resources/testParkArea.json"), "src/test/resources/testTicket.json");
+
+    private final TicketService ticketService =
+            new TicketServiceImpl(new ParkingServiceImpl("src/test/resources/testParkArea.json"), "src/test/resources/testTicket.json");
+
     @Test
     public void aTicketGenerateReturnTrue() {
         Assert.assertTrue(ticketService.generateTicket());
@@ -22,9 +25,9 @@ public class TicketServiceTest {
     public void bTicketGenerateReturnFalse() {
         Assert.assertFalse(ticketService.generateTicket());
     }
+
     @AfterClass
-    public static void restoreFile()
-    {
+    public static void restoreFile() {
         HashMap<String, Object> parkSpot = new HashMap<>();
         parkSpot.put("parkingSlot", 1);
         parkSpot.put("isParked", false);

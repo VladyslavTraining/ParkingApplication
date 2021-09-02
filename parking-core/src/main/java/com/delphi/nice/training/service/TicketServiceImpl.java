@@ -17,8 +17,10 @@ import java.util.HashMap;
 @Getter
 @Component
 public class TicketServiceImpl implements TicketService {
+
     @Autowired
     private final ParkingService parkingService;
+
     private final String ticketDataFileName;
     private final JSONArray ticketArray;
     private TicketDto ticketDto;
