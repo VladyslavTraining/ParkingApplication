@@ -40,6 +40,7 @@ public class TicketServiceImpl implements TicketService {
     public boolean generateTicket() {
 
         if (parkingService.isFreeSlotPresent()) {
+
             ticketDto = new TicketDto();
             parkingSlot = parkingService.park();
             HashMap<String, Object> ticketFields = new HashMap<>();

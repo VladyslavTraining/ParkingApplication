@@ -4,6 +4,8 @@ import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.ParkAreaValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +14,8 @@ import java.io.IOException;
 
 @Component
 public class ParkingServiceImpl implements ParkingService {
-
     private JSONObject jsonObject;
-    private final JSONArray jsonArray;
+    private JSONArray jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private static final String PARKING_SLOT_FIELD = "parkingSlot";
     private final String parkingAreaFilePath;
@@ -22,10 +23,11 @@ public class ParkingServiceImpl implements ParkingService {
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
         parkingAreaFilePath = filepath;
         new ParkAreaValidator().validate(filepath);
-        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
+
     }
 
     public long park() {
+
         if (takeFreeParkSpot()) {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
@@ -34,6 +36,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     public boolean isFreeSlotPresent() {
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         for (Object o : jsonArray) {
             jsonObject = (JSONObject) o;
             if (!(boolean) jsonObject.get(IS_PARKED_FIELD))

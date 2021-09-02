@@ -27,6 +27,7 @@ public class ParkingServiceTest {
         parkingService.park();
     }
 
+
     @Test
     public void aShouldParkOnFirstSpot() {
         ParkingService parkingService = new ParkingServiceImpl("src/test/resources/testParkArea.json");
@@ -40,7 +41,6 @@ public class ParkingServiceTest {
         JSONObject jsonObject = (JSONObject) array.get(0);
         Assert.assertTrue((boolean) jsonObject.get("isParked"));
     }
-
     @AfterClass
     public static void restoreFile() {
         HashMap<String, Object> parkSpot = new HashMap<>();
@@ -75,7 +75,6 @@ public class ParkingServiceTest {
 
     @Test
     public void ifFreeSlotPresentShouldBeTrueTest() {
-
         ParkingServiceImpl parkingService = new ParkingServiceImpl(testFile.getAbsolutePath());
         assertTrue(parkingService.isFreeSlotPresent());
     }

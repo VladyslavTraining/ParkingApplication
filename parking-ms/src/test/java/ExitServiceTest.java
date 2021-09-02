@@ -47,7 +47,6 @@ public class ExitServiceTest {
 
     @Test
     public void shouldReturnFalseIfIdNotExistInFile() {
-        ticketService.generateTicket();
         assertFalse(exitService.exit(12345));
     }
 
@@ -56,5 +55,4 @@ public class ExitServiceTest {
         fillTheTempFileForTests(false, "src/test/resources/testParkArea.json");
         new File("src/test/resources/testTicket.json").delete();
     }
-
 }
