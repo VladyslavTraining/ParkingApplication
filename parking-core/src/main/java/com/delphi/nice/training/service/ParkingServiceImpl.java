@@ -4,8 +4,7 @@ import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.ParkAreaValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,11 +22,10 @@ public class ParkingServiceImpl implements ParkingService {
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
         parkingAreaFilePath = filepath;
         new ParkAreaValidator().validate(filepath);
-
     }
 
     public long park() {
-
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         if (takeFreeParkSpot()) {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
