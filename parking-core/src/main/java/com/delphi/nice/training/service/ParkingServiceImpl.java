@@ -25,6 +25,7 @@ public class ParkingServiceImpl implements ParkingService {
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
+    @Override
     public long park() {
         if (takeFreeParkSpot()) {
             updateParking();
@@ -33,6 +34,7 @@ public class ParkingServiceImpl implements ParkingService {
         throw new IndexOutOfBoundsException();
     }
 
+    @Override
     public boolean isFreeSlotPresent() {
         for (Object o : jsonArray) {
             jsonObject = (JSONObject) o;
