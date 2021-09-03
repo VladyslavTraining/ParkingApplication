@@ -10,5 +10,4 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan("com/delphi/nice/training/service")
 public class ApplicationConfig {
 
-
 }
