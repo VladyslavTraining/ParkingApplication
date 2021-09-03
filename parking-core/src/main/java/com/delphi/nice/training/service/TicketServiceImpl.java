@@ -18,7 +18,6 @@ import java.util.HashMap;
 @Component
 public class TicketServiceImpl implements TicketService {
 
-    @Autowired
     private final ParkingService parkingService;
 
     private final String ticketDataFileName;
@@ -28,8 +27,8 @@ public class TicketServiceImpl implements TicketService {
     private long parkingSlot;
 
 
-
-    public TicketServiceImpl(ParkingService parkingService,@Value("${path.ticket}")String filename) {
+    @Autowired
+    public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
         new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
         this.parkingService = parkingService;
@@ -56,10 +55,10 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public long getParkingSlot()
-    {
+    public long getParkingSlot() {
         return parkingSlot;
     }
+
     @Override
     public long getTicketID() {
         return ticketDto.getUuid();

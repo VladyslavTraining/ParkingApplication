@@ -16,7 +16,6 @@ public class Main {
     static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        logger.info("app start");
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         IntroduceServiceImpl intro = context.getBean("introduceServiceImpl", IntroduceServiceImpl.class);
         intro.welcomeMessage();
