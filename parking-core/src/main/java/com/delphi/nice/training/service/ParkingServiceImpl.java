@@ -4,8 +4,7 @@ import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.ParkAreaValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

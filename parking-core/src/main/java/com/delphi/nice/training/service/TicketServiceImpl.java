@@ -3,7 +3,6 @@ package com.delphi.nice.training.service;
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.TicketServiceValidator;
-import com.delphi.nice.training.validator.Validator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import org.json.simple.JSONArray;
@@ -18,9 +17,7 @@ import java.util.HashMap;
 @Component
 public class TicketServiceImpl implements TicketService {
 
-    @Autowired
     private final ParkingService parkingService;
-
     private final String ticketDataFileName;
     private final JSONArray ticketArray;
     private TicketDto ticketDto;
@@ -28,8 +25,8 @@ public class TicketServiceImpl implements TicketService {
     private long parkingSlot;
 
 
-
-    public TicketServiceImpl(ParkingService parkingService,@Value("${path.ticket}")String filename) {
+    @Autowired
+    public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
         new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
         this.parkingService = parkingService;
@@ -56,10 +53,10 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public long getParkingSlot()
-    {
+    public long getParkingSlot() {
         return parkingSlot;
     }
+
     @Override
     public long getTicketID() {
         return ticketDto.getUuid();
