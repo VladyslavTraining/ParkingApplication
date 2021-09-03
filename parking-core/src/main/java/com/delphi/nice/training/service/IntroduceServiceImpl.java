@@ -2,26 +2,27 @@ package com.delphi.nice.training.service;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 @Slf4j
 @Component
 public class IntroduceServiceImpl implements IntroduceService {
 
-    private TicketService ticketService;
-    private ExitService exitService;
+    private final TicketService ticketService;
+    private final ExitService exitService;
+
 
     @Autowired
     public IntroduceServiceImpl(TicketService ticketService, ExitService exitService) {
         this.ticketService = ticketService;
         this.exitService = exitService;
     }
-
 
     public void welcomeMessage() {
         try (BufferedReader br = new BufferedReader(
@@ -31,7 +32,7 @@ public class IntroduceServiceImpl implements IntroduceService {
                 String line = br.readLine();
                 if (line.equalsIgnoreCase("P")) {
                     if (ticketService.generateTicket()) {
-//                        log.debug("---------------------------------");
+//                        logger.info("---------------------------------");
                         log.info("Your ticket id: " + ticketService.getTicketID());
                         log.info("Your parking slot: " + ticketService.getParkingSlot());
                         log.debug("Have a nice day");

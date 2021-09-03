@@ -4,3 +4,10 @@
 -)Client base JSON  
 -)Ticket JSON;
 Logback
+-mock(textContextData - own), mockito framework
+postman
+spring-boot
+controller
+mock-MVC
+cucumber(spring boot testing)
+arrange,action,assert

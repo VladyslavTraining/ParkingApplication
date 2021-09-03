@@ -21,7 +21,7 @@ public class ParkingServiceTest {
 
     private File testFile;
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalStateException.class)
     public void noFileParkTest() {
         ParkingService parkingService = new ParkingServiceImpl("src/test/resources/emptyParkArea.json");
         parkingService.park();

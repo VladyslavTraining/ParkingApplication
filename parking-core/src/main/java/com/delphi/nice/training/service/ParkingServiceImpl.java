@@ -22,11 +22,10 @@ public class ParkingServiceImpl implements ParkingService {
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
         parkingAreaFilePath = filepath;
         new ParkAreaValidator().validate(filepath);
-
     }
 
     public long park() {
-
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         if (takeFreeParkSpot()) {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
