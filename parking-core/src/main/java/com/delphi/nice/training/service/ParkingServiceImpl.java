@@ -24,6 +24,7 @@ public class ParkingServiceImpl implements ParkingService {
         new ParkAreaValidator().validate(filepath);
     }
 
+    @Override
     public long park() {
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         if (takeFreeParkSpot()) {
@@ -33,6 +34,7 @@ public class ParkingServiceImpl implements ParkingService {
         throw new IndexOutOfBoundsException();
     }
 
+    @Override
     public boolean isFreeSlotPresent() {
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         for (Object o : jsonArray) {
