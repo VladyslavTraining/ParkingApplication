@@ -5,12 +5,12 @@ import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@Component
+@Service
 public class ExitServiceImpl implements ExitService {
 
     private JSONArray ticketArray;

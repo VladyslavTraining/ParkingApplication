@@ -11,11 +11,13 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Getter
-@Component
+@Service
 public class TicketServiceImpl implements TicketService {
 
     private final ParkingService parkingService;
@@ -57,6 +59,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public long getParkingSlot() {
         return parkingSlot;
+    }
+
+    @Override
+    public List<TicketDto> getAllTickets() {
+        return ticketArray;
     }
 
     @Override
