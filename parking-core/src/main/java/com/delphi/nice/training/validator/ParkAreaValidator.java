@@ -2,7 +2,6 @@ package com.delphi.nice.training.validator;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class ParkAreaValidator implements Validator {
     File checkFile;
