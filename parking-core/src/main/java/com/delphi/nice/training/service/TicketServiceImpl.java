@@ -2,36 +2,53 @@ package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.validator.TicketServiceValidator;
+import com.delphi.nice.training.validator.Validator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
 
 @Getter
+@Service
 public class TicketServiceImpl implements TicketService {
-    private ParkingService parkingService;
-    private JSONArray ticketArray;
+
+    private final ParkingService parkingService;
+
+    private final String ticketDataFileName;
+    private final JSONArray ticketArray;
     private TicketDto ticketDto;
-    private static final String TICKET_DATA_FILE_NAME = "parking-ms/src/main/resources/ticketData.json";
-    private JSONWriter jsonWriter;
+    private final JSONWriter jsonWriter;
     private long parkingSlot;
 
 
-    public TicketServiceImpl(ParkingService parkingService) {
+    @Autowired
+    public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
+        new TicketServiceValidator().validate(filename);
+        ticketDataFileName = filename;
         this.parkingService = parkingService;
-        ticketArray = new JSONReader().getJsonArr(TICKET_DATA_FILE_NAME);
-        jsonWriter = new JSONWriter(ticketArray, TICKET_DATA_FILE_NAME);
+        ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
+        jsonWriter = new JSONWriter(ticketArray, ticketDataFileName);
     }
 
     public boolean generateTicket() {
+
         if (parkingService.isFreeSlotPresent()) {
+
             ticketDto = new TicketDto();
             parkingSlot = parkingService.park();
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("uuid", ticketDto.getUuid());
-            jsonObject.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-            jsonObject.put("parkingSlot", parkingSlot);
-            ticketArray.add(jsonObject);
+            HashMap<String, Object> ticketFields = new HashMap<>();
+            ticketFields.put("uuid", ticketDto.getUuid());
+            ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+            ticketFields.put("parkingSlot", parkingSlot);
+            ticketArray.add(new JSONObject(ticketFields));
             jsonWriter.writeToFile();
             return true;
         }
@@ -40,10 +57,15 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public long getParkingSlot()
-    {
+    public long getParkingSlot() {
         return parkingSlot;
     }
+
+    @Override
+    public List<TicketDto> getAllTickets() {
+        return ticketArray;
+    }
+
     @Override
     public long getTicketID() {
         return ticketDto.getUuid();

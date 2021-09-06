@@ -4,21 +4,30 @@ import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-
+@Service
 public class ExitServiceImpl implements ExitService {
+
     private JSONArray ticketArray;
     private JSONArray parkingArray;
     private JSONObject exitVehicle;
-    private static final String TICKET_DATA_PATH = "parking-ms/src/main/resources/ticketData.json";
-    private static final String PARKING_AREA_PATH = "parking-ms/src/main/resources/parkingArea.json";
+
+    private final String ticketDataPath;
+    private final String parkingAreaPath;
+
+    public ExitServiceImpl(@Value("${path.ticket}") String ticketDataPath, @Value("${path.parking}") String parkingAreaPath) {
+        this.ticketDataPath = ticketDataPath;
+        this.parkingAreaPath = parkingAreaPath;
+    }
 
     private String amountForPay(long id) {
-        ticketArray = new JSONReader().getJsonArr(TICKET_DATA_PATH);
-        parkingArray = new JSONReader().getJsonArr(PARKING_AREA_PATH);
+        ticketArray = new JSONReader().getJsonArr(ticketDataPath);
+        parkingArray = new JSONReader().getJsonArr(parkingAreaPath);
         for (Object o : ticketArray) {
             long uuid = (long) ((JSONObject) o).get("uuid");
             if (id == uuid) {
@@ -27,7 +36,6 @@ public class ExitServiceImpl implements ExitService {
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
-//                System.out.printf("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
                 exitVehicle = (JSONObject) o;
                 return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
             }
@@ -48,8 +56,8 @@ public class ExitServiceImpl implements ExitService {
         ticketArray.remove(exitVehicle);
         exitVehicle = (JSONObject) parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
-        new JSONWriter(ticketArray, TICKET_DATA_PATH).writeToFile();
-        new JSONWriter(parkingArray, PARKING_AREA_PATH).writeToFile();
+        new JSONWriter(ticketArray, ticketDataPath).writeToFile();
+        new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
         System.out.println(payMessage);
         return true;
     }

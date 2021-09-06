@@ -1,34 +1,43 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.validator.ParkAreaValidator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-
+@Service
 public class ParkingServiceImpl implements ParkingService {
-
     private JSONObject jsonObject;
-    private final JSONArray jsonArray;
+    private JSONArray jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private static final String PARKING_SLOT_FIELD = "parkingSlot";
-    private static final String PARKING_AREA_FILE_PATH = "parking-ms/src/main/resources/parkingArea.json";
+    private final String parkingAreaFilePath;
 
-    public ParkingServiceImpl() {
-        this.jsonArray = new JSONReader().getJsonArr(PARKING_AREA_FILE_PATH);
+    public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
+        parkingAreaFilePath = filepath;
+        new ParkAreaValidator().validate(filepath);
     }
 
+    @Override
     public long park() {
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         if (takeFreeParkSpot()) {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
         }
-        throw new RuntimeException();
+        throw new IndexOutOfBoundsException();
     }
 
+    @Override
     public boolean isFreeSlotPresent() {
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         for (Object o : jsonArray) {
             jsonObject = (JSONObject) o;
             if (!(boolean) jsonObject.get(IS_PARKED_FIELD))
@@ -49,7 +58,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     private void updateParking() {
-        try (FileWriter fileWriter = new FileWriter(PARKING_AREA_FILE_PATH)) {
+        try (FileWriter fileWriter = new FileWriter(parkingAreaFilePath)) {
             jsonArray.writeJSONString(fileWriter);
         } catch (IOException e) {
             e.printStackTrace();

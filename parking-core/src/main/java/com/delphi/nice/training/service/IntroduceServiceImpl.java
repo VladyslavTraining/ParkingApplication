@@ -1,14 +1,25 @@
 package com.delphi.nice.training.service;
 
+
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+@Slf4j
+@Service
 public class IntroduceServiceImpl implements IntroduceService {
 
     private final TicketService ticketService;
     private final ExitService exitService;
 
+
+    @Autowired
     public IntroduceServiceImpl(TicketService ticketService, ExitService exitService) {
         this.ticketService = ticketService;
         this.exitService = exitService;
@@ -18,37 +29,37 @@ public class IntroduceServiceImpl implements IntroduceService {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in))) {
             while (true) {
-                System.out.println("Hello, do you want to park or leave?(P/L)");
+                log.debug("Hello, do you want to park or leave?(P/L)");
                 String line = br.readLine();
                 if (line.equalsIgnoreCase("P")) {
                     if (ticketService.generateTicket()) {
-                        System.out.println("---------------------------------");
-                        System.out.println("Your ticket id: " + ticketService.getTicketID());
-                        System.out.println("Your parking slot: " + ticketService.getParkingSlot());
-                        System.out.println("Have a nice day");
-                        System.out.println("---------------------------------");
+//                        logger.info("---------------------------------");
+                        log.info("Your ticket id: " + ticketService.getTicketID());
+                        log.info("Your parking slot: " + ticketService.getParkingSlot());
+                        log.debug("Have a nice day");
+                        log.info("---------------------------------");
                     }
                 } else if (line.equalsIgnoreCase("L")) {
                     closeMessage(br);
                 } else {
-                    System.out.println("Have a nice day");
+                    log.debug("Have a nice day");
                     break;
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
     }
 
     private void closeMessage(BufferedReader br) {
         try {
-            System.out.println("Input you ID please");
+            log.debug("Input you ID please");
             String line = br.readLine();
             long id = Long.parseLong(line);
             exitService.exit(id);
         } catch (NullPointerException e) {
-            System.out.println("Incorrect id, try again");
+            log.debug("Incorrect id, try again");
         } catch (IOException e) {
             e.printStackTrace();
         }
