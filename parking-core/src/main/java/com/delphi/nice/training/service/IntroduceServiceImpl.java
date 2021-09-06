@@ -2,14 +2,13 @@ package com.delphi.nice.training.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 @Slf4j
 @Component
 public class IntroduceServiceImpl implements IntroduceService {
@@ -56,6 +55,8 @@ public class IntroduceServiceImpl implements IntroduceService {
             log.debug("Input you ID please");
             String line = br.readLine();
             long id = Long.parseLong(line);
+            log.info("ticket id " + id + " has left from parking area");
+            log.info("---------------------------------");
             exitService.exit(id);
         } catch (NullPointerException e) {
             log.debug("Incorrect id, try again");

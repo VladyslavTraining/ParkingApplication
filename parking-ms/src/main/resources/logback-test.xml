@@ -26,19 +26,19 @@
         </encoder>
     </appender>
 
-<!--    <logger name="com.delphi.nice.training.controller" level="INFO"/>-->
+    <!--    <logger name="com.delphi.nice.training.controller" level="INFO"/>-->
 
     <logger name="com.delphi.nice.training.service" level="debug">
         <appender-ref ref="STDOUT"/>
     </logger>
-<!--    <logger name="com.delphi.nice.training.service.IntroduceServiceImpl" level="info" additivity="false">-->
-<!--        <appender-ref ref="INTRODUCE"/>-->
-<!--    </logger>-->
+    <!--    <logger name="com.delphi.nice.training.service.IntroduceServiceImpl" level="info" additivity="false">-->
+    <!--        <appender-ref ref="INTRODUCE"/>-->
+    <!--    </logger>-->
 
 
-    <root level="INFO" addityvity="false" >
-<!--        <appender-ref ref="STDOUT"/>-->
-        <appender-ref ref="INTRODUCE" />
+    <root level="INFO" addityvity="false">
+        <!--        <appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="INTRODUCE"/>
     </root>
 
 </configuration>
