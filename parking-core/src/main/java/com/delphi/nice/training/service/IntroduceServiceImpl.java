@@ -4,13 +4,14 @@ package com.delphi.nice.training.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Slf4j
-@Component
+@Service
 public class IntroduceServiceImpl implements IntroduceService {
 
     private final TicketService ticketService;

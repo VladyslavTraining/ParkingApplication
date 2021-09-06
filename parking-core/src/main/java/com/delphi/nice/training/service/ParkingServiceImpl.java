@@ -7,11 +7,12 @@ import org.json.simple.JSONObject;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-@Component
+@Service
 public class ParkingServiceImpl implements ParkingService {
     private JSONObject jsonObject;
     private JSONArray jsonArray;
