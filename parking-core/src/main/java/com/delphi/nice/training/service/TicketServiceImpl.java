@@ -61,7 +61,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<TicketDto> getAllTickets() {
-        return ticketArray;
+        return new JSONReader().getJsonArr(ticketDataFileName);
     }
 
     @Override
