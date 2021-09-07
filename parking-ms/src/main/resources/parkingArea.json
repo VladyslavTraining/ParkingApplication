@@ -21,11 +21,11 @@
   },
   {
     "parkingSlot": 6,
-    "isParked": true
+    "isParked": false
   },
   {
     "parkingSlot": 7,
-    "isParked": true
+    "isParked": false
   },
   {
     "parkingSlot": 8,
@@ -37,15 +37,15 @@
   },
   {
     "parkingSlot": 10,
-    "isParked": true
+    "isParked": false
   },
   {
     "parkingSlot": 11,
-    "isParked": true
+    "isParked": false
   },
   {
     "parkingSlot": 12,
-    "isParked": true
+    "isParked": false
   },
   {
     "parkingSlot": 13,
@@ -93,19 +93,19 @@
   },
   {
     "parkingSlot": 24,
-    "isParked": false
+    "isParked": true
   },
   {
     "parkingSlot": 25,
-    "isParked": false
+    "isParked": true
   },
   {
     "parkingSlot": 26,
-    "isParked": false
+    "isParked": true
   },
   {
     "parkingSlot": 27,
-    "isParked": false
+    "isParked": true
   },
   {
     "parkingSlot": 28,

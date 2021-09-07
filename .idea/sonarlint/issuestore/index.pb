@@ -1,8 +1,8 @@
 
-|
-Lparking-core/src/main/java/com/delphi/nice/training/service/ExitService.java,d\2\d2ffde79a0cd192dfd9683dfbc3a1740155f50fb
 Å
 Qparking-core/src/main/java/com/delphi/nice/training/service/IntroduceService.java,4\9\490b2f0b086d50be4ae45ca387ecbed4c373f88c
+v
+Fparking-core/src/main/java/com/delphi/nice/training/dto/TicketDto.java,f\3\f3d934a7dada069e03cdddeeefb427a292c6696e
 {
 Kparking-core/src/main/java/com/delphi/nice/training/dto/ParkingSlotDto.java,2\d\2dee2b1446dd0d23c2c19805938990ce88157c85
 z
@@ -11,15 +11,25 @@ D
 parking-core/pom.xml,2\2\226652dc6efab4d721fd650c2dfae97785199b97
 |
 Lparking-core/src/main/java/com/delphi/nice/training/validator/Validator.java,1\7\177fae84912b83d7b377e23db4dfe89d84334685
+]
+-parking-ms/src/test/java/ExitServiceTest.java,b\3\b35567ede2af1a6cbdf2cbc2ba1b5dd6ecd3d2e9
+b
+2parking-ms/src/test/java/IntroduceServiceTest.java,f\3\f3243210be4f3f7e74215f6b6e2e881e9a3b3a43
+`
+0parking-ms/src/test/java/ParkingServiceTest.java,b\f\bff3f8da07f686d1691fa643694ddacd018e0965
+_
+/parking-ms/src/test/java/TicketServiceTest.java,1\b\1bcd71aa7022bdb3410c0316bd0b535c584f96b4
+â
+Yparking-core/src/main/java/com/delphi/nice/training/validator/TicketServiceValidator.java,9\5\954f71e6a5cac15069b4a39abba3b168cd071591
+9
+	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
 z
-Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
-
-Oparking-core/src/main/java/com/delphi/nice/training/service/ParkingService.java,9\2\92a16850f9f367b629f55224781b1847459179c2
-Ä
-Pparking-core/src/main/java/com/delphi/nice/training/service/ExitServiceImpl.java,6\5\6567f0a6253ae9191acf8f0e014a03bc3620850a
-É
-Sparking-core/src/main/java/com/delphi/nice/training/service/ParkingServiceImpl.java,d\9\d94e4086a3cf3dca99547083104e697e279aafa6
-Ç
-Rparking-core/src/main/java/com/delphi/nice/training/service/TicketServiceImpl.java,9\b\9babe151e14ca227849591397d8e53ca98c17728
-~
-Nparking-core/src/main/java/com/delphi/nice/training/service/TicketService.java,3\a\3a85f57905533db396bc7f89032cc9f29f6ca260
+Jparking-core/src/main/java/com/delphi/nice/training/writer/JSONWriter.java,2\d\2d366e32bdce355649b1040a40182874826b2aa1
+Ñ
+Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
+B
+parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+v
+Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4

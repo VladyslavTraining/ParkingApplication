@@ -492,105 +492,224 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 [2021-09-06 13:22:07.068] Initializing Servlet 'dispatcherServlet'
 [2021-09-06 13:22:07.075] Completed initialization in 7 ms
 [2021-09-06 13:23:08.125] Shutting down ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:15:23.109] Starting Main on Zakhar with PID 992 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:15:23.109] No active profile set, falling back to default profiles: default
-[2021-09-06 14:15:26.046] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:15:26.077] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:15:26.077] Starting service [Tomcat]
-[2021-09-06 14:15:26.077] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:15:26.296] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:15:26.296] Root WebApplicationContext: initialization completed in 3016 ms
-[2021-09-06 14:15:26.390] Stopping service [Tomcat]
-[2021-09-06 14:15:26.421] 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-[2021-09-06 14:16:05.296] Starting Main on Zakhar with PID 9472 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:16:05.314] No active profile set, falling back to default profiles: default
-[2021-09-06 14:16:07.990] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:16:08.011] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:16:08.011] Starting service [Tomcat]
-[2021-09-06 14:16:08.012] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:16:08.186] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:16:08.186] Root WebApplicationContext: initialization completed in 2734 ms
-[2021-09-06 14:16:08.573] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:16:09.366] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:16:09.421] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:16:09.438] Started Main in 4.718 seconds (JVM running for 5.787)
-[2021-09-06 14:16:10.666] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:16:10.666] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:16:10.677] Completed initialization in 11 ms
-[2021-09-06 14:21:50.276] Starting Main on Zakhar with PID 2336 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:21:50.282] No active profile set, falling back to default profiles: default
-[2021-09-06 14:21:52.594] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:21:52.609] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:21:52.610] Starting service [Tomcat]
-[2021-09-06 14:21:52.610] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:21:52.739] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:21:52.739] Root WebApplicationContext: initialization completed in 2342 ms
-[2021-09-06 14:21:53.016] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:21:53.298] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:21:53.330] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:21:53.341] Started Main in 3.608 seconds (JVM running for 4.496)
-[2021-09-06 14:21:58.979] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:21:58.979] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:21:58.990] Completed initialization in 11 ms
-[2021-09-06 14:22:57.619] Starting Main on Zakhar with PID 13148 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:22:57.624] No active profile set, falling back to default profiles: default
-[2021-09-06 14:22:59.933] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:22:59.953] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:22:59.954] Starting service [Tomcat]
-[2021-09-06 14:22:59.954] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:23:00.115] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:23:00.115] Root WebApplicationContext: initialization completed in 2363 ms
-[2021-09-06 14:23:00.499] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:23:00.962] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:23:01.016] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:23:01.037] Started Main in 3.966 seconds (JVM running for 5.368)
-[2021-09-06 14:23:06.726] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:23:06.726] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:23:06.737] Completed initialization in 11 ms
-[2021-09-06 14:23:18.721] Starting Main on Zakhar with PID 3620 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:23:18.725] No active profile set, falling back to default profiles: default
-[2021-09-06 14:23:21.904] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:23:21.929] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:23:21.931] Starting service [Tomcat]
-[2021-09-06 14:23:21.931] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:23:22.124] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:23:22.124] Root WebApplicationContext: initialization completed in 3247 ms
-[2021-09-06 14:23:22.543] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:23:23.033] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:23:23.095] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:23:23.112] Started Main in 5.128 seconds (JVM running for 6.311)
-[2021-09-06 14:23:23.513] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:23:23.513] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:23:23.524] Completed initialization in 11 ms
-[2021-09-06 14:24:08.306] Starting Main on Zakhar with PID 5244 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:24:08.313] No active profile set, falling back to default profiles: default
-[2021-09-06 14:24:10.808] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:24:10.822] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:24:10.822] Starting service [Tomcat]
-[2021-09-06 14:24:10.822] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:24:10.938] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:24:10.938] Root WebApplicationContext: initialization completed in 2511 ms
-[2021-09-06 14:24:11.231] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:24:11.489] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:24:11.520] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:24:11.533] Started Main in 3.766 seconds (JVM running for 4.772)
-[2021-09-06 14:24:16.114] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:24:16.114] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:24:16.121] Completed initialization in 7 ms
-[2021-09-06 14:24:51.256] Starting Main on Zakhar with PID 7192 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
-[2021-09-06 14:24:51.266] No active profile set, falling back to default profiles: default
-[2021-09-06 14:24:53.866] Tomcat initialized with port(s): 8080 (http)
-[2021-09-06 14:24:53.887] Initializing ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:24:53.888] Starting service [Tomcat]
-[2021-09-06 14:24:53.888] Starting Servlet engine: [Apache Tomcat/9.0.37]
-[2021-09-06 14:24:54.018] Initializing Spring embedded WebApplicationContext
-[2021-09-06 14:24:54.018] Root WebApplicationContext: initialization completed in 2608 ms
-[2021-09-06 14:24:54.387] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-09-06 14:24:54.695] Starting ProtocolHandler ["http-nio-8080"]
-[2021-09-06 14:24:54.726] Tomcat started on port(s): 8080 (http) with context path ''
-[2021-09-06 14:24:54.738] Started Main in 4.038 seconds (JVM running for 4.927)
-[2021-09-06 14:24:55.155] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2021-09-06 14:24:55.155] Initializing Servlet 'dispatcherServlet'
-[2021-09-06 14:24:55.166] Completed initialization in 10 ms
+[2021-09-07 10:36:28.917] Starting Main on vinw0657 with PID 13496 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:36:28.920] No active profile set, falling back to default profiles: default
+[2021-09-07 10:36:30.250] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 10:36:30.260] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:36:30.260] Starting service [Tomcat]
+[2021-09-07 10:36:30.261] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 10:36:30.348] Initializing Spring embedded WebApplicationContext
+[2021-09-07 10:36:30.348] Root WebApplicationContext: initialization completed in 1312 ms
+[2021-09-07 10:36:30.527] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:36:30.726] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:36:30.747] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 10:36:30.758] Started Main in 2.354 seconds (JVM running for 3.158)
+[2021-09-07 10:36:33.144] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 10:36:33.145] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 10:36:33.151] Completed initialization in 6 ms
+[2021-09-07 10:37:16.024] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:39:05.846] Starting Main on vinw0657 with PID 13708 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:39:05.846] No active profile set, falling back to default profiles: default
+[2021-09-07 10:39:06.925] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 10:39:06.935] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:39:06.936] Starting service [Tomcat]
+[2021-09-07 10:39:06.936] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 10:39:07.058] Initializing Spring embedded WebApplicationContext
+[2021-09-07 10:39:07.058] Root WebApplicationContext: initialization completed in 1149 ms
+[2021-09-07 10:39:07.246] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:39:07.418] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:39:07.433] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 10:39:07.449] Started Main in 1.99 seconds (JVM running for 2.603)
+[2021-09-07 10:39:10.969] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 10:39:10.969] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 10:39:10.974] Completed initialization in 5 ms
+[2021-09-07 10:39:57.514] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:40:01.790] Starting Main on vinw0657 with PID 1228 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:40:01.797] No active profile set, falling back to default profiles: default
+[2021-09-07 10:40:02.960] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 10:40:02.972] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:40:02.973] Starting service [Tomcat]
+[2021-09-07 10:40:02.973] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 10:40:03.065] Initializing Spring embedded WebApplicationContext
+[2021-09-07 10:40:03.065] Root WebApplicationContext: initialization completed in 1177 ms
+[2021-09-07 10:40:03.260] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:40:03.442] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:40:03.462] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 10:40:03.472] Started Main in 2.067 seconds (JVM running for 2.645)
+[2021-09-07 10:40:03.629] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 10:40:03.629] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 10:40:03.636] Completed initialization in 7 ms
+[2021-09-07 10:42:02.531] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:42:06.683] Starting Main on vinw0657 with PID 11096 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:42:06.715] No active profile set, falling back to default profiles: default
+[2021-09-07 10:42:07.824] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 10:42:07.840] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:42:07.855] Starting service [Tomcat]
+[2021-09-07 10:42:07.855] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 10:42:07.933] Initializing Spring embedded WebApplicationContext
+[2021-09-07 10:42:07.933] Root WebApplicationContext: initialization completed in 1156 ms
+[2021-09-07 10:42:08.136] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:42:08.308] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:42:08.340] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 10:42:08.340] Started Main in 2.017 seconds (JVM running for 2.614)
+[2021-09-07 10:42:18.786] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 10:42:18.786] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 10:42:18.791] Completed initialization in 5 ms
+[2021-09-07 10:48:35.836] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:50:56.129] Starting Main on vinw0657 with PID 12704 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:50:56.133] No active profile set, falling back to default profiles: default
+[2021-09-07 10:50:57.450] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 10:50:57.462] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:50:57.462] Starting service [Tomcat]
+[2021-09-07 10:50:57.462] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 10:50:57.542] Initializing Spring embedded WebApplicationContext
+[2021-09-07 10:50:57.543] Root WebApplicationContext: initialization completed in 1345 ms
+[2021-09-07 10:50:57.743] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:50:57.932] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 10:50:57.952] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 10:50:57.960] Started Main in 2.253 seconds (JVM running for 2.923)
+[2021-09-07 10:55:47.212] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 10:59:59.247] Starting Main on vinw0657 with PID 12440 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 10:59:59.250] No active profile set, falling back to default profiles: default
+[2021-09-07 11:00:00.775] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:00:00.788] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:00:00.789] Starting service [Tomcat]
+[2021-09-07 11:00:00.789] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:00:00.925] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:00:00.925] Root WebApplicationContext: initialization completed in 1603 ms
+[2021-09-07 11:00:01.169] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:00:01.579] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:00:01.624] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:00:01.634] Started Main in 2.821 seconds (JVM running for 3.498)
+[2021-09-07 11:00:03.229] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:00:03.229] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:00:03.234] Completed initialization in 5 ms
+[2021-09-07 11:04:09.961] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:13:14.248] Starting Main on vinw0657 with PID 7780 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:13:14.264] No active profile set, falling back to default profiles: default
+[2021-09-07 11:13:15.424] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:13:15.424] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:13:15.439] Starting service [Tomcat]
+[2021-09-07 11:13:15.439] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:13:15.533] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:13:15.533] Root WebApplicationContext: initialization completed in 1207 ms
+[2021-09-07 11:13:15.768] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:13:15.939] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:13:15.973] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:13:15.982] Started Main in 2.109 seconds (JVM running for 2.794)
+[2021-09-07 11:14:30.751] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:14:30.751] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:14:30.755] Completed initialization in 4 ms
+[2021-09-07 11:17:16.942] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:17:47.919] Starting Main on vinw0657 with PID 13020 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:17:47.919] No active profile set, falling back to default profiles: default
+[2021-09-07 11:17:49.169] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:17:49.180] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:17:49.180] Starting service [Tomcat]
+[2021-09-07 11:17:49.181] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:17:49.289] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:17:49.289] Root WebApplicationContext: initialization completed in 1304 ms
+[2021-09-07 11:17:49.496] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:17:49.684] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:17:49.715] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:17:49.724] Started Main in 2.221 seconds (JVM running for 2.832)
+[2021-09-07 11:17:53.354] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:17:53.355] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:17:53.361] Completed initialization in 6 ms
+[2021-09-07 11:18:56.417] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:18:59.053] Starting Main on vinw0657 with PID 2344 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:18:59.060] No active profile set, falling back to default profiles: default
+[2021-09-07 11:19:00.297] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:19:00.307] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:19:00.308] Starting service [Tomcat]
+[2021-09-07 11:19:00.308] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:19:00.394] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:19:00.394] Root WebApplicationContext: initialization completed in 1267 ms
+[2021-09-07 11:19:00.583] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:19:00.755] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:19:00.786] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:19:00.786] Started Main in 2.124 seconds (JVM running for 2.689)
+[2021-09-07 11:19:03.380] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:19:03.380] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:19:03.386] Completed initialization in 5 ms
+[2021-09-07 11:20:10.500] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:20:13.289] Starting Main on vinw0657 with PID 4424 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:20:13.320] No active profile set, falling back to default profiles: default
+[2021-09-07 11:20:14.524] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:20:14.524] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:20:14.524] Starting service [Tomcat]
+[2021-09-07 11:20:14.524] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:20:14.634] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:20:14.634] Root WebApplicationContext: initialization completed in 1236 ms
+[2021-09-07 11:20:14.821] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:20:15.009] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:20:15.027] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:20:15.035] Started Main in 2.136 seconds (JVM running for 2.705)
+[2021-09-07 11:20:20.338] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:20:20.338] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:20:20.343] Completed initialization in 5 ms
+[2021-09-07 11:21:35.413] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:21:39.572] Starting Main on vinw0657 with PID 1824 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:21:39.577] No active profile set, falling back to default profiles: default
+[2021-09-07 11:21:40.815] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:21:40.827] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:21:40.829] Starting service [Tomcat]
+[2021-09-07 11:21:40.829] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:21:40.949] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:21:40.949] Root WebApplicationContext: initialization completed in 1310 ms
+[2021-09-07 11:21:41.155] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:21:41.342] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:21:41.363] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:21:41.371] Started Main in 2.203 seconds (JVM running for 2.711)
+[2021-09-07 11:21:45.514] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:21:45.514] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:21:45.520] Completed initialization in 6 ms
+[2021-09-07 11:22:18.126] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:23:29.695] Starting Main on vinw0657 with PID 5740 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:23:29.695] No active profile set, falling back to default profiles: default
+[2021-09-07 11:23:30.910] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:23:30.923] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:23:30.924] Starting service [Tomcat]
+[2021-09-07 11:23:30.924] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:23:31.022] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:23:31.022] Root WebApplicationContext: initialization completed in 1249 ms
+[2021-09-07 11:23:31.232] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:23:31.426] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:23:31.445] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:23:31.445] Started Main in 2.113 seconds (JVM running for 2.656)
+[2021-09-07 11:23:35.784] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:23:35.784] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:23:35.789] Completed initialization in 5 ms
+[2021-09-07 11:23:48.334] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:24:41.356] Starting Main on vinw0657 with PID 8828 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:24:41.356] No active profile set, falling back to default profiles: default
+[2021-09-07 11:24:42.434] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:24:42.450] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:24:42.450] Starting service [Tomcat]
+[2021-09-07 11:24:42.450] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:24:42.559] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:24:42.559] Root WebApplicationContext: initialization completed in 1125 ms
+[2021-09-07 11:24:42.762] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:24:42.950] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:24:42.981] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:24:42.981] Started Main in 2.05 seconds (JVM running for 2.599)
+[2021-09-07 11:25:05.872] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:25:05.872] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:25:05.879] Completed initialization in 7 ms
+[2021-09-07 11:26:10.342] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:28:42.347] Starting Main on vinw0657 with PID 11204 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-07 11:28:42.347] No active profile set, falling back to default profiles: default
+[2021-09-07 11:28:43.386] Tomcat initialized with port(s): 8080 (http)
+[2021-09-07 11:28:43.402] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:28:43.402] Starting service [Tomcat]
+[2021-09-07 11:28:43.402] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-07 11:28:43.480] Initializing Spring embedded WebApplicationContext
+[2021-09-07 11:28:43.480] Root WebApplicationContext: initialization completed in 1070 ms
+[2021-09-07 11:28:43.667] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-07 11:28:43.839] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-07 11:28:43.870] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-07 11:28:43.870] Started Main in 2.018 seconds (JVM running for 2.577)
+[2021-09-07 11:28:46.287] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-07 11:28:46.287] Initializing Servlet 'dispatcherServlet'
+[2021-09-07 11:28:46.291] Completed initialization in 4 ms
+[2021-09-07 11:29:36.002] Shutting down ExecutorService 'applicationTaskExecutor'

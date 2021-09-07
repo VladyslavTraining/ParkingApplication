@@ -1,25 +1,5 @@
 [
   {
-    "entranceTime": "2021-08-30T11:25:01.115",
-    "parkingSlot": 1,
-    "uuid": 449218
-  },
-  {
-    "entranceTime": "2021-08-30T12:15:32.603",
-    "parkingSlot": 6,
-    "uuid": 2355468
-  },
-  {
-    "entranceTime": "2021-08-30T12:15:46.415",
-    "parkingSlot": 7,
-    "uuid": 1621093
-  },
-  {
-    "entranceTime": "2021-08-30T12:20:53.808",
-    "parkingSlot": 3,
-    "uuid": 3156250
-  },
-  {
     "entranceTime": "2021-08-30T12:22:51.496",
     "parkingSlot": 8,
     "uuid": 1937500
@@ -38,16 +18,6 @@
     "entranceTime": "2021-09-02T13:09:04.257",
     "parkingSlot": 4,
     "uuid": 1003906
-  },
-  {
-    "entranceTime": "2021-09-02T13:09:54.262",
-    "parkingSlot": 11,
-    "uuid": 1023437
-  },
-  {
-    "entranceTime": "2021-09-02T13:10:33.690",
-    "parkingSlot": 12,
-    "uuid": 2695312
   },
   {
     "entranceTime": "2021-09-02T13:13:45.755",
@@ -108,5 +78,35 @@
     "entranceTime": "2021-09-03T11:38:00.085",
     "parkingSlot": 5,
     "uuid": 332031
+  },
+  {
+    "entranceTime": "2021-09-07T11:00:26.134",
+    "parkingSlot": 24,
+    "uuid": 523437
+  },
+  {
+    "entranceTime": "2021-09-07T11:01:04.285",
+    "parkingSlot": 25,
+    "uuid": 1113281
+  },
+  {
+    "entranceTime": "2021-09-07T11:01:34.138",
+    "parkingSlot": 26,
+    "uuid": 539062
+  },
+  {
+    "entranceTime": "2021-09-07T11:03:22.569",
+    "parkingSlot": 27,
+    "uuid": 2222656
+  },
+  {
+    "entranceTime": "2021-09-07T11:25:40.199",
+    "parkingSlot": 1,
+    "uuid": 777343
+  },
+  {
+    "entranceTime": "2021-09-07T11:28:52.737",
+    "parkingSlot": 3,
+    "uuid": 2878906
   }
 ]
