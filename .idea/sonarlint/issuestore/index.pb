@@ -13,5 +13,25 @@ D
 parking-core/pom.xml,2\2\226652dc6efab4d721fd650c2dfae97785199b97
 |
 Lparking-core/src/main/java/com/delphi/nice/training/validator/Validator.java,1\7\177fae84912b83d7b377e23db4dfe89d84334685
+]
+-parking-ms/src/test/java/ExitServiceTest.java,b\3\b35567ede2af1a6cbdf2cbc2ba1b5dd6ecd3d2e9
+b
+2parking-ms/src/test/java/IntroduceServiceTest.java,f\3\f3243210be4f3f7e74215f6b6e2e881e9a3b3a43
+`
+0parking-ms/src/test/java/ParkingServiceTest.java,b\f\bff3f8da07f686d1691fa643694ddacd018e0965
+_
+/parking-ms/src/test/java/TicketServiceTest.java,1\b\1bcd71aa7022bdb3410c0316bd0b535c584f96b4
+‰
+Yparking-core/src/main/java/com/delphi/nice/training/validator/TicketServiceValidator.java,9\5\954f71e6a5cac15069b4a39abba3b168cd071591
+9
+	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
 z
-Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
+Jparking-core/src/main/java/com/delphi/nice/training/writer/JSONWriter.java,2\d\2d366e32bdce355649b1040a40182874826b2aa1
+„
+Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
+B
+parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+v
+Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4
