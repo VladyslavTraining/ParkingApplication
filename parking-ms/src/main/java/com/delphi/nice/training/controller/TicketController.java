@@ -6,14 +6,14 @@ import com.delphi.nice.training.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
 @ComponentScan("com/delphi/nice/training/service")
-//@PropertySource("classpath:/application.properties")
 @ConfigurationProperties()
 @RequestMapping(path = "/api/v1/ticket")
 public class TicketController {
@@ -35,9 +35,9 @@ public class TicketController {
     public List<TicketDto> getTickets() {
         return ticketService.getAllTickets();
     }
-
     @DeleteMapping(path = "{uuid}")
-    public void deleteTicket(@PathVariable("uuid") Long id) {
+    public List<String> deleteTicket(@PathVariable("uuid") Long id) {
         exitService.exit(id);
+        return Collections.singletonList(exitService.getPayMessage());
     }
 }

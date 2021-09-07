@@ -16,7 +16,7 @@ public class ExitServiceImpl implements ExitService {
     private JSONArray ticketArray;
     private JSONArray parkingArray;
     private JSONObject exitVehicle;
-
+    private String payMessage;
     private final String ticketDataPath;
     private final String parkingAreaPath;
 
@@ -50,8 +50,8 @@ public class ExitServiceImpl implements ExitService {
 
     @Override
     public boolean exit(long id) {
-        String payMessage = amountForPay(id);
-        if (payMessage == null)
+        this.payMessage = amountForPay(id);
+        if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
         exitVehicle = (JSONObject) parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
@@ -60,6 +60,11 @@ public class ExitServiceImpl implements ExitService {
         new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
         System.out.println(payMessage);
         return true;
+    }
+
+    @Override
+    public String getPayMessage() {
+        return this.payMessage;
     }
 
 }
