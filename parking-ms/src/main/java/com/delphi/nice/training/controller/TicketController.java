@@ -3,6 +3,8 @@ package com.delphi.nice.training.controller;
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-//@RequestMapping(path = "/api/v1/ticket")
+@RequestMapping(path = "/api/v1/ticket")
+@ComponentScan("com/delphi/nice/training/service")
+@PropertySource("classpath:application.properties")
 public class TicketController {
     private final TicketService ticketService;
 
@@ -27,7 +31,7 @@ public class TicketController {
         ticketService.generateTicket();
     }
 
-    @GetMapping("/hello")
+    @GetMapping
     public String getTickets() {
         return "ticketService.getAllTickets()";
     }
