@@ -21,7 +21,6 @@ import java.util.List;
 public class TicketServiceImpl implements TicketService {
 
     private final ParkingService parkingService;
-
     private final String ticketDataFileName;
     private final List<JSONObject> ticketArray;
     private TicketDto ticketDto;
