@@ -21,7 +21,9 @@ public class JSONWriter implements Writer {
             fw.write('[');
             for (JSONObject object: jsonArray) {
                 object.writeJSONString(fw);
-                fw.write(',');
+                if(jsonArray.size()>1) {
+                    fw.write(',');
+                }
             }
             fw.write(']');
         } catch (IOException e) {
