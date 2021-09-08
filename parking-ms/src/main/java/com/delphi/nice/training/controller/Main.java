@@ -1,18 +1,18 @@
 package com.delphi.nice.training.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
 
+@Slf4j
 @SpringBootApplication
 public class Main {
-//    static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-//        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-//        IntroduceServiceImpl intro = context.getBean("introduceServiceImpl", IntroduceServiceImpl.class);
-//        intro.welcomeMessage();
-            SpringApplication.run(Main.class, args);
+        SpringApplication.run(Main.class, args);
     }
+
 }
 
