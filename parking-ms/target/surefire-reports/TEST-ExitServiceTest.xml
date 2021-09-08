@@ -66,6 +66,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ExitServiceTest" name="shouldReturnFalseIfIdNotExistInFile" time="0"/>
-  <testcase classname="ExitServiceTest" name="shouldReturnTrueIfIdPresentInFile" time="0.078"/>
+  <testcase classname="ExitServiceTest" name="shouldReturnFalseIfIdNotExistInFile" time="0.016"/>
+  <testcase classname="ExitServiceTest" name="shouldReturnTrueIfIdPresentInFile" time="0.062"/>
 </testsuite>

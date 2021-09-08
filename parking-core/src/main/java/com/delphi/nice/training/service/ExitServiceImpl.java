@@ -55,7 +55,7 @@ public class ExitServiceImpl implements ExitService {
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
-        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage+"\n--------------------------------");
+        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage+"--------------------------------");
         exitVehicle = parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();

@@ -1,4 +1,5 @@
-IntroduceServiceTest.class
 TicketServiceTest.class
 ExitServiceTest.class
 ParkingServiceTest.class
+IntroduceServiceTest.class
+mockito\ParkingServiceTest.class

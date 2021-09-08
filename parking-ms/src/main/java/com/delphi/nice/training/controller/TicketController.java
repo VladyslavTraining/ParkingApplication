@@ -1,6 +1,5 @@
 package com.delphi.nice.training.controller;
 
-import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.service.ExitService;
 import com.delphi.nice.training.service.TicketService;
 import org.json.simple.JSONObject;

@@ -69,7 +69,7 @@
   <testcase classname="ParkingServiceTest" name="aShouldParkOnFirstSpot" time="0.062"/>
   <testcase classname="ParkingServiceTest" name="bChangeIsParkedOnTrue" time="0"/>
   <testcase classname="ParkingServiceTest" name="ifFreeSlotNotPresentShouldBeFalseTest" time="0"/>
-  <testcase classname="ParkingServiceTest" name="ifFreeSlotPresentShouldBeTrueTest" time="0.016"/>
-  <testcase classname="ParkingServiceTest" name="ifSlotTakenShouldBeReturnNumberSlot" time="0"/>
+  <testcase classname="ParkingServiceTest" name="ifFreeSlotPresentShouldBeTrueTest" time="0"/>
+  <testcase classname="ParkingServiceTest" name="ifSlotTakenShouldBeReturnNumberSlot" time="0.016"/>
   <testcase classname="ParkingServiceTest" name="noFileParkTest" time="0"/>
 </testsuite>

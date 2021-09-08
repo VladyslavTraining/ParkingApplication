@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+
 @Slf4j
 @Getter
 @Service
@@ -37,21 +38,23 @@ public class TicketServiceImpl implements TicketService {
         jsonWriter = new JSONWriter(ticketArray, ticketDataFileName);
     }
 
+    @Override
     public boolean generateTicket() {
 
-        if (parkingService.isFreeSlotPresent()) {
-            ticketDto = new TicketDto();
+        try {
             parkingSlot = parkingService.park();
+            ticketDto = new TicketDto();
             HashMap<String, Object> ticketFields = new HashMap<>();
             ticketFields.put("uuid", ticketDto.getUuid());
             ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
             ticketFields.put("parkingSlot", parkingSlot);
             ticketArray.add(new JSONObject(ticketFields));
             jsonWriter.writeToFile();
-            log.info("New car entered \n"+ticketFields+"\n--------------------------------");
+            log.info("New car entered \n" + ticketFields + "\n--------------------------------");
             return true;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
         }
-        return false;
     }
 
     @Override
