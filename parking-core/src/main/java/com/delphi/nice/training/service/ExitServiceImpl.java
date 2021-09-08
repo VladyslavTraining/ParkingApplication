@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ExitServiceImpl implements ExitService {
 
-    private JSONArray ticketArray;
-    private JSONArray parkingArray;
+    private List<JSONObject> ticketArray;
+    private List<JSONObject> parkingArray;
     private JSONObject exitVehicle;
     private String payMessage;
     private final String ticketDataPath;
@@ -28,15 +29,15 @@ public class ExitServiceImpl implements ExitService {
     private String amountForPay(long id) {
         ticketArray = new JSONReader().getJsonArr(ticketDataPath);
         parkingArray = new JSONReader().getJsonArr(parkingAreaPath);
-        for (Object o : ticketArray) {
-            long uuid = (long) ((JSONObject) o).get("uuid");
+        for (JSONObject o : ticketArray) {
+            long uuid = (long) o.get("uuid");
             if (id == uuid) {
-                String time = (String) ((JSONObject) o).get("entranceTime");
+                String time = (String) o.get("entranceTime");
                 LocalDateTime enter = LocalDateTime.parse(time);
                 LocalDateTime exit = LocalDateTime.now();
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
-                exitVehicle = (JSONObject) o;
+                exitVehicle = o;
                 return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
             }
         }
@@ -54,7 +55,7 @@ public class ExitServiceImpl implements ExitService {
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
-        exitVehicle = (JSONObject) parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
+        exitVehicle = parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();
         new JSONWriter(parkingArray, parkingAreaPath).writeToFile();

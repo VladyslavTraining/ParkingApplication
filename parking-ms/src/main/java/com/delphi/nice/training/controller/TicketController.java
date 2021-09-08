@@ -3,6 +3,7 @@ package com.delphi.nice.training.controller;
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.service.ExitService;
 import com.delphi.nice.training.service.TicketService;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,7 +33,7 @@ public class TicketController {
     }
 
     @GetMapping
-    public List<TicketDto> getTickets() {
+    public List<JSONObject> getTickets() {
         return this.ticketService.getAllTickets();
     }
 

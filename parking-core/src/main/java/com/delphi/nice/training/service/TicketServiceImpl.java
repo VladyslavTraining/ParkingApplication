@@ -9,7 +9,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class TicketServiceImpl implements TicketService {
 
     private final ParkingService parkingService;
     private final String ticketDataFileName;
-    private final JSONArray ticketArray;
+    private final List<JSONObject> ticketArray;
     private TicketDto ticketDto;
     private final JSONWriter jsonWriter;
     private long parkingSlot;
@@ -39,7 +38,6 @@ public class TicketServiceImpl implements TicketService {
     public boolean generateTicket() {
 
         if (parkingService.isFreeSlotPresent()) {
-
             ticketDto = new TicketDto();
             parkingSlot = parkingService.park();
             HashMap<String, Object> ticketFields = new HashMap<>();
@@ -50,7 +48,6 @@ public class TicketServiceImpl implements TicketService {
             jsonWriter.writeToFile();
             return true;
         }
-        System.out.println("All parking spot is busy");
         return false;
     }
 
@@ -60,7 +57,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketDto> getAllTickets() {
+    public List<JSONObject> getAllTickets() {
         return new JSONReader().getJsonArr(ticketDataFileName);
     }
 
