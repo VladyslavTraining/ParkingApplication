@@ -4,5 +4,11 @@
 [2021-09-08 12:21:36.677] Car leave the parking 
 {"entranceTime":"2021-09-02T13:16:03.617","parkingSlot":16,"uuid":2410156}
 Need to pay ---> 515,13$
-
+--------------------------------
+[2021-09-08 12:26:55.476] New car entered 
+{entranceTime=2021-09-08T12:26:55.472, parkingSlot=15, uuid=1843750}
+--------------------------------
+[2021-09-08 12:27:18.296] Car leave the parking 
+{"entranceTime":"2021-09-08T12:21:17.943","parkingSlot":14,"uuid":3683593}
+Need to pay ---> 0,36$
 --------------------------------
