@@ -3,7 +3,6 @@ import com.delphi.nice.training.reader.Reader;
 import com.delphi.nice.training.service.ParkingService;
 import com.delphi.nice.training.service.ParkingServiceImpl;
 import com.delphi.nice.training.writer.JSONWriter;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
@@ -61,7 +60,7 @@ public class ParkingServiceTest {
                 jsonObject.put("isParked", arg);
                 array.add(jsonObject);
             }
-            new JSONWriter(array, file.getPath());
+            new JSONWriter(array, file.getPath()).writeToFile();
     }
 
     @Before
