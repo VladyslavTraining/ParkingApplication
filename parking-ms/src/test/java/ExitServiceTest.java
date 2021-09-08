@@ -1,4 +1,5 @@
 import com.delphi.nice.training.service.*;
+import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.After;
@@ -6,10 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ExitServiceTest {
 
@@ -20,18 +22,14 @@ public class ExitServiceTest {
             new ExitServiceImpl("src/test/resources/testTicket.json", "src/test/resources/testParkArea.json");
 
     public void fillTheTempFileForTests(boolean arg, String file) {
-        try (FileWriter fw = new FileWriter(file)) {
-            JSONArray array = new JSONArray();
-            for (int i = 1; i <= 5; i++) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("parkingSlot", i);
-                jsonObject.put("isParked", arg);
-                array.add(jsonObject);
-            }
-            array.writeJSONString(fw);
-        } catch (IOException e) {
-            e.printStackTrace();
+        List<JSONObject> array = new ArrayList<>();
+        for (int i = 1; i <= 5; i++) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("parkingSlot", i);
+            jsonObject.put("isParked", arg);
+            array.add(jsonObject);
         }
+        new JSONWriter(array, file).writeToFile();
     }
 
     @Before

@@ -8,13 +8,14 @@ import org.json.simple.JSONObject;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParkingServiceTest {
@@ -37,8 +38,8 @@ public class ParkingServiceTest {
     @Test
     public void bChangeIsParkedOnTrue() {
         Reader reader = new JSONReader();
-        JSONArray array = reader.getJsonArr("src/test/resources/testParkArea.json");
-        JSONObject jsonObject = (JSONObject) array.get(0);
+        List<JSONObject> array = reader.getJsonArr("src/test/resources/testParkArea.json");
+        JSONObject jsonObject = array.get(0);
         Assert.assertTrue((boolean) jsonObject.get("isParked"));
     }
     @AfterClass
@@ -46,25 +47,21 @@ public class ParkingServiceTest {
         HashMap<String, Object> parkSpot = new HashMap<>();
         parkSpot.put("parkingSlot", 1);
         parkSpot.put("isParked", false);
-        JSONArray jsonArray = new JSONArray();
+        List<JSONObject> jsonArray = new ArrayList<>();
         jsonArray.add(new JSONObject(parkSpot));
         new JSONWriter(jsonArray, "src/test/resources/testParkArea.json").writeToFile();
         new File("src/test/resources/emptyParkArea.json").delete();
     }
 
     public void fillTheTempFileForTests(boolean arg, File file) {
-        try (FileWriter fw = new FileWriter(file)) {
-            JSONArray array = new JSONArray();
+            List<JSONObject> array = new ArrayList<>();
             for (int i = 1; i <= 3; i++) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("parkingSlot", i);
                 jsonObject.put("isParked", arg);
                 array.add(jsonObject);
             }
-            array.writeJSONString(fw);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            new JSONWriter(array, file.getPath());
     }
 
     @Before
