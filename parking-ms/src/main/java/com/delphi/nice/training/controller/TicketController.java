@@ -8,8 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -27,17 +25,20 @@ public class TicketController {
     }
 
     @PostMapping
-    public void registerNewTicket() {
-        ticketService.generateTicket();
+    public String registerNewTicket() {
+        return this.ticketService.generateTicket() ?
+                "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
+                "Something goes wrong!";
     }
 
     @GetMapping
     public List<TicketDto> getTickets() {
-        return ticketService.getAllTickets();
+        return this.ticketService.getAllTickets();
     }
-    @DeleteMapping(path = "{uuid}")
-    public List<String> deleteTicket(@PathVariable("uuid") Long id) {
-        exitService.exit(id);
-        return Collections.singletonList(exitService.getPayMessage());
+
+    @DeleteMapping(
+            path = {"{uuid}"})
+    public String deleteTicket(@PathVariable("uuid") Long id) {
+        return this.exitService.exit(id) ? this.exitService.getPayMessage() : "Something goes wrong";
     }
 }

@@ -786,6 +786,22 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 [2021-09-07 13:48:28.879] Initializing Spring DispatcherServlet 'dispatcherServlet'
 [2021-09-07 13:48:28.879] Initializing Servlet 'dispatcherServlet'
 [2021-09-07 13:48:28.890] Completed initialization in 11 ms
+[2021-09-08 10:23:19.354] Starting Main on vinw0657 with PID 9852 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-08 10:23:19.357] No active profile set, falling back to default profiles: default
+[2021-09-08 10:23:20.558] Tomcat initialized with port(s): 8080 (http)
+[2021-09-08 10:23:20.570] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:23:20.570] Starting service [Tomcat]
+[2021-09-08 10:23:20.570] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-08 10:23:20.676] Initializing Spring embedded WebApplicationContext
+[2021-09-08 10:23:20.677] Root WebApplicationContext: initialization completed in 1245 ms
+[2021-09-08 10:23:20.898] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:23:21.074] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:23:21.093] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-08 10:23:21.102] Started Main in 2.284 seconds (JVM running for 2.942)
+[2021-09-08 10:23:46.180] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-08 10:23:46.181] Initializing Servlet 'dispatcherServlet'
+[2021-09-08 10:23:46.187] Completed initialization in 5 ms
+[2021-09-08 10:23:57.802] Shutting down ExecutorService 'applicationTaskExecutor'
 [2021-09-07 16:37:21.077] Starting Main on Zakhar with PID 3968 (F:\DELPHI_PROJECTS\ParkingApplication\parking-ms\target\classes started by Admin in F:\DELPHI_PROJECTS\ParkingApplication)
 [2021-09-07 16:37:21.082] No active profile set, falling back to default profiles: default
 [2021-09-07 16:37:26.623] Tomcat initialized with port(s): 8080 (http)
@@ -831,3 +847,64 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 [2021-09-07 16:46:58.040] Initializing Spring DispatcherServlet 'dispatcherServlet'
 [2021-09-07 16:46:58.040] Initializing Servlet 'dispatcherServlet'
 [2021-09-07 16:46:58.047] Completed initialization in 7 ms
+[2021-09-08 10:31:20.737] Starting Main on vinw0657 with PID 1816 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-08 10:31:20.740] No active profile set, falling back to default profiles: default
+[2021-09-08 10:31:21.796] Tomcat initialized with port(s): 8080 (http)
+[2021-09-08 10:31:21.818] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:31:21.819] Starting service [Tomcat]
+[2021-09-08 10:31:21.819] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-08 10:31:21.988] Initializing Spring embedded WebApplicationContext
+[2021-09-08 10:31:21.988] Root WebApplicationContext: initialization completed in 1156 ms
+[2021-09-08 10:31:22.180] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:31:22.431] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:31:22.454] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-08 10:31:22.465] Started Main in 2.356 seconds (JVM running for 3.129)
+[2021-09-08 10:31:42.390] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-08 10:31:42.390] Initializing Servlet 'dispatcherServlet'
+[2021-09-08 10:31:42.394] Completed initialization in 4 ms
+[2021-09-08 10:34:14.527] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:34:19.007] Starting Main on vinw0657 with PID 11544 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-08 10:34:19.010] No active profile set, falling back to default profiles: default
+[2021-09-08 10:34:20.091] Tomcat initialized with port(s): 8080 (http)
+[2021-09-08 10:34:20.102] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:34:20.103] Starting service [Tomcat]
+[2021-09-08 10:34:20.103] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-08 10:34:20.186] Initializing Spring embedded WebApplicationContext
+[2021-09-08 10:34:20.186] Root WebApplicationContext: initialization completed in 1079 ms
+[2021-09-08 10:34:20.368] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:34:20.538] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:34:20.556] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-08 10:34:20.564] Started Main in 2.036 seconds (JVM running for 2.592)
+[2021-09-08 10:34:30.198] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-08 10:34:30.198] Initializing Servlet 'dispatcherServlet'
+[2021-09-08 10:34:30.203] Completed initialization in 5 ms
+[2021-09-08 10:36:32.596] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:36:37.026] Starting Main on vinw0657 with PID 10764 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-08 10:36:37.030] No active profile set, falling back to default profiles: default
+[2021-09-08 10:36:38.088] Tomcat initialized with port(s): 8080 (http)
+[2021-09-08 10:36:38.097] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:36:38.098] Starting service [Tomcat]
+[2021-09-08 10:36:38.098] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-08 10:36:38.172] Initializing Spring embedded WebApplicationContext
+[2021-09-08 10:36:38.172] Root WebApplicationContext: initialization completed in 1076 ms
+[2021-09-08 10:36:38.360] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:36:38.536] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:36:38.568] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-08 10:36:38.587] Started Main in 2.111 seconds (JVM running for 2.667)
+[2021-09-08 10:36:41.445] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:36:45.675] Starting Main on vinw0657 with PID 2044 (D:\javaProjects\ParkingApplication\parking-ms\target\classes started by ZOkrutnyi in D:\javaProjects\ParkingApplication)
+[2021-09-08 10:36:45.678] No active profile set, falling back to default profiles: default
+[2021-09-08 10:36:46.734] Tomcat initialized with port(s): 8080 (http)
+[2021-09-08 10:36:46.743] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:36:46.744] Starting service [Tomcat]
+[2021-09-08 10:36:46.744] Starting Servlet engine: [Apache Tomcat/9.0.37]
+[2021-09-08 10:36:46.824] Initializing Spring embedded WebApplicationContext
+[2021-09-08 10:36:46.824] Root WebApplicationContext: initialization completed in 1100 ms
+[2021-09-08 10:36:46.998] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-09-08 10:36:47.174] Starting ProtocolHandler ["http-nio-8080"]
+[2021-09-08 10:36:47.194] Tomcat started on port(s): 8080 (http) with context path ''
+[2021-09-08 10:36:47.202] Started Main in 1.969 seconds (JVM running for 2.52)
+[2021-09-08 10:36:52.521] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-09-08 10:36:52.521] Initializing Servlet 'dispatcherServlet'
+[2021-09-08 10:36:52.527] Completed initialization in 6 ms
+[2021-09-08 10:39:19.956] Shutting down ExecutorService 'applicationTaskExecutor'
