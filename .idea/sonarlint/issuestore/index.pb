@@ -33,3 +33,13 @@ B
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4
+]
+-.idea/httpRequests/2021-09-07T013727.401.html,d\9\d91817dc5288b8548f628b96697a161d23bb605a
+]
+-.idea/httpRequests/2021-09-07T014652.200.json,8\5\851d8c1ff33cfec7e075f894aa15a66be95d768b
+]
+-.idea/httpRequests/2021-09-07T014840.200.json,a\e\ae94042efb176067cb97befee980886f4ca6d017
+V
+&.idea/httpRequests/http-client.cookies,3\7\37b0fae35443637ed0e21b8ad0ca1bf3c2c2e7e1
+Y
+).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
