@@ -3,13 +3,10 @@ package com.delphi.nice.training.service;
 import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.ParkAreaValidator;
 import com.delphi.nice.training.writer.JSONWriter;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 
 @Service

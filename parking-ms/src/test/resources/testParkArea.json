@@ -10,13 +10,5 @@
   {
     "parkingSlot": 3,
     "isParked": false
-  },
-  {
-    "parkingSlot": 4,
-    "isParked": false
-  },
-  {
-    "parkingSlot": 5,
-    "isParked": false
   }
 ]
