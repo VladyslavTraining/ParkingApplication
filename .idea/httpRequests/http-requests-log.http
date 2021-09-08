@@ -1,0 +1,54 @@
+POST http://localhost:8080/api/v1/ticket
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/1882812
+
+<> 2021-09-07T014840.200.json
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/1937500
+
+<> 2021-09-07T014652.200.json
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/3144531
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/3144531
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/3144531
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/3144531
+
+###
+
+GET https://localhost:8080/api/v1/ticket
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/332031
+
+###
+
+DELETE http://localhost:8080/api/v1/ticket/523437
+
+###
+
+DELETE http://localhost/api/v1/ticket/523437
+
+<> 2021-09-07T013727.401.html
+
+###
+
+GET https://localhost:8080/api/v1/ticket
+
+###
+

@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @ComponentScan("com/delphi/nice/training/service")
-//@PropertySource("classpath:/application.properties")
 @ConfigurationProperties()
 @RequestMapping(path = "/api/v1/ticket")
 public class TicketController {
@@ -26,17 +25,20 @@ public class TicketController {
     }
 
     @PostMapping
-    public void registerNewTicket() {
-        ticketService.generateTicket();
+    public String registerNewTicket() {
+        return this.ticketService.generateTicket() ?
+                "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
+                "Something goes wrong!";
     }
 
     @GetMapping
     public List<TicketDto> getTickets() {
-        return ticketService.getAllTickets();
+        return this.ticketService.getAllTickets();
     }
 
-    @DeleteMapping(path = "{uuid}")
-    public void deleteTicket(@PathVariable("uuid") Long id) {
-        exitService.exit(id);
+    @DeleteMapping(
+            path = {"{uuid}"})
+    public String deleteTicket(@PathVariable("uuid") Long id) {
+        return this.exitService.exit(id) ? this.exitService.getPayMessage() : "Something goes wrong";
     }
 }
