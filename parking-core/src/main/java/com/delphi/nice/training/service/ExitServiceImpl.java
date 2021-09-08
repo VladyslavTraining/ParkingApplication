@@ -2,7 +2,6 @@ package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.writer.JSONWriter;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -59,7 +58,7 @@ public class ExitServiceImpl implements ExitService {
         exitVehicle.replace("isParked", false);
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();
         new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
-        System.out.println(payMessage);
+//        System.out.println(payMessage);
         return true;
     }
 
