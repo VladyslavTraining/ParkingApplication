@@ -21,8 +21,6 @@ Yparking-core/src/main/java/com/delphi/nice/training/validator/TicketServiceVali
 Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
 B
 parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4
 ]

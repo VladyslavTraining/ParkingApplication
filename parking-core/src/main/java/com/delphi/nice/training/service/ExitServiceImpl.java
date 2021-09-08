@@ -2,6 +2,7 @@ package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.writer.JSONWriter;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Slf4j
 @Service
 public class ExitServiceImpl implements ExitService {
 
@@ -54,11 +55,11 @@ public class ExitServiceImpl implements ExitService {
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
+        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage+"\n--------------------------------");
         exitVehicle = parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();
         new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
-//        System.out.println(payMessage);
         return true;
     }
 
