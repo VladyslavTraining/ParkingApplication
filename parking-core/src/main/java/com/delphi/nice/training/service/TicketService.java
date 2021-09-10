@@ -7,8 +7,9 @@ import org.json.simple.JSONObject;
 import java.util.List;
 
 public interface TicketService {
-    boolean generateTicket();
-    long getTicketID();
-    long getParkingSlot();
+    //    boolean generateTicket();
+    TicketDto createTicket();
+    TicketDto getTicket(long id);
+    //    long getParkingSlot();
     List<JSONObject> getAllTickets();
 }

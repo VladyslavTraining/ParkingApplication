@@ -1,6 +1,5 @@
 package com.delphi.nice.training.controller;
 
-import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.service.ExitService;
 import com.delphi.nice.training.service.TicketService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +16,7 @@ public class TicketController {
     private final ExitService exitService;
 
     @PostMapping
+    @ResponseBody
     public String registerNewTicket() {
         return this.ticketService.generateTicket() ?
                 "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
@@ -27,6 +27,8 @@ public class TicketController {
     public List<JSONObject> getTickets() {
         return this.ticketService.getAllTickets();
     }
+
+    //    getTicket();
 
     @DeleteMapping(
             path = {"{uuid}"})
