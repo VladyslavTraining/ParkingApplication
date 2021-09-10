@@ -20,11 +20,11 @@ public class ParkingServiceImpl implements ParkingService {
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
         parkingAreaFilePath = filepath;
         new ParkAreaValidator().validate(filepath);
+        jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
     @Override
     public long park() {
-        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         if (takeFreeParkSpot()) {
             updateParking();
             return (long) jsonObject.get(PARKING_SLOT_FIELD);
@@ -32,9 +32,7 @@ public class ParkingServiceImpl implements ParkingService {
         throw new IndexOutOfBoundsException();
     }
 
-    @Override
     public boolean isFreeSlotPresent() {
-        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
         for (JSONObject o : jsonArray) {
             jsonObject = o;
             if (!(boolean) jsonObject.get(IS_PARKED_FIELD))
@@ -43,6 +41,7 @@ public class ParkingServiceImpl implements ParkingService {
         return false;
     }
 
+    @SuppressWarnings("unchecked")
     private boolean takeFreeParkSpot() {
         for (JSONObject o : jsonArray) {
             jsonObject = o;
@@ -56,6 +55,7 @@ public class ParkingServiceImpl implements ParkingService {
 
     private void updateParking() {
         new JSONWriter(jsonArray, parkingAreaFilePath).writeToFile();
+        this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
 }

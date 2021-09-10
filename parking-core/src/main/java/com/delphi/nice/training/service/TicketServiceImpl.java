@@ -6,6 +6,7 @@ import com.delphi.nice.training.validator.TicketServiceValidator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +28,6 @@ public class TicketServiceImpl implements TicketService {
     private long parkingSlot;
 
 
-    @Autowired
     public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
         new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
@@ -36,11 +36,11 @@ public class TicketServiceImpl implements TicketService {
         jsonWriter = new JSONWriter(ticketArray, ticketDataFileName);
     }
 
+    @Override
     public boolean generateTicket() {
-
-        if (parkingService.isFreeSlotPresent()) {
-            ticketDto = new TicketDto();
+        try {
             parkingSlot = parkingService.park();
+            ticketDto = new TicketDto();
             HashMap<String, Object> ticketFields = new HashMap<>();
             ticketFields.put("uuid", ticketDto.getUuid());
             ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
@@ -49,8 +49,9 @@ public class TicketServiceImpl implements TicketService {
             jsonWriter.writeToFile();
             log.info("New car entered \n" + ticketFields + "\n--------------------------------");
             return true;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
         }
-        return false;
     }
 
     @Override

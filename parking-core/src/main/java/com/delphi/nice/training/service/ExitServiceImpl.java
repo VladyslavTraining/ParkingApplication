@@ -50,6 +50,7 @@ public class ExitServiceImpl implements ExitService {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean exit(long id) {
         this.payMessage = amountForPay(id);
         if (this.payMessage == null)
