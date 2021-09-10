@@ -1,6 +1,5 @@
 import com.delphi.nice.training.service.*;
 import com.delphi.nice.training.writer.JSONWriter;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.After;
 import org.junit.Before;

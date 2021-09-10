@@ -2,38 +2,45 @@ import com.delphi.nice.training.service.ParkingServiceImpl;
 import com.delphi.nice.training.service.TicketService;
 import com.delphi.nice.training.service.TicketServiceImpl;
 import com.delphi.nice.training.writer.JSONWriter;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.*;
-import org.junit.runners.MethodSorters;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TicketServiceTest {
 
-    private final TicketService ticketService =
-            new TicketServiceImpl(new ParkingServiceImpl("src/test/resources/testParkArea.json"), "src/test/resources/testTicket.json");
+    public void fill(boolean arg) {
+        HashMap<String, Object> parkSpot = new HashMap<>();
+        parkSpot.put("parkingSlot", 1);
+        parkSpot.put("isParked", arg);
+        List<JSONObject> jsonArray = new ArrayList<>();
+        jsonArray.add(new JSONObject(parkSpot));
+        new JSONWriter(jsonArray, "src/test/resources/testParkArea.json").writeToFile();
+    }
 
     @Test
-    public void aTicketGenerateReturnTrue() {
+    public void TicketGenerateReturnTrue() {
+        fill(false);
+        TicketService ticketService =
+                new TicketServiceImpl(new ParkingServiceImpl("src/test/resources/testParkArea.json"), "src/test/resources/testTicket.json");
+
         Assert.assertTrue(ticketService.generateTicket());
     }
 
     @Test
-    public void bTicketGenerateReturnFalse() {
+    public void TicketGenerateReturnFalse() {
+        fill(true);
+        TicketService ticketService =
+                new TicketServiceImpl(new ParkingServiceImpl("src/test/resources/testParkArea.json"), "src/test/resources/testTicket.json");
+
         Assert.assertFalse(ticketService.generateTicket());
     }
 
-    @AfterClass
-    public static void restoreFile() {
-        HashMap<String, Object> parkSpot = new HashMap<>();
-        parkSpot.put("parkingSlot", 1);
-        parkSpot.put("isParked", false);
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.add(new JSONObject(parkSpot));
-        new JSONWriter(jsonArray, "src/test/resources/testParkArea.json").writeToFile();
+    @After
+    public void restoreFile() {
         new File("src/test/resources/testTicket.json").delete();
     }
 }

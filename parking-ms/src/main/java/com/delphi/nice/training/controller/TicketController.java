@@ -2,27 +2,18 @@ package com.delphi.nice.training.controller;
 
 import com.delphi.nice.training.service.ExitService;
 import com.delphi.nice.training.service.TicketService;
+import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@ComponentScan("com/delphi/nice/training/service")
-@ConfigurationProperties()
 @RequestMapping(path = "/api/v1/ticket")
+@RequiredArgsConstructor
 public class TicketController {
     private final TicketService ticketService;
     private final ExitService exitService;
-
-    @Autowired
-    public TicketController(TicketService ticketService, ExitService exitService) {
-        this.ticketService = ticketService;
-        this.exitService = exitService;
-    }
 
     @PostMapping
     public String registerNewTicket() {

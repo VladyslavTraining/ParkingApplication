@@ -2,8 +2,8 @@ package com.delphi.nice.training.writer;
 
 import org.json.simple.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class JSONWriter implements Writer {
@@ -17,11 +17,11 @@ public class JSONWriter implements Writer {
 
     @Override
     public void writeToFile() {
-        try (FileWriter fw = new FileWriter(filepath)) {
+        try (OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(filepath), StandardCharsets.UTF_8)) {
             fw.write('[');
-            for (JSONObject object: jsonArray) {
+            for (JSONObject object : jsonArray) {
                 object.writeJSONString(fw);
-                if(jsonArray.size()>1) {
+                if (jsonArray.size() > 1) {
                     fw.write(',');
                 }
             }

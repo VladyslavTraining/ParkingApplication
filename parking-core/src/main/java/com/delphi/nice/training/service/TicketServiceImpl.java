@@ -28,7 +28,6 @@ public class TicketServiceImpl implements TicketService {
     private long parkingSlot;
 
 
-    @Autowired
     public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
         new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
@@ -39,7 +38,6 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public boolean generateTicket() {
-
         try {
             parkingSlot = parkingService.park();
             ticketDto = new TicketDto();

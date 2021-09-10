@@ -32,7 +32,6 @@ public class ParkingServiceImpl implements ParkingService {
         throw new IndexOutOfBoundsException();
     }
 
-//    @Override
     public boolean isFreeSlotPresent() {
         for (JSONObject o : jsonArray) {
             jsonObject = o;
@@ -42,6 +41,7 @@ public class ParkingServiceImpl implements ParkingService {
         return false;
     }
 
+    @SuppressWarnings("unchecked")
     private boolean takeFreeParkSpot() {
         for (JSONObject o : jsonArray) {
             jsonObject = o;
