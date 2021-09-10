@@ -3,40 +3,31 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class MockitoTest {
 
     @Mock
-    private ParkingService parkingService;
-    @Mock
-    private TicketService ticketService;
-    @Mock
-    private ExitService exitService;
+    private ParkingService parkingService ;
 
     @Test
     public void shouldReturnTrueIsFreeSlotPresent() {
-        when(parkingService.isFreeSlotPresent()).thenReturn(true);
-        boolean result = parkingService.isFreeSlotPresent();
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void shouldReturnFalseIsSlotPresent() {
-        when(parkingService.isFreeSlotPresent()).thenReturn(false);
-        boolean result = parkingService.isFreeSlotPresent();
+        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
+        when(parkingService.park()).thenReturn(1L);
+        boolean result = ticketservice.generateTicket();
         Assert.assertFalse(result);
     }
 
-    @Test
-    public void something() {
-        when(parkingService.park()).thenReturn(1L);
-        long result = parkingService.park();
-        Assert.assertEquals(parkingService.park(), result);
+    @Test()
+    public void shouldReturnFalseIsSlotPresent() {
+        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
+        when(parkingService.park()).thenThrow(IndexOutOfBoundsException.class);
+        boolean result = ticketservice.generateTicket();
+        Assert.assertFalse(result);
     }
+
 
 }

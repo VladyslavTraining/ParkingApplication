@@ -6,7 +6,6 @@ import com.delphi.nice.training.validator.TicketServiceValidator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+
 @Slf4j
 @Getter
 @Service
@@ -47,7 +47,7 @@ public class TicketServiceImpl implements TicketService {
             ticketFields.put("parkingSlot", parkingSlot);
             ticketArray.add(new JSONObject(ticketFields));
             jsonWriter.writeToFile();
-            log.info("New car entered \n"+ticketFields+"\n--------------------------------");
+            log.info("New car entered \n" + ticketFields + "\n--------------------------------");
             return true;
         }
         return false;

@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class ParkingServiceTest {
     private File testFile = new File("src/test/resources/testParkArea.json");
 
     @Before
-    public void init() throws IOException {
+    public void init() {
         fillTheTempFileForTests(false, testFile);
     }
 
