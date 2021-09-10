@@ -58,3 +58,29 @@ Need to pay ---> 0,00$
 [2021-09-08 14:58:18.384] New car entered 
 {entranceTime=2021-09-08T14:58:18.384, parkingSlot=1, uuid=1500000}
 --------------------------------
+[2021-09-09 12:12:35.580] New car entered 
+{entranceTime=2021-09-09T12:12:35.533, parkingSlot=1, uuid=2082031}
+--------------------------------
+[2021-09-09 12:12:35.595] Car leave the parking 
+{"entranceTime":"2021-09-09T12:12:35.533","parkingSlot":1,"uuid":2082031}
+Need to pay ---> 0,00$
+--------------------------------
+[2021-09-09 12:12:35.649] New car entered 
+{entranceTime=2021-09-09T12:12:35.649, parkingSlot=1, uuid=2535156}
+--------------------------------
+[2021-09-09 12:12:35.649] New car entered 
+{entranceTime=2021-09-09T12:12:35.649, parkingSlot=2, uuid=2535156}
+--------------------------------
+[2021-09-09 12:13:30.042] New car entered 
+{entranceTime=2021-09-09T12:13:29.995, parkingSlot=1, uuid=3886718}
+--------------------------------
+[2021-09-09 12:13:30.064] Car leave the parking 
+{"entranceTime":"2021-09-09T12:13:29.995","parkingSlot":1,"uuid":3886718}
+Need to pay ---> 0,00$
+--------------------------------
+[2021-09-09 12:13:30.095] New car entered 
+{entranceTime=2021-09-09T12:13:30.095, parkingSlot=1, uuid=371093}
+--------------------------------
+[2021-09-09 12:13:30.111] New car entered 
+{entranceTime=2021-09-09T12:13:30.111, parkingSlot=2, uuid=433593}
+--------------------------------

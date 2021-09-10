@@ -6,7 +6,6 @@ import com.delphi.nice.training.validator.TicketServiceValidator;
 import com.delphi.nice.training.writer.JSONWriter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +27,7 @@ public class TicketServiceImpl implements TicketService {
     private long parkingSlot;
 
 
-    @Autowired
+//    @Autowired
     public TicketServiceImpl(ParkingService parkingService, @Value("${path.ticket}") String filename) {
         new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;

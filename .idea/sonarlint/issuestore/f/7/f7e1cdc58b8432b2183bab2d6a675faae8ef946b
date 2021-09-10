@@ -1,0 +1,9 @@
+
+X	java:S125
+"<This block of commented-out lines of code should be removed.(ì³©˜8°Ú¾Î¼/
+s
+java:S1128"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(æëòÒûÿÿÿÿ8®š¾Î¼/
+s
+java:S1128"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(¬²Úäşÿÿÿÿ8°Ú¾Î¼/
+o
+java:S1128"RRemove this unused import 'org.springframework.context.annotation.PropertySource'.(™¢˜é8°Ú¾Î¼/
