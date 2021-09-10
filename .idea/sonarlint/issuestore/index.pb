@@ -1,8 +1,6 @@
 
 Å
 Qparking-core/src/main/java/com/delphi/nice/training/service/IntroduceService.java,4\9\490b2f0b086d50be4ae45ca387ecbed4c373f88c
-v
-Fparking-core/src/main/java/com/delphi/nice/training/dto/TicketDto.java,f\3\f3d934a7dada069e03cdddeeefb427a292c6696e
 {
 Kparking-core/src/main/java/com/delphi/nice/training/dto/ParkingSlotDto.java,2\d\2dee2b1446dd0d23c2c19805938990ce88157c85
 z
@@ -31,8 +29,6 @@ V
 &.idea/httpRequests/http-client.cookies,3\7\37b0fae35443637ed0e21b8ad0ca1bf3c2c2e7e1
 Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
-|
-Lparking-core/src/main/java/com/delphi/nice/training/service/ExitService.java,d\2\d2ffde79a0cd192dfd9683dfbc3a1740155f50fb
 v
 Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\3095f47ab991d98496dafc5cf27715e72ab4d699
 7
@@ -40,11 +36,7 @@ Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\309
 :
 
 Logger.log,7\2\72193b51cec12a0e2f0037ac93730474d9f59e5b
-Ñ
-Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
 E
 parking-ms/Logger.log,6\d\6d03ee11b8c3db22bfcdd1d2d82363e7893317db
-~
-Nparking-core/src/main/java/com/delphi/nice/training/service/TicketService.java,3\a\3a85f57905533db396bc7f89032cc9f29f6ca260
 Ö
 Uparking-core/src/main/java/com/delphi/nice/training/service/IntroduceServiceImpl.java,f\7\f78c74c847544162971a80a8c63f83ad8b4d2d6a
