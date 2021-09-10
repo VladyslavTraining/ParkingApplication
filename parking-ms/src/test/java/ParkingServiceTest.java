@@ -4,13 +4,12 @@ import com.delphi.nice.training.service.ParkingService;
 import com.delphi.nice.training.service.ParkingServiceImpl;
 import com.delphi.nice.training.writer.JSONWriter;
 import org.json.simple.JSONObject;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class ParkingServiceTest {
     private File testFile = new File("src/test/resources/testParkArea.json");
 
     @Before
-    public void init() throws IOException {
+    public void init() {
         fillTheTempFileForTests(false, testFile);
     }
 
@@ -77,8 +76,8 @@ public class ParkingServiceTest {
         assertEquals(1, parkingService.park());
     }
 
-    @After
-    public void deleteFile() {
+    @AfterAll
+    static void deleteFile() {
         new File("src/test/resources/emptyParkArea.json").delete();
     }
 }

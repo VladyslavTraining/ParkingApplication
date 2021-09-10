@@ -1,13 +1,33 @@
-import com.delphi.nice.training.service.ParkingService;
-import com.delphi.nice.training.service.ParkingServiceImpl;
-import com.delphi.nice.training.service.TicketService;
-import com.delphi.nice.training.service.TicketServiceImpl;
-import org.mockito.Mockito;
+import com.delphi.nice.training.service.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.mockito.Mockito.*;
+
+@RunWith(SpringRunner.class)
 public class MockitoTest {
 
-    ParkingService parkingService = Mockito.mock(ParkingServiceImpl.class);
-    TicketService ticketService = Mockito.mock(TicketServiceImpl.class);
+    @Mock
+    private ParkingService parkingService ;
+
+    @Test
+    public void shouldReturnTrueIsFreeSlotPresent() {
+//        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
+//        when(parkingService.park()).thenReturn(1L);
+//        boolean result = ticketservice.generateTicket();
+//        Assert.assertFalse(result);
+    }
+
+    @Test()
+    public void shouldReturnFalseIsSlotPresent() {
+//        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
+//        when(parkingService.park()).thenThrow(IndexOutOfBoundsException.class);
+//        boolean result = ticketservice.generateTicket();
+//        Assert.assertFalse(result);
+    }
 
 
 }

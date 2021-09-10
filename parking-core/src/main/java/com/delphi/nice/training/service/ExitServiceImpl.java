@@ -50,12 +50,13 @@ public class ExitServiceImpl implements ExitService {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean exit(long id) {
         this.payMessage = amountForPay(id);
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
-        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage+"--------------------------------");
+        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage);
         exitVehicle = parkingArray.get(Integer.parseInt(exitVehicle.get("parkingSlot").toString()) - 1);
         exitVehicle.replace("isParked", false);
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();

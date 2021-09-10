@@ -11,3 +11,7 @@ controller
 mock-MVC
 cucumber(spring boot testing)
 arrange,action,assert
+check log-lvl in runtime
+spring MVC 
+state stateless
+create UserService(avtentyfikaciya, check authorization)
