@@ -11,6 +11,7 @@ com\delphi\nice\training\service\TicketServiceImpl.class
 com\delphi\nice\training\service\ExitServiceImpl.class
 com\delphi\nice\training\writer\Writer.class
 com\delphi\nice\training\dto\ClientCardDto.class
+com\delphi\nice\training\service\IntroduceServiceImpl.class
 com\delphi\nice\training\validator\ParkAreaValidator.class
 com\delphi\nice\training\dto\TicketDto.class
 com\delphi\nice\training\service\ParkingService.class
