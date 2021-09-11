@@ -11,10 +11,8 @@ import java.util.List;
 
 @Service
 public class ParkingServiceImpl implements ParkingService {
-    private JSONObject jsonObject;
     private List<JSONObject> jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
-    private static final String PARKING_SLOT_FIELD = "parkingSlot";
     private final String parkingAreaFilePath;
 
     public ParkingServiceImpl(@Value("${path.parking}") String filepath) {
@@ -24,33 +22,23 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    public long park() {
-        if (takeFreeParkSpot()) {
-            updateParking();
-            return (long) jsonObject.get(PARKING_SLOT_FIELD);
-        }
-        throw new IndexOutOfBoundsException();
-    }
-
     public boolean isFreeSlotPresent() {
         for (JSONObject o : jsonArray) {
-            jsonObject = o;
-            if (!(boolean) jsonObject.get(IS_PARKED_FIELD))
+            if (!(boolean) o.get(IS_PARKED_FIELD))
                 return true;
         }
         return false;
     }
-
+    @Override
     @SuppressWarnings("unchecked")
-    private boolean takeFreeParkSpot() {
+    public void takeFreeParkSpot() {
         for (JSONObject o : jsonArray) {
-            jsonObject = o;
-            if (!(boolean) jsonObject.get(IS_PARKED_FIELD)) {
-                jsonObject.replace(IS_PARKED_FIELD, true);
-                return true;
+            if (!(boolean) o.get(IS_PARKED_FIELD)) {
+                o.replace(IS_PARKED_FIELD, true);
+                updateParking();
+                break;
             }
         }
-        return false;
     }
 
     private void updateParking() {

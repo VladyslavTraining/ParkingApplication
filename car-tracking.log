@@ -57,3 +57,26 @@ Need to pay ---> 0,02$
 {"entranceTime":"2021-09-02T13:19:36.367","parkingSlot":17,"uuid":1433593}
 Need to pay ---> 716,80$
 --------------------------------
+[2021-09-11 10:51:32.758] New car entered {entranceTime=2021-09-11T10:51:32.756, uuid=2953125}
+[2021-09-11 10:51:48.202] New car entered {entranceTime=2021-09-11T10:51:48.198, uuid=773437}
+[2021-09-11 10:51:52.291] New car entered {entranceTime=2021-09-11T10:51:52.291, uuid=1136718}
+[2021-09-11 10:51:58.014] New car entered {entranceTime=2021-09-11T10:51:58.013, uuid=50781}
+[2021-09-11 10:56:30.370] New car entered {entranceTime=2021-09-11T10:56:30.368, uuid=1437500}
+[2021-09-11 11:00:20.805] New car entered {entranceTime=2021-09-11T11:00:20.802, uuid=3132812}
+[2021-09-11 11:01:07.198] New car entered {entranceTime=2021-09-11T11:01:07.195, uuid=761718}
+[2021-09-11 11:03:51.779] New car entered {entranceTime=2021-09-11T11:02:34.281, uuid=1097656}
+[2021-09-11 11:04:42.540] New car entered {entranceTime=2021-09-11T11:04:42.538, uuid=2101562}
+[2021-09-11 11:04:52.263] New car entered {entranceTime=2021-09-11T11:04:52.261, uuid=1019531}
+[2021-09-11 11:06:00.531] New car entered {entranceTime=2021-09-11T11:06:00.530, uuid=2070312}
+[2021-09-11 11:06:25.065] New car entered {entranceTime=2021-09-11T11:06:25.065, uuid=253906}
+[2021-09-11 11:06:38.499] New car entered {entranceTime=2021-09-11T11:06:38.499, uuid=1949218}
+[2021-09-11 11:06:39.498] New car entered {entranceTime=2021-09-11T11:06:39.498, uuid=1945312}
+[2021-09-11 11:06:41.080] New car entered {entranceTime=2021-09-11T11:06:41.079, uuid=308593}
+[2021-09-11 11:23:30.864] Car leave the parking 
+{"entranceTime":"2021-09-11T11:04:52.261","uuid":1019531}
+Need to pay ---> 1,12$
+
+[2021-09-11 11:28:49.129] Car leave the parking 
+{"entranceTime":"2021-09-11T11:04:52.261","uuid":1019531}
+Need to pay ---> 1,44$
+

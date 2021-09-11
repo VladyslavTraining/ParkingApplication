@@ -20,7 +20,7 @@ import java.util.List;
 public class TicketServiceImpl implements TicketService {
 
     private final String ticketDataFileName;
-    private final List<JSONObject> ticketArray;
+    private List<JSONObject> ticketArray;
     private TicketDto ticketDto;
     private final JSONWriter jsonWriter;
 
@@ -32,15 +32,16 @@ public class TicketServiceImpl implements TicketService {
         jsonWriter = new JSONWriter(ticketArray, filename);
     }
 
-        @Override
+    @Override
     public TicketDto createTicket() {
         try {
+            updateTicketData();
             ticketDto = new TicketDto();
             HashMap<String, Object> ticketFields = new HashMap<>();
             ticketFields.put("uuid", ticketDto.getUuid());
             ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
             ticketArray.add(new JSONObject(ticketFields));
-            jsonWriter.writeToFile();
+            new JSONWriter(ticketArray, ticketDataFileName).writeToFile();
             log.info("New car entered {}", ticketFields);
             return ticketDto;
         } catch (IndexOutOfBoundsException e) {
@@ -50,20 +51,25 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<JSONObject> getAllTickets() {
-        return new JSONReader().getJsonArr(ticketDataFileName);
+        updateTicketData();
+        return ticketArray;
     }
 
     @Override
     public TicketDto getTicket(long id) {
+        updateTicketData();
         TicketDto ticket = new TicketDto();
         for (JSONObject object : ticketArray) {
             if ((long) object.get("uuid") == id) {
                 ticket.setUuid(id);
-                ticket.setEntranceDateTime((LocalDateTime) object.get("entranceTime"));
+                ticket.setEntranceDateTime(LocalDateTime.parse((String) object.get("entranceTime")));
                 return ticket;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("No such ticket with id " + id);
     }
 
+    private void updateTicketData() {
+        this.ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
+    }
 }
