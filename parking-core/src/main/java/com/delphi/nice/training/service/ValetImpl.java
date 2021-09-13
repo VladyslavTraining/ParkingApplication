@@ -2,22 +2,18 @@ package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.reader.JSONReader;
+import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ValetImpl implements Valet {
-    ParkingService parkingService;
-    ExitService exitService;
-    TicketService ticketService;
-
-    public ValetImpl(TicketService ticketService, ParkingService parkingService, ExitService exitService) {
-        this.parkingService = parkingService;
-        this.exitService = exitService;
-        this.ticketService = ticketService;
-    }
+    private final ParkingService parkingService;
+    private final ExitService exitService;
+    private final TicketService ticketService;
 
     @Override
     public TicketDto parkTheCar() {

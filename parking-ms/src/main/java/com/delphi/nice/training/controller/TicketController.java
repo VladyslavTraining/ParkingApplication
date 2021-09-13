@@ -14,7 +14,7 @@ import java.util.List;
 public class TicketController {
     private final Valet valet;
 
-    @PostMapping
+    @PostMapping("admin/log")
     public TicketDto registerNewTicket() {
         return valet.parkTheCar();
 //        ?
@@ -22,7 +22,7 @@ public class TicketController {
 //        "Something goes wrong!";
     }
 
-    @GetMapping("admin/all")
+    @GetMapping("admin/ticket/all")
     public List<JSONObject> getAllTickets() {
        return valet.getAllTickets();
     }
@@ -33,7 +33,7 @@ public class TicketController {
     }
 
     @DeleteMapping(
-            path = {"api/ticket/{uuid}"})
+            path = {"admin/ticket/{uuid}"})
     public String deleteTicket(@PathVariable long uuid) {
         return valet.exitTheCar(uuid);
     }
