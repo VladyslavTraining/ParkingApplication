@@ -25,9 +25,9 @@ public class ValetImpl implements Valet {
 
     @Override
     public String exitTheCar(long uuid) {
-        if(exitService.exit(uuid))
+        if (exitService.exit(uuid))
             return exitService.getPayMessage();
-        throw new IllegalStateException("No such ticket with uuid "+ uuid);
+        throw new IllegalStateException("No such ticket with uuid " + uuid);
     }
 
     @Override
