@@ -3,6 +3,7 @@ package com.delphi.nice.training.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static com.delphi.nice.training.security.UserPermission.*;
 import static com.delphi.nice.training.security.UserRole.ADMIN;
 import static com.delphi.nice.training.security.UserRole.USER;
 
@@ -20,14 +22,16 @@ import static com.delphi.nice.training.security.UserRole.USER;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
-
+    private static final String ADMIN_PATH = "/admin/**";
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers("/api/**").hasRole(USER.name())
-                .antMatchers("/admin/**").hasRole(ADMIN.name())
+                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority(TICKET_READ.getPermission())
+                .antMatchers(HttpMethod.GET, "/admin/**").hasAuthority(TICKET_READ_ALL.getPermission())
+                .antMatchers(HttpMethod.DELETE, "/admin/**").hasAuthority(TICKET_WRITE.getPermission())
+                .antMatchers(HttpMethod.POST, "/admin/**").hasAuthority(TICKET_WRITE.getPermission())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -40,12 +44,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails zakharAdmin = User.builder()
                 .username("Zakhar")
                 .password(passwordEncoder.encode("password"))
-                .roles(ADMIN.name())
+//                .roles(ADMIN.name())
+                .authorities(ADMIN.getGrantedAuthorities())
                 .build();
         UserDetails vladUser = User.builder()
                 .username("Vlad")
                 .password(passwordEncoder.encode("password"))
-                .roles(USER.name())
+//                .roles(USER.name())
+                .authorities(USER.getGrantedAuthorities())
                 .build();
         return new InMemoryUserDetailsManager(zakharAdmin, vladUser);
     }
