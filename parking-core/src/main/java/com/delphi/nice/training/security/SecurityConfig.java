@@ -22,7 +22,6 @@ import static com.delphi.nice.training.security.UserRole.USER;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
-    private static final String ADMIN_PATH = "/admin/**";
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
