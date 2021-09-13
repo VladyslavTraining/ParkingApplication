@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Slf4j
 @Service
 public class ExitServiceImpl implements ExitService {
@@ -41,7 +42,7 @@ public class ExitServiceImpl implements ExitService {
                 return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
             }
         }
-        return null;
+        throw new IllegalStateException("There is no such ticket with uuid " + id);
     }
 
     private long getTime(LocalDateTime enter, LocalDateTime exit) {
@@ -56,10 +57,9 @@ public class ExitServiceImpl implements ExitService {
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
-        log.info("Car leave the parking \n"+exitVehicle+"\n"+payMessage);
-        for(JSONObject object : parkingArray)
-        {
-            if((boolean) object.get("isParked")) {
+        log.info("Car leave the parking \n" + exitVehicle + "\n" + payMessage);
+        for (JSONObject object : parkingArray) {
+            if ((boolean) object.get("isParked")) {
                 object.replace("isParked", false);
                 break;
             }

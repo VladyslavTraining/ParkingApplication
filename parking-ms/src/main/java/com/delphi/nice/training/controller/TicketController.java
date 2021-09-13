@@ -9,22 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping(path = "/api/ticket")
 @RequiredArgsConstructor
 public class TicketController {
     private final Valet valet;
 
-    @PostMapping
+    @PostMapping("admin/ticket")
     public TicketDto registerNewTicket() {
         return valet.parkTheCar();
-//        ?
-//        "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
-//        "Something goes wrong!";
     }
 
-    @GetMapping("admin/all")
+    @GetMapping("admin/ticket/all")
     public List<JSONObject> getAllTickets() {
-       return valet.getAllTickets();
+        return valet.getAllTickets();
     }
 
     @GetMapping("api/ticket/{uuid}")
@@ -32,8 +28,7 @@ public class TicketController {
         return valet.getTicketById(uuid);
     }
 
-    @DeleteMapping(
-            path = {"api/ticket/{uuid}"})
+    @DeleteMapping("admin/ticket/{uuid}")
     public String deleteTicket(@PathVariable long uuid) {
         return valet.exitTheCar(uuid);
     }

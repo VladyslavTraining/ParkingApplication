@@ -45,7 +45,7 @@ public class TicketServiceImpl implements TicketService {
             log.info("New car entered {}", ticketFields);
             return ticketDto;
         } catch (IndexOutOfBoundsException e) {
-            throw new RuntimeException();
+            throw new IllegalStateException("");
         }
     }
 
