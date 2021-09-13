@@ -94,10 +94,11 @@
                 <version>5.3.4.RELEASE</version>
             </dependency>
             <dependency>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-access</artifactId>
-                    <version>1.2.3</version>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.1-jre</version>
             </dependency>
+
         </dependencies>
 
     </dependencyManagement>

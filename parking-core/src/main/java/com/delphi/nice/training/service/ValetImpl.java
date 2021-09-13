@@ -1,7 +1,11 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.reader.JSONReader;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ValetImpl implements Valet {
@@ -34,6 +38,11 @@ public class ValetImpl implements Valet {
     @Override
     public TicketDto getTicketById(long uuid) {
         return ticketService.getTicket(uuid);
+    }
+
+    @Override
+    public List<JSONObject> getAllTickets() {
+        return ticketService.getAllTickets();
     }
 
 }
