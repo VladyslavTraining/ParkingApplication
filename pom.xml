@@ -93,6 +93,11 @@
                 <artifactId>spring-security-config</artifactId>
                 <version>5.3.4.RELEASE</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.1-jre</version>
+            </dependency>
 
         </dependencies>
 

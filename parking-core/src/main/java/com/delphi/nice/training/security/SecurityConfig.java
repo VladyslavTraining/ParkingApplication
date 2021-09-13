@@ -12,17 +12,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static com.delphi.nice.training.security.UserRole.ADMIN;
+import static com.delphi.nice.training.security.UserRole.USER;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","index","/css/*","/js/*")
-                .permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
+                .antMatchers("/api/**").hasRole(USER.name())
+                .antMatchers("/admin/**").hasRole(ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -32,11 +37,16 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        UserDetails zakharUser = User.builder()
+        UserDetails zakharAdmin = User.builder()
                 .username("Zakhar")
                 .password(passwordEncoder.encode("password"))
-                .roles("STUDENT")
+                .roles(ADMIN.name())
                 .build();
-        return new InMemoryUserDetailsManager(zakharUser);
+        UserDetails vladUser = User.builder()
+                .username("Vlad")
+                .password(passwordEncoder.encode("password"))
+                .roles(USER.name())
+                .build();
+        return new InMemoryUserDetailsManager(zakharAdmin, vladUser);
     }
 }
