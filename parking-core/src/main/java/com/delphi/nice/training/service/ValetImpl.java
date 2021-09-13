@@ -1,7 +1,6 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
-import com.delphi.nice.training.reader.JSONReader;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
@@ -21,14 +20,14 @@ public class ValetImpl implements Valet {
             parkingService.takeFreeParkSpot();
             return ticketService.createTicket();
         }
-        throw new RuntimeException();
+        throw new IllegalStateException("All parking slots is busy!");
     }
 
     @Override
     public String exitTheCar(long uuid) {
         if(exitService.exit(uuid))
             return exitService.getPayMessage();
-        throw new RuntimeException();
+        throw new IllegalStateException("No such ticket with uuid "+ uuid);
     }
 
     @Override

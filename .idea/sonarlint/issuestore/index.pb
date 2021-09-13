@@ -28,10 +28,6 @@ Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\309
 :
 
 Logger.log,7\2\72193b51cec12a0e2f0037ac93730474d9f59e5b
-€
-Pparking-core/src/main/java/com/delphi/nice/training/service/ExitServiceImpl.java,6\5\6567f0a6253ae9191acf8f0e014a03bc3620850a
-‚
-Rparking-core/src/main/java/com/delphi/nice/training/service/TicketServiceImpl.java,9\b\9babe151e14ca227849591397d8e53ca98c17728
 z
 Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
 z
