@@ -7,13 +7,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class MockitoTest {
 
-    @Mock
+//    @Mock
     private ParkingService parkingService ;
 
-    @Test
+//    @Test
     public void shouldReturnTrueIsFreeSlotPresent() {
 //        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
 //        when(parkingService.park()).thenReturn(1L);
@@ -21,7 +21,7 @@ public class MockitoTest {
 //        Assert.assertFalse(result);
     }
 
-    @Test()
+//    @Test()
     public void shouldReturnFalseIsSlotPresent() {
 //        TicketService ticketservice = new TicketServiceImpl(parkingService, "src/test/resources/testTicketData.json");
 //        when(parkingService.park()).thenThrow(IndexOutOfBoundsException.class);

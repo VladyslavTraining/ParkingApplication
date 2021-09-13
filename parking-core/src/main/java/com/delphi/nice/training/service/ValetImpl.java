@@ -1,8 +1,6 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
-import com.delphi.nice.training.writer.JSONWriter;
-import com.delphi.nice.training.writer.Writer;
 import org.springframework.stereotype.Service;
 
 @Service

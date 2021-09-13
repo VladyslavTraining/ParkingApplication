@@ -1,12 +1,8 @@
 
-Å
-Qparking-core/src/main/java/com/delphi/nice/training/service/IntroduceService.java,4\9\490b2f0b086d50be4ae45ca387ecbed4c373f88c
 {
 Kparking-core/src/main/java/com/delphi/nice/training/dto/ParkingSlotDto.java,2\d\2dee2b1446dd0d23c2c19805938990ce88157c85
 z
 Jparking-core/src/main/java/com/delphi/nice/training/dto/ClientCardDto.java,7\4\74d4818c1d0783e279adb80b11e1b1a72e3b92a0
-D
-parking-core/pom.xml,2\2\226652dc6efab4d721fd650c2dfae97785199b97
 |
 Lparking-core/src/main/java/com/delphi/nice/training/validator/Validator.java,1\7\177fae84912b83d7b377e23db4dfe89d84334685
 â
@@ -15,8 +11,6 @@ Yparking-core/src/main/java/com/delphi/nice/training/validator/TicketServiceVali
 	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
 Ñ
 Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
-B
-parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
 v
 Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4
 ]
@@ -31,10 +25,20 @@ Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
 v
 Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\3095f47ab991d98496dafc5cf27715e72ab4d699
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 :
 
 Logger.log,7\2\72193b51cec12a0e2f0037ac93730474d9f59e5b
+v
+Fparking-core/src/main/java/com/delphi/nice/training/service/Valet.java,4\5\45ff3560d90c11fe36115f41249e765325346a90
+Ä
+Pparking-core/src/main/java/com/delphi/nice/training/service/ExitServiceImpl.java,6\5\6567f0a6253ae9191acf8f0e014a03bc3620850a
+Ç
+Rparking-core/src/main/java/com/delphi/nice/training/service/TicketServiceImpl.java,9\b\9babe151e14ca227849591397d8e53ca98c17728
+z
+Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
+z
+Jparking-core/src/main/java/com/delphi/nice/training/writer/JSONWriter.java,2\d\2d366e32bdce355649b1040a40182874826b2aa1
+k
+;parking-ms/src/main/java/com/delphi/nice/training/Main.java,8\9\89617cf770ab9ddd3fe3ee6fe4971001ff3dbb4b
 E
 parking-ms/Logger.log,6\d\6d03ee11b8c3db22bfcdd1d2d82363e7893317db
