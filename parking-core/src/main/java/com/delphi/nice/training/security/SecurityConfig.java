@@ -3,7 +3,7 @@ package com.delphi.nice.training.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,12 +13,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static com.delphi.nice.training.security.UserPermission.*;
 import static com.delphi.nice.training.security.UserRole.ADMIN;
 import static com.delphi.nice.training.security.UserRole.USER;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
@@ -27,10 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority(TICKET_READ.getPermission())
-                .antMatchers(HttpMethod.GET, "/admin/**").hasAuthority(TICKET_READ_ALL.getPermission())
-                .antMatchers(HttpMethod.DELETE, "/admin/**").hasAuthority(TICKET_WRITE.getPermission())
-                .antMatchers(HttpMethod.POST, "/admin/**").hasAuthority(TICKET_WRITE.getPermission())
                 .anyRequest()
                 .authenticated()
                 .and()
