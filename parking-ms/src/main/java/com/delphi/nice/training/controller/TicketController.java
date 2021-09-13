@@ -1,38 +1,31 @@
 package com.delphi.nice.training.controller;
 
-import com.delphi.nice.training.service.ExitService;
-import com.delphi.nice.training.service.TicketService;
+import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.service.Valet;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping(path = "/api/v1/ticket")
+@RequestMapping(path = "/ticket")
 @RequiredArgsConstructor
 public class TicketController {
-    private final TicketService ticketService;
-    private final ExitService exitService;
-
+    private final Valet valet;
     @PostMapping
-    @ResponseBody
-    public String registerNewTicket() {
-        return this.ticketService.generateTicket() ?
-                "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
-                "Something goes wrong!";
+    public TicketDto registerNewTicket() {
+        return valet.parkTheCar();
+//        ?
+//        "Ticket generated with id " + ticketService.getTicketID() + " successful!\nYour parking slot is " + ticketService.getParkingSlot() :
+//        "Something goes wrong!";
     }
 
-    @GetMapping
-    public List<JSONObject> getTickets() {
-        return this.ticketService.getAllTickets();
+    @GetMapping("{uuid}")
+    public TicketDto getTicket(@PathVariable long uuid) {
+        return valet.getTicketById(uuid);
     }
-
-    //    getTicket();
 
     @DeleteMapping(
             path = {"{uuid}"})
-    public String deleteTicket(@PathVariable("uuid") Long id) {
-        return this.exitService.exit(id) ? this.exitService.getPayMessage() : "Something goes wrong";
+    public String deleteTicket(@PathVariable long uuid) {
+        return valet.exitTheCar(uuid);
     }
 }

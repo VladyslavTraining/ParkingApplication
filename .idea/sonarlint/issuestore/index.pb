@@ -38,5 +38,3 @@ Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\309
 Logger.log,7\2\72193b51cec12a0e2f0037ac93730474d9f59e5b
 E
 parking-ms/Logger.log,6\d\6d03ee11b8c3db22bfcdd1d2d82363e7893317db
-…
-Uparking-core/src/main/java/com/delphi/nice/training/service/IntroduceServiceImpl.java,f\7\f78c74c847544162971a80a8c63f83ad8b4d2d6a

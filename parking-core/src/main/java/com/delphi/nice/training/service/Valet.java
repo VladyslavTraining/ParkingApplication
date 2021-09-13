@@ -1,6 +1,9 @@
 package com.delphi.nice.training.service;
 
+import com.delphi.nice.training.dto.TicketDto;
+
 public interface Valet {
-    void parkTheCar();
-    void exitTheCar();
+    TicketDto parkTheCar();
+    String exitTheCar(long uuid);
+    TicketDto getTicketById(long uuid);
 }
