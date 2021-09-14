@@ -39,7 +39,7 @@ public class ExitServiceImpl implements ExitService {
                 long seconds = getTime(enter, exit);
                 double cost = seconds * 0.001;
                 exitVehicle = o;
-                return String.format("Need to pay ---> %.2f$%s", cost, System.lineSeparator());
+                return String.format("Need to pay ---> %.2f$", cost);
             }
         }
         throw new IllegalStateException("There is no such ticket with uuid " + id);
@@ -57,7 +57,12 @@ public class ExitServiceImpl implements ExitService {
         if (this.payMessage == null)
             return false;
         ticketArray.remove(exitVehicle);
-        log.info("Car leave the parking \n" + exitVehicle + "\n" + payMessage);
+        log.info("Car leave the parking {},{}", exitVehicle, payMessage);
+        updateParking();
+        return true;
+    }
+
+    private void updateParking() {
         for (JSONObject object : parkingArray) {
             if ((boolean) object.get("isParked")) {
                 object.replace("isParked", false);
@@ -66,7 +71,6 @@ public class ExitServiceImpl implements ExitService {
         }
         new JSONWriter(ticketArray, ticketDataPath).writeToFile();
         new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
-        return true;
     }
 
     @Override

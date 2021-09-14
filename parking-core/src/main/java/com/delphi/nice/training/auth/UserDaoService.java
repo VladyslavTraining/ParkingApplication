@@ -13,6 +13,7 @@ import static com.delphi.nice.training.security.UserRole.USER;
 
 @Repository
 public class UserDaoService implements UserDao {
+
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
