@@ -25,9 +25,6 @@ Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
 v
 Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\3095f47ab991d98496dafc5cf27715e72ab4d699
-:
-
-Logger.log,7\2\72193b51cec12a0e2f0037ac93730474d9f59e5b
 z
 Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
 z
