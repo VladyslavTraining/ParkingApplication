@@ -27,7 +27,7 @@ public class TicketController {
     }
 
     @GetMapping("api/ticket/{uuid}")
-    @PreAuthorize("hasAuthority('user:read')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public TicketDto getTicket(@PathVariable long uuid) {
         return valet.getTicketById(uuid);
     }
