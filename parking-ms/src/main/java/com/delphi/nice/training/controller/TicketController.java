@@ -17,13 +17,13 @@ public class TicketController {
 
     private final Valet valet;
 
-    @PostMapping("admin/ticket")
+    @PostMapping("api/ticket")
     @PreAuthorize("hasAuthority('user:write')")
     public TicketDto registerNewTicket() {
         return valet.parkTheCar();
     }
 
-    @GetMapping("admin/ticket/all")
+    @GetMapping("api/ticket/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<JSONObject> getAllTickets() {
         return valet.getAllTickets();
@@ -35,7 +35,7 @@ public class TicketController {
         return valet.getTicketById(uuid);
     }
 
-    @DeleteMapping("admin/ticket/{uuid}")
+    @DeleteMapping("api/ticket/{uuid}")
     @PreAuthorize("hasAuthority('user:write')")
     public String deleteTicket(@PathVariable long uuid) {
         return valet.exitTheCar(uuid);

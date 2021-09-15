@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public enum UserRole {
-    USER(Sets.newHashSet(UserPermission.TICKET_READ)),
+    USER(Sets.newHashSet(UserPermission.TICKET_READ, UserPermission.TICKET_WRITE)),
     ADMIN(Sets.newHashSet(UserPermission.TICKET_READ, UserPermission.TICKET_READ_ALL,UserPermission.TICKET_WRITE));
     private final Set<UserPermission> permissions;
 
