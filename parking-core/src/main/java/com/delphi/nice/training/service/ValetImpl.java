@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
@@ -36,12 +37,16 @@ public class ValetImpl implements Valet {
     public String exitTheCar(long uuid) {
         if (exitService.exit(uuid))
             return exitService.getPayMessage();
-        throw new IllegalStateException("No such ticket with uuid " + uuid);
+        throw new UserNotFoundException(uuid);
     }
 
     @Override
-    public TicketDto getTicketById(long uuid) {
-        return ticketService.getTicket(uuid);
+    public JSONObject getTicketById(long uuid) {
+        initUser();
+        return getAllTickets().stream()
+                .filter(jsonObject -> jsonObject.containsValue(uuid) && jsonObject.containsValue(username))
+                .findFirst()
+                .orElseThrow(() -> new UserNotFoundException(uuid));
     }
 
     @Override
@@ -50,7 +55,7 @@ public class ValetImpl implements Valet {
         return getAllTickets().stream()
                 .filter(jsonObject -> jsonObject.containsValue(username) && username.equals(this.username))
                 .findFirst()
-                .orElseThrow(IllegalStateException::new);
+                .orElseThrow(() -> new UserNotFoundException(username));
     }
 
     @Override

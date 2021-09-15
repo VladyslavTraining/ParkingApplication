@@ -1,3 +1,4 @@
+import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.service.ParkingService;
 import com.delphi.nice.training.service.ParkingServiceImpl;
 import com.delphi.nice.training.writer.JSONWriter;
@@ -17,26 +18,18 @@ public class ParkingServiceTest {
 
     private File testFile = new File("src/test/resources/testParkArea.json");
 
+    public void fillTheTempFileForTests(boolean arg, File file) {
+        List<JSONObject> array = new ArrayList<>();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("parkingSlot", 1);
+        jsonObject.put("isParked", arg);
+        array.add(jsonObject);
+        new JSONWriter(file.getAbsolutePath()).writeToFile(array);
+    }
+
     @Before
     public void init() {
         fillTheTempFileForTests(false, testFile);
-    }
-
-    @Test(expected = FileNotFoundException.class)
-    public void noFileParkTest() {
-        ParkingService parkingService = new ParkingServiceImpl("src/test/resources/emptyParkArea.json");
-    }
-
-
-    public void fillTheTempFileForTests(boolean arg, File file) {
-        List<JSONObject> array = new ArrayList<>();
-        for (int i = 1; i <= 3; i++) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("parkingSlot", i);
-            jsonObject.put("isParked", arg);
-            array.add(jsonObject);
-        }
-        new JSONWriter(file.getAbsolutePath()).writeToFile(array);
     }
 
     @Test
@@ -52,6 +45,17 @@ public class ParkingServiceTest {
         assertFalse(parkingService.isFreeSlotPresent());
     }
 
+    @Test(expected = FileNotFoundException.class)
+    public void noFileParkTest() {
+        ParkingService parkingService = new ParkingServiceImpl("notExistingFile");
+    }
 
+    @Test
+    public void ifPlaceTakenSlotShouldBeChangeOnTrue() {
+        ParkingServiceImpl parkingService = new ParkingServiceImpl(testFile.getAbsolutePath());
+        parkingService.takeFreeParkSpot();
+        JSONObject obj = new JSONReader().getJsonArr(testFile.getAbsolutePath()).get(0);
+        assertTrue((boolean)obj.get("isParked"));
+    }
 
 }

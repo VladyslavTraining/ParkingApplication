@@ -8,7 +8,7 @@ import java.util.List;
 public interface Valet {
     TicketDto parkTheCar();
     String exitTheCar(long uuid);
-    TicketDto getTicketById(long uuid);
+    JSONObject getTicketById(long uuid);
     JSONObject getTicketByUsername(String username);
     List<JSONObject> getAllTickets();
 

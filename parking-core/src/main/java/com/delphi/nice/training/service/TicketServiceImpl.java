@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import sun.security.krb5.internal.Ticket;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -70,7 +69,7 @@ public class TicketServiceImpl implements TicketService {
         updateTicketData();
         TicketDto ticket = new TicketDto();
         for (JSONObject object : ticketArray) {
-            if ((long) object.get("uuid") == id && object.containsValue(username)) {
+            if ((long) object.get("uuid") == id) {
                 ticket.setUuid(id);
                 ticket.setEntranceDateTime(LocalDateTime.parse((String) object.get("entranceTime")));
                 return ticket;
@@ -81,11 +80,5 @@ public class TicketServiceImpl implements TicketService {
 
     private void updateTicketData() {
         this.ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
     }
 }
