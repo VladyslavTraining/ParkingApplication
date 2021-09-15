@@ -69,8 +69,8 @@ public class ExitServiceImpl implements ExitService {
                 break;
             }
         }
-        new JSONWriter(ticketArray, ticketDataPath).writeToFile();
-        new JSONWriter(parkingArray, parkingAreaPath).writeToFile();
+        new JSONWriter(ticketDataPath).writeToFile(ticketArray);
+        new JSONWriter(parkingAreaPath).writeToFile(parkingArray);
     }
 
     @Override

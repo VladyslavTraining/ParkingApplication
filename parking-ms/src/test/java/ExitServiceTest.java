@@ -28,7 +28,7 @@ public class ExitServiceTest {
             jsonObject.put("isParked", arg);
             array.add(jsonObject);
         }
-        new JSONWriter(array, file).writeToFile();
+        new JSONWriter(file).writeToFile(array);
     }
 
 //    @Before

@@ -53,7 +53,7 @@ public class ParkingServiceTest {
             jsonObject.put("isParked", arg);
             array.add(jsonObject);
         }
-        new JSONWriter(array, file.getAbsolutePath()).writeToFile();
+        new JSONWriter(file.getAbsolutePath()).writeToFile(array);
     }
 
 

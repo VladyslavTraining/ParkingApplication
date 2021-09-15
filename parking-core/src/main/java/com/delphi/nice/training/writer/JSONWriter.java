@@ -7,16 +7,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class JSONWriter implements Writer {
-    private final List<JSONObject> jsonArray;
     private final String filepath;
 
-    public JSONWriter(List<JSONObject> array, String filepath) {
+    public JSONWriter(String filepath) {
         this.filepath = filepath;
-        this.jsonArray = array;
     }
 
     @Override
-    public void writeToFile() {
+    public void writeToFile(List<JSONObject> jsonArray) {
         try (OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(filepath), StandardCharsets.UTF_8)) {
             fw.write('[');
             for (JSONObject object : jsonArray) {

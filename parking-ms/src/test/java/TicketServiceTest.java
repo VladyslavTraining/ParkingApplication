@@ -18,7 +18,7 @@ public class TicketServiceTest {
         parkSpot.put("isParked", arg);
         List<JSONObject> jsonArray = new ArrayList<>();
         jsonArray.add(new JSONObject(parkSpot));
-        new JSONWriter(jsonArray, "src/test/resources/testParkArea.json").writeToFile();
+        new JSONWriter("src/test/resources/testParkArea.json").writeToFile(jsonArray);
     }
 
     @Test

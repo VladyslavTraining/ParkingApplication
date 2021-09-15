@@ -1,10 +1,12 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.reader.JSONReader;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -14,6 +16,7 @@ public class ValetImpl implements Valet {
     private final ParkingService parkingService;
     private final ExitService exitService;
     private final TicketService ticketService;
+
 
     @Override
     public TicketDto parkTheCar() {
