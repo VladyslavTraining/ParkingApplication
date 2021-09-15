@@ -9,3 +9,9 @@
 [2021-09-14 15:36:40.011] Car leave the parking {"entranceTime":"2021-09-14T15:35:46.023","uuid":89843},Need to pay ---> 0,05$
 [2021-09-14 15:36:46.401] Car leave the parking {"entranceTime":"2021-09-14T15:35:47.677","uuid":2644531},Need to pay ---> 0,06$
 [2021-09-14 15:36:52.216] Car leave the parking {"entranceTime":"2021-09-14T15:35:48.668","uuid":2609375},Need to pay ---> 0,06$
+[2021-09-14 15:43:06.144] New car entered {entranceTime=2021-09-14T15:43:06.143, uuid=558593}
+[2021-09-14 15:43:09.008] New car entered {entranceTime=2021-09-14T15:43:09.007, uuid=27343}
+[2021-09-14 15:43:21.399] New car entered {entranceTime=2021-09-14T15:43:21.399, uuid=1558593}
+[2021-09-14 15:45:23.512] New car entered {entranceTime=2021-09-14T15:45:23.510, uuid=1992187}
+[2021-09-15 10:26:39.328] New car entered {entranceTime=2021-09-15T10:26:39.326, uuid=1273437}
+[2021-09-15 10:27:18.165] Car leave the parking {"entranceTime":"2021-09-14T15:35:49.585","uuid":2285156},Need to pay ---> 67,89$
