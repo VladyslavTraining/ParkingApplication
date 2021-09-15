@@ -1,8 +1,6 @@
 
 {
 Kparking-core/src/main/java/com/delphi/nice/training/dto/ParkingSlotDto.java,2\d\2dee2b1446dd0d23c2c19805938990ce88157c85
-z
-Jparking-core/src/main/java/com/delphi/nice/training/dto/ClientCardDto.java,7\4\74d4818c1d0783e279adb80b11e1b1a72e3b92a0
 |
 Lparking-core/src/main/java/com/delphi/nice/training/validator/Validator.java,1\7\177fae84912b83d7b377e23db4dfe89d84334685
 ‰
@@ -23,22 +21,12 @@ V
 &.idea/httpRequests/http-client.cookies,3\7\37b0fae35443637ed0e21b8ad0ca1bf3c2c2e7e1
 Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
-v
-Fparking-core/src/main/java/com/delphi/nice/training/reader/Reader.java,3\0\3095f47ab991d98496dafc5cf27715e72ab4d699
-z
-Jparking-core/src/main/java/com/delphi/nice/training/reader/JSONReader.java,c\3\c3d814215aa0e9d44c3a2c9c6ef23e797d8f8624
-z
-Jparking-core/src/main/java/com/delphi/nice/training/writer/JSONWriter.java,2\d\2d366e32bdce355649b1040a40182874826b2aa1
-k
-;parking-ms/src/main/java/com/delphi/nice/training/Main.java,8\9\89617cf770ab9ddd3fe3ee6fe4971001ff3dbb4b
 E
 parking-ms/Logger.log,6\d\6d03ee11b8c3db22bfcdd1d2d82363e7893317db
 ]
 -parking-ms/src/test/java/ExitServiceTest.java,b\3\b35567ede2af1a6cbdf2cbc2ba1b5dd6ecd3d2e9
 Y
 )parking-ms/src/test/java/MockitoTest.java,4\e\4e76e1f8a79e45f4a8b64056dc9f903a740bb52e
-`
-0parking-ms/src/test/java/ParkingServiceTest.java,b\f\bff3f8da07f686d1691fa643694ddacd018e0965
 B
 parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
 D
@@ -55,3 +43,9 @@ z
 Jparking-core/src/main/java/com/delphi/nice/training/service/ValetImpl.java,c\5\c5d4d3a5c0590e382c51bf00c0b6e799da4ec939
 ‚
 Rparking-core/src/main/java/com/delphi/nice/training/service/TicketServiceImpl.java,9\b\9babe151e14ca227849591397d8e53ca98c17728
+€
+Pparking-core/src/main/java/com/delphi/nice/training/security/UserPermission.java,8\a\8ae676ee38fe001af5cedfe804265d9a6f1bbc6a
+z
+Jparking-core/src/main/java/com/delphi/nice/training/security/UserRole.java,4\0\40429891a40f1c75ca43c2990db1546019a1b2df
+u
+Eparking-core/src/main/java/com/delphi/nice/training/auth/UserDao.java,c\6\c64d2888dd73a12905ccf83f2e42fe053d468ec3
