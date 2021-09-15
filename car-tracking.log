@@ -85,3 +85,8 @@ Need to pay ---> 1,44$
 [2021-09-15 12:55:18.308] New car entered {entranceTime=2021-09-15T12:55:18.307, uuid=1199218, user=Vlad}
 [2021-09-15 13:09:36.640] Car leave the parking {"entranceTime":"2021-09-15T12:26:44.445","uuid":1738281,"user":"Zakhar"},Need to pay ---> 2,57$
 [2021-09-15 13:10:01.465] New car entered {entranceTime=2021-09-15T13:10:01.464, uuid=1812500, user=Zakhar}
+[2021-09-15 16:04:15.779] Car leave the parking {"entranceTime":"2021-09-15T13:10:01.464","uuid":1812500,"user":"Zakhar"},Need to pay ---> 10,45$
+[2021-09-15 16:04:26.354] New car entered TicketDto(uuid=1382812, entranceDateTime=2021-09-15T16:04:26.354)
+[2021-09-15 16:05:38.164] New car entered TicketDto(uuid=640625, entranceDateTime=2021-09-15T16:05:38.164)
+[2021-09-15 16:06:09.024] New car entered TicketDto(uuid=89843, entranceDateTime=2021-09-15T16:06:09.023)
+[2021-09-15 16:08:07.106] New car entered TicketDto(uuid=410156, entranceDateTime=2021-09-15T16:08:07.105)

@@ -3,6 +3,8 @@ package com.delphi.nice.training.service;
 import com.delphi.nice.training.dto.TicketDto;
 import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.writer.JSONWriter;
+import com.delphi.nice.training.writer.Writer;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -20,15 +23,24 @@ public class ValetImpl implements Valet {
     private final ExitService exitService;
     private final TicketService ticketService;
     @Value("${path.ticket}")
-    String filePath;
-    String username;
+    private String filePath;
+    private String username;
 
     @Override
     public TicketDto parkTheCar() {
         checkUserPresence();
         if (parkingService.isFreeSlotPresent()) {
+            List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
+            Writer writer = new JSONWriter(filePath);
+            HashMap<String, Object> ticket = new HashMap<>();
             parkingService.takeFreeParkSpot();
-            return ticketService.createTicket();
+            TicketDto ticketDto = ticketService.createTicket();
+            ticket.put("uuid", ticketDto.getUuid());
+            ticket.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+            ticket.put("user", username);
+            tickets.add(new JSONObject(ticket));
+            writer.writeToFile(tickets);
+            return ticketDto;
         }
         throw new IllegalStateException("All parking slots is busy!");
     }

@@ -45,13 +45,12 @@ public class TicketServiceImpl implements TicketService {
         try {
             updateTicketData();
             ticketDto = new TicketDto();
-            HashMap<String, Object> ticketFields = new HashMap<>();
-            ticketFields.put("uuid", ticketDto.getUuid());
-            ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-            ticketFields.put("user", username);
-            ticketArray.add(new JSONObject(ticketFields));
-            new JSONWriter(ticketDataFileName).writeToFile(ticketArray);
-            log.info("New car entered {}", ticketFields);
+//            HashMap<String, Object> ticketFields = new HashMap<>();
+//            ticketFields.put("uuid", ticketDto.getUuid());
+//            ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+//            ticketArray.add(new JSONObject(ticketFields));
+//            new JSONWriter(ticketDataFileName).writeToFile(ticketArray);
+            log.info("New car entered {}", ticketDto);
             return ticketDto;
         } catch (IndexOutOfBoundsException e) {
             throw new IllegalStateException("");

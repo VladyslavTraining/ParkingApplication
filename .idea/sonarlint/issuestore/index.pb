@@ -17,10 +17,6 @@ V
 &.idea/httpRequests/http-client.cookies,3\7\37b0fae35443637ed0e21b8ad0ca1bf3c2c2e7e1
 Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
-E
-parking-ms/Logger.log,6\d\6d03ee11b8c3db22bfcdd1d2d82363e7893317db
-Y
-)parking-ms/src/test/java/MockitoTest.java,4\e\4e76e1f8a79e45f4a8b64056dc9f903a740bb52e
 B
 parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
 D

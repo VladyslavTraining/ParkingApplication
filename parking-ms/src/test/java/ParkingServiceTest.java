@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class ParkingServiceTest {
 
-    private File testFile = new File("src/test/resources/testParkArea.json");
+    private final File testFile = new File("src/test/resources/testParkArea.json");
 
     public void fillTheTempFileForTests(boolean arg, File file) {
         List<JSONObject> array = new ArrayList<>();
