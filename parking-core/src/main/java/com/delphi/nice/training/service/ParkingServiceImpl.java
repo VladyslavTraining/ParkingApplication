@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class ParkingServiceImpl implements ParkingService {
+
     private List<JSONObject> jsonArray;
     private static final String IS_PARKED_FIELD = "isParked";
     private final String parkingAreaFilePath;
@@ -43,7 +44,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     private void updateParking() {
-        new JSONWriter( parkingAreaFilePath).writeToFile(jsonArray);
+        new JSONWriter(parkingAreaFilePath).writeToFile(jsonArray);
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
