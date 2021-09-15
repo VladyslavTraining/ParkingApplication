@@ -33,13 +33,13 @@ public class ValetImpl implements Valet {
             List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
             Writer writer = new JSONWriter(filePath);
             HashMap<String, Object> ticket = new HashMap<>();
-            parkingService.takeFreeParkSpot();
             TicketDto ticketDto = ticketService.createTicket();
             ticket.put("uuid", ticketDto.getUuid());
             ticket.put("entranceTime", ticketDto.getEntranceDateTime().toString());
             ticket.put("user", username);
             tickets.add(new JSONObject(ticket));
             writer.writeToFile(tickets);
+            parkingService.takeFreeParkSpot();
             return ticketDto;
         }
         throw new IllegalStateException("All parking slots is busy!");

@@ -24,6 +24,7 @@ public class ParkingServiceImpl implements ParkingService {
 
     @Override
     public boolean isFreeSlotPresent() {
+        updateParking();
         for (JSONObject o : jsonArray) {
             if (!(boolean) o.get(IS_PARKED_FIELD))
                 return true;
@@ -34,17 +35,17 @@ public class ParkingServiceImpl implements ParkingService {
     @Override
     @SuppressWarnings("unchecked")
     public void takeFreeParkSpot() {
+        updateParking();
         for (JSONObject o : jsonArray) {
             if (!(boolean) o.get(IS_PARKED_FIELD)) {
                 o.replace(IS_PARKED_FIELD, true);
-                updateParking();
+                new JSONWriter(parkingAreaFilePath).writeToFile(jsonArray);
                 break;
             }
         }
     }
 
     private void updateParking() {
-        new JSONWriter(parkingAreaFilePath).writeToFile(jsonArray);
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 
