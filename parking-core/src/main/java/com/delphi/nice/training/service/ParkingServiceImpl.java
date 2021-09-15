@@ -29,6 +29,7 @@ public class ParkingServiceImpl implements ParkingService {
         }
         return false;
     }
+
     @Override
     @SuppressWarnings("unchecked")
     public void takeFreeParkSpot() {
