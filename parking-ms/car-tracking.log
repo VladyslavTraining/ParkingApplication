@@ -1,0 +1,7 @@
+[2021-09-15 16:17:09.395] New car entered TicketDto(uuid=1359375, entranceDateTime=2021-09-15T16:17:09.348)
+[2021-09-15 16:19:44.545] New car entered TicketDto(uuid=2007812, entranceDateTime=2021-09-15T16:19:44.514)
+[2021-09-15 16:19:55.891] New car entered TicketDto(uuid=3308593, entranceDateTime=2021-09-15T16:19:55.847)
+[2021-09-15 16:20:20.619] New car entered TicketDto(uuid=2234375, entranceDateTime=2021-09-15T16:20:20.572)
+[2021-09-15 16:32:06.426] New car entered TicketDto(uuid=1664062, entranceDateTime=2021-09-15T16:32:06.426)
+[2021-09-15 16:35:43.815] New car entered TicketDto(uuid=3183593, entranceDateTime=2021-09-15T16:35:43.815)
+[2021-09-15 16:47:50.217] New car entered TicketDto(uuid=847656, entranceDateTime=2021-09-15T16:47:50.217)

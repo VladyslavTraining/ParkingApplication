@@ -90,3 +90,5 @@ Need to pay ---> 1,44$
 [2021-09-15 16:05:38.164] New car entered TicketDto(uuid=640625, entranceDateTime=2021-09-15T16:05:38.164)
 [2021-09-15 16:06:09.024] New car entered TicketDto(uuid=89843, entranceDateTime=2021-09-15T16:06:09.023)
 [2021-09-15 16:08:07.106] New car entered TicketDto(uuid=410156, entranceDateTime=2021-09-15T16:08:07.105)
+[2021-09-15 16:39:37.949] New car entered TicketDto(uuid=3703125, entranceDateTime=2021-09-15T16:39:37.948)
+[2021-09-15 16:39:57.168] New car entered TicketDto(uuid=656250, entranceDateTime=2021-09-15T16:39:57.168)
