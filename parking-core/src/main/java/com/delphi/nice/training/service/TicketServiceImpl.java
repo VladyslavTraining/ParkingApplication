@@ -25,11 +25,11 @@ public class TicketServiceImpl implements TicketService {
     private List<JSONObject> ticketArray;
     private TicketDto ticketDto;
     private final JSONWriter jsonWriter;
-
+    private String username;
 
     public TicketServiceImpl(@Value("${path.ticket}") String filename) {
         ticketDataFileName = filename;
-        if(new TicketServiceValidator().validate(filename)) {
+        if (new TicketServiceValidator().validate(filename)) {
             ticketArray = new JSONReader().getJsonArr(filename);
         }
         jsonWriter = new JSONWriter(filename);
@@ -37,15 +37,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketDto createTicket() {
-        String username;
         try {
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-            if (principal instanceof UserDetails) {
-                username = ((UserDetails)principal).getUsername();
-            } else {
-                username = principal.toString();
-            }
             updateTicketData();
             ticketDto = new TicketDto();
             HashMap<String, Object> ticketFields = new HashMap<>();
@@ -72,7 +64,7 @@ public class TicketServiceImpl implements TicketService {
         updateTicketData();
         TicketDto ticket = new TicketDto();
         for (JSONObject object : ticketArray) {
-            if ((long) object.get("uuid") == id) {
+            if ((long) object.get("uuid") == id && object.containsValue(username)) {
                 ticket.setUuid(id);
                 ticket.setEntranceDateTime(LocalDateTime.parse((String) object.get("entranceTime")));
                 return ticket;
@@ -83,5 +75,11 @@ public class TicketServiceImpl implements TicketService {
 
     private void updateTicketData() {
         this.ticketArray = new JSONReader().getJsonArr(ticketDataFileName);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
     }
 }

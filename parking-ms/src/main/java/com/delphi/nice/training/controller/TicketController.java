@@ -14,25 +14,25 @@ import java.util.List;
 public class TicketController {
     private final Valet valet;
 
-    @PostMapping("admin/ticket")
+    @PostMapping("api/ticket")
     @PreAuthorize("hasAuthority('user:write')")
     public TicketDto registerNewTicket() {
         return valet.parkTheCar();
     }
 
-    @GetMapping("admin/ticket/all")
+    @GetMapping("api/ticket/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<JSONObject> getAllTickets() {
         return valet.getAllTickets();
     }
 
     @GetMapping("api/ticket/{uuid}")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     public TicketDto getTicket(@PathVariable long uuid) {
         return valet.getTicketById(uuid);
     }
 
-    @DeleteMapping("admin/ticket/{uuid}")
+    @DeleteMapping("api/ticket/{uuid}")
     @PreAuthorize("hasAuthority('user:write')")
     public String deleteTicket(@PathVariable long uuid) {
         return valet.exitTheCar(uuid);
