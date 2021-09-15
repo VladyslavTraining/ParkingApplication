@@ -43,7 +43,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     private void updateParking() {
-        new JSONWriter(jsonArray, parkingAreaFilePath).writeToFile();
+        new JSONWriter( parkingAreaFilePath).writeToFile(jsonArray);
         this.jsonArray = new JSONReader().getJsonArr(parkingAreaFilePath);
     }
 

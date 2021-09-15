@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import sun.security.krb5.internal.Ticket;
 
@@ -28,10 +30,11 @@ public class TicketServiceImpl implements TicketService {
 
 
     public TicketServiceImpl(@Value("${path.ticket}") String filename) {
-        new TicketServiceValidator().validate(filename);
         ticketDataFileName = filename;
-        ticketArray = new JSONReader().getJsonArr(filename);
-        jsonWriter = new JSONWriter(ticketArray, filename);
+        if(new TicketServiceValidator().validate(filename)) {
+            ticketArray = new JSONReader().getJsonArr(filename);
+        }
+        jsonWriter = new JSONWriter(filename);
     }
 
     public Long getId() {
@@ -40,14 +43,23 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketDto createTicket() {
+        String username;
         try {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails)principal).getUsername();
+            } else {
+                username = principal.toString();
+            }
             updateTicketData();
             ticketDto = new TicketDto();
             HashMap<String, Object> ticketFields = new HashMap<>();
             ticketFields.put("uuid", ticketDto.getUuid());
             ticketFields.put("entranceTime", ticketDto.getEntranceDateTime().toString());
+            ticketFields.put("user", username);
             ticketArray.add(new JSONObject(ticketFields));
-            new JSONWriter(ticketArray, ticketDataFileName).writeToFile();
+            new JSONWriter(ticketDataFileName).writeToFile(ticketArray);
             log.info("New car entered {}", ticketFields);
             return ticketDto;
         } catch (IndexOutOfBoundsException e) {
