@@ -1,9 +1,11 @@
 package com.delphi.nice.training.controller;
 
 import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.service.Valet;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class TicketController {
+
     private final Valet valet;
 
     @PostMapping("admin/ticket")
@@ -27,7 +30,7 @@ public class TicketController {
     }
 
     @GetMapping("api/ticket/{uuid}")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     public TicketDto getTicket(@PathVariable long uuid) {
         return valet.getTicketById(uuid);
     }
@@ -36,5 +39,11 @@ public class TicketController {
     @PreAuthorize("hasAuthority('user:write')")
     public String deleteTicket(@PathVariable long uuid) {
         return valet.exitTheCar(uuid);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String userNotFoundHandler(UserNotFoundException ex) {
+        return ex.getMessage();
     }
 }

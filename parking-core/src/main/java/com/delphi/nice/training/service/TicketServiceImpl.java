@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
 import com.delphi.nice.training.validator.TicketServiceValidator;
 import com.delphi.nice.training.writer.JSONWriter;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import sun.security.krb5.internal.Ticket;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -30,6 +32,10 @@ public class TicketServiceImpl implements TicketService {
         ticketDataFileName = filename;
         ticketArray = new JSONReader().getJsonArr(filename);
         jsonWriter = new JSONWriter(ticketArray, filename);
+    }
+
+    public Long getId() {
+        return ticketDto.getUuid();
     }
 
     @Override
@@ -66,7 +72,7 @@ public class TicketServiceImpl implements TicketService {
                 return ticket;
             }
         }
-        throw new IllegalArgumentException("No such ticket with id " + id);
+        throw new UserNotFoundException(id);
     }
 
     private void updateTicketData() {
