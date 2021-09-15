@@ -20,6 +20,7 @@ public class ValetImpl implements Valet {
     private final TicketService ticketService;
     @Value("${path.ticket}")
     String filePath;
+    String username;
 
     @Override
     public TicketDto parkTheCar() {
@@ -44,22 +45,33 @@ public class ValetImpl implements Valet {
     }
 
     @Override
+    public JSONObject getTicketByUsername(String username) {
+        initUser();
+        return getAllTickets().stream()
+                .filter(jsonObject -> jsonObject.containsValue(username) && username.equals(this.username))
+                .findFirst()
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    @Override
     public List<JSONObject> getAllTickets() {
         return ticketService.getAllTickets();
     }
 
     private void checkUserPresence() {
-        String username;
+        initUser();
+        for (JSONObject object : new JSONReader().getJsonArr(filePath)) {
+            if (object.containsValue(username))
+                throw new IllegalStateException("The ticket for this user already exists");
+        }
+    }
+
+    private void initUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
-        for (JSONObject object : new JSONReader().getJsonArr(filePath)) {
-            if(object.containsValue(username))
-                throw new IllegalStateException("The ticket for this user already exists");
-        }
     }
-
 }
