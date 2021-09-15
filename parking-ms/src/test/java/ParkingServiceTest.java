@@ -38,11 +38,11 @@ public class ParkingServiceTest {
 
 //    @Test
     public void changeIsParkedOnTrue() {
-        fillTheTempFileForTests(true, testFile);
-        Reader reader = new JSONReader();
-        List<JSONObject> array = reader.getJsonArr("src/test/resources/testParkArea.json");
-        JSONObject jsonObject = array.get(0);
-        Assert.assertTrue((boolean) jsonObject.get("isParked"));
+//        fillTheTempFileForTests(true, testFile);
+//        Reader reader = new JSONReader();
+//        List<JSONObject> array = reader.getJsonArr("src/test/resources/testParkArea.json");
+//        JSONObject jsonObject = array.get(0);
+//        Assert.assertTrue((boolean) jsonObject.get("isParked"));
     }
 
     public void fillTheTempFileForTests(boolean arg, File file) {

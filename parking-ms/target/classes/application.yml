@@ -3,3 +3,4 @@ car:
 path:
   parking: parking-ms/src/main/resources/parkingArea.json
   ticket: parking-ms/src/main/resources/ticketData.json
+  users: parking-ms/src/main/resources/users.json

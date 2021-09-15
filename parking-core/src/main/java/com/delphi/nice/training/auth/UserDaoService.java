@@ -1,23 +1,18 @@
 package com.delphi.nice.training.auth;
 
-import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.delphi.nice.training.reader.UserReader;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.delphi.nice.training.security.UserRole.ADMIN;
-import static com.delphi.nice.training.security.UserRole.USER;
-
 @Repository
 public class UserDaoService implements UserDao {
-    private final PasswordEncoder passwordEncoder;
+    private final String userPath;
 
-    @Autowired
-    public UserDaoService(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    public UserDaoService(@Value("${path.users}") String userPath) {
+        this.userPath = userPath;
     }
 
     @Override
@@ -28,24 +23,6 @@ public class UserDaoService implements UserDao {
     }
 
     private List<User> getUsers() {
-        List<User> users = Lists.newArrayList(
-                new User("Zakhar",
-                        passwordEncoder.encode("password"),
-                        ADMIN.getGrantedAuthorities(),
-                        true,
-                        true,
-                        true,
-                        true
-                ),
-                new User("Vlad",
-                        passwordEncoder.encode("password"),
-                        USER.getGrantedAuthorities(),
-                        true,
-                        true,
-                        true,
-                        true
-                )
-        );
-        return users;
+        return new UserReader().getJsonArr(userPath);
     }
 }

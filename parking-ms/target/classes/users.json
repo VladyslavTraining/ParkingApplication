@@ -1,0 +1,28 @@
+[
+  {
+    "username": "Zakhar",
+    "password": "$2a$10$6yebr/8u0P9g/Jd1.Z1IleDbIfGE7.NIP/nHu2aV.jOnMUDUYWAWS",
+    "authorities": [
+      "user: readAll",
+      "user: read",
+      "user: write",
+      "ROLE_ADMIN"
+    ],
+    "isAccountNonExpired": true,
+    "isAccountNonLocked": true,
+    "isCredentialsNonExpired": true,
+    "isEnabled": true
+  },
+  {
+    "username": "Vlad",
+    "password": "$2a$10$6yebr/8u0P9g/Jd1.Z1IleDbIfGE7.NIP/nHu2aV.jOnMUDUYWAWS",
+    "authorities": [
+      "user: read",
+      "ROLE_USER"
+    ],
+    "isAccountNonExpired": true,
+    "isAccountNonLocked": true,
+    "isCredentialsNonExpired": true,
+    "isEnabled": true
+  }
+]

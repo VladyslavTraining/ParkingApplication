@@ -1,12 +1,12 @@
 package com.delphi.nice.training.auth;
 
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
-
+@ToString
 public class User implements UserDetails {
 
     private final String username;
@@ -67,4 +67,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
+
 }
