@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public class UserDaoService implements UserDao {
+
     private final String userPath;
 
     public UserDaoService(@Value("${path.users}") String userPath) {

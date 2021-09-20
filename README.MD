@@ -15,3 +15,9 @@ check log-lvl in runtime
 spring MVC 
 state stateless
 create UserService(avtentyfikaciya, check authorization)
+Controller VS RestController
+RestFul
+Command pattern
+docker and sql
+sql manager studio
+parteiner - proga

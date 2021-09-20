@@ -26,6 +26,7 @@ public class ValetImpl implements Valet {
     private String filePath;
     private String username;
 
+
     @Override
     public TicketDto parkTheCar() {
         checkUserPresence();
