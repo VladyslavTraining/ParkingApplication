@@ -1,23 +1,25 @@
-package com.delphi.nice.training.dto;
+package com.delphi.nice.training.ticket;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.json.simple.JSONObject;
 
 import java.time.LocalDateTime;
 
 @Getter
 @ToString
 @Setter
-public class TicketDto  {
+public class Ticket {
 
+    private long id;
     private long uuid;
     private LocalDateTime entranceDateTime;
+    private boolean isValid;
 
-    public TicketDto() {
+    public Ticket() {
         this.entranceDateTime = LocalDateTime.now();
-        this.uuid = entranceDateTime.getNano()>>8;
+        this.uuid = entranceDateTime.getNano() >> 8;
+        this.isValid = true;
     }
 
 }

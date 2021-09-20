@@ -1,8 +1,9 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.dto.TicketDto;
+import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.ticket.TicketDao;
 import com.delphi.nice.training.writer.JSONWriter;
 import com.delphi.nice.training.writer.Writer;
 import lombok.RequiredArgsConstructor;
@@ -19,29 +20,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ValetImpl implements Valet {
 
-    private final ParkingService parkingService;
     private final ExitService exitService;
-    private final TicketService ticketService;
+    private final TicketDao ticketService;
     @Value("${path.ticket}")
     private String filePath;
-    private String username;
+    @Value("${car.threshold}")
+    private int carThreshold;
+
 
 
     @Override
-    public TicketDto parkTheCar() {
-        checkUserPresence();
-        if (parkingService.isFreeSlotPresent()) {
-            List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
+    public Ticket parkTheCar() {
+        List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
+        if (tickets.size()<carThreshold) {
             Writer writer = new JSONWriter(filePath);
             HashMap<String, Object> ticket = new HashMap<>();
-            parkingService.takeFreeParkSpot();
-            TicketDto ticketDto = ticketService.createTicket();
-            ticket.put("uuid", ticketDto.getUuid());
-            ticket.put("entranceTime", ticketDto.getEntranceDateTime().toString());
-            ticket.put("user", username);
+            Ticket ticketDao = new Ticket();
+            ticket.put("id", tickets.size()+1);
+            ticket.put("uuid", ticketDao.getUuid());
+            ticket.put("entranceTime", ticketDao.getEntranceDateTime().toString());
+            ticket.put("isValid", ticketDao.isValid());
             tickets.add(new JSONObject(ticket));
             writer.writeToFile(tickets);
-            return ticketDto;
+            return ticketDao;
         }
         throw new IllegalStateException("All parking slots is busy!");
     }
@@ -54,42 +55,13 @@ public class ValetImpl implements Valet {
     }
 
     @Override
-    public JSONObject getTicketById(long uuid) {
-        initUser();
-        return getAllTickets().stream()
-                .filter(jsonObject -> jsonObject.containsValue(uuid) && jsonObject.containsValue(username))
-                .findFirst()
-                .orElseThrow(() -> new UserNotFoundException(uuid));
+    public Ticket getTicketById(long uuid) {
+        return ticketService.selectTicketByUuid(uuid);
     }
 
     @Override
-    public JSONObject getTicketByUsername(String username) {
-        initUser();
-        return getAllTickets().stream()
-                .filter(jsonObject -> jsonObject.containsValue(username) && username.equals(this.username))
-                .findFirst()
-                .orElseThrow(() -> new UserNotFoundException(username));
-    }
-
-    @Override
-    public List<JSONObject> getAllTickets() {
+    public List<Ticket> getAllTickets() {
         return ticketService.getAllTickets();
     }
 
-    private void checkUserPresence() {
-        initUser();
-        for (JSONObject object : new JSONReader().getJsonArr(filePath)) {
-            if (object.containsValue(username))
-                throw new IllegalStateException("The ticket for this user already exists");
-        }
-    }
-
-    private void initUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-    }
 }

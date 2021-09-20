@@ -16,20 +16,16 @@ import java.util.List;
 public class ExitServiceImpl implements ExitService {
 
     private List<JSONObject> ticketArray;
-    private List<JSONObject> parkingArray;
     private JSONObject exitVehicle;
     private String payMessage;
     private final String ticketDataPath;
-    private final String parkingAreaPath;
 
-    public ExitServiceImpl(@Value("${path.ticket}") String ticketDataPath, @Value("${path.parking}") String parkingAreaPath) {
+    public ExitServiceImpl(@Value("${path.ticket}") String ticketDataPath) {
         this.ticketDataPath = ticketDataPath;
-        this.parkingAreaPath = parkingAreaPath;
     }
 
     private String amountForPay(long id) {
         ticketArray = new JSONReader().getJsonArr(ticketDataPath);
-        parkingArray = new JSONReader().getJsonArr(parkingAreaPath);
         for (JSONObject o : ticketArray) {
             long uuid = (long) o.get("uuid");
             if (id == uuid) {
@@ -63,14 +59,7 @@ public class ExitServiceImpl implements ExitService {
     }
 
     private void updateParking() {
-        for (JSONObject object : parkingArray) {
-            if ((boolean) object.get("isParked")) {
-                object.replace("isParked", false);
-                break;
-            }
-        }
         new JSONWriter(ticketDataPath).writeToFile(ticketArray);
-        new JSONWriter(parkingAreaPath).writeToFile(parkingArray);
     }
 
     @Override
