@@ -1,10 +1,6 @@
 
-{
-Kparking-core/src/main/java/com/delphi/nice/training/dto/ParkingSlotDto.java,2\d\2dee2b1446dd0d23c2c19805938990ce88157c85
 |
 Lparking-core/src/main/java/com/delphi/nice/training/validator/Validator.java,1\7\177fae84912b83d7b377e23db4dfe89d84334685
-9
-	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
 „
 Tparking-core/src/main/java/com/delphi/nice/training/validator/ParkAreaValidator.java,2\4\2410b7723e7f7ba61d1e21e254742badafe8170f
 ]
@@ -17,11 +13,19 @@ V
 &.idea/httpRequests/http-client.cookies,3\7\37b0fae35443637ed0e21b8ad0ca1bf3c2c2e7e1
 Y
 ).idea/httpRequests/http-requests-log.http,a\1\a106acbd90b93270c10000b1d79e0fa515a6bc67
-B
-parking-ms/pom.xml,3\6\36d8c19370aa68a6eb12ca3975c0c936ad5c61af
-D
-parking-core/pom.xml,2\2\226652dc6efab4d721fd650c2dfae97785199b97
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 ƒ
 Sparking-ms/src/main/java/com/delphi/nice/training/controller/LoggingController.java,e\3\e3d2088a45db590c9850e88812d652edeb79278e
+€
+Pparking-core/src/main/java/com/delphi/nice/training/security/PasswordConfig.java,a\4\a4ad8e3e19ecace98850c3157ce35b526930a4aa
+€
+Pparking-core/src/main/java/com/delphi/nice/training/security/UserPermission.java,8\a\8ae676ee38fe001af5cedfe804265d9a6f1bbc6a
+‰
+Yparking-core/src/main/java/com/delphi/nice/training/validator/TicketServiceValidator.java,9\5\954f71e6a5cac15069b4a39abba3b168cd071591
+v
+Fparking-core/src/main/java/com/delphi/nice/training/writer/Writer.java,2\7\275da2bb3deb6db6031587f5f08183118096cfd4
+z
+Jparking-core/src/main/java/com/delphi/nice/training/writer/JSONWriter.java,2\d\2d366e32bdce355649b1040a40182874826b2aa1
+D
+parking-core/pom.xml,2\2\226652dc6efab4d721fd650c2dfae97785199b97
+ƒ
+Sparking-core/src/main/java/com/delphi/nice/training/service/ParkingServiceImpl.java,d\9\d94e4086a3cf3dca99547083104e697e279aafa6
