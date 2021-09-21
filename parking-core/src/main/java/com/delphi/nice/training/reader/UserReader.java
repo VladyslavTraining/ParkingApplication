@@ -15,7 +15,7 @@ public class UserReader implements Reader {
     public List<User> getJsonArr(String filepath) {
         String username;
         String password;
-        Set<? extends GrantedAuthority> authorities;
+        UserRole userRole;
         boolean isAccountNonExpired;
         boolean isAccountNonLocked;
         boolean isCredentialsNonExpired;
@@ -26,15 +26,15 @@ public class UserReader implements Reader {
             username = (String) object.get("username");
             password = (String) object.get("password");
             if (object.get("authorities").equals(Lists.newArrayList("user: readAll", "user: read", "user: write", "ROLE_ADMIN")))
-                authorities = UserRole.ADMIN.getGrantedAuthorities();
-            else authorities = UserRole.USER.getGrantedAuthorities();
+                userRole = UserRole.ADMIN;
+            else userRole = UserRole.USER;
             isAccountNonExpired = (boolean) object.get("isAccountNonExpired");
             isAccountNonLocked = (boolean) object.get("isAccountNonLocked");
             isCredentialsNonExpired = (boolean) object.get("isCredentialsNonExpired");
             isEnabled = (boolean) object.get("isEnabled");
             user = new User(username,
                     password,
-                    authorities,
+                    userRole,
                     isAccountNonExpired,
                     isAccountNonLocked,
                     isCredentialsNonExpired,
