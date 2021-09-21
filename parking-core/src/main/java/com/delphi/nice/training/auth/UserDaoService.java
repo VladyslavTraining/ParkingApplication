@@ -17,6 +17,9 @@ public class UserDaoService implements UserDao {
 
     @Override
     public Optional<User> selectUserByUsername(String username) {
+        System.out.println(getUsers().stream()
+                .filter(user -> username.equals(user.getUsername()))
+                .findFirst());
         return getUsers().stream()
                 .filter(user -> username.equals(user.getUsername()))
                 .findFirst();
