@@ -52,7 +52,7 @@ public class ExitServiceImpl implements ExitService {
         this.payMessage = amountForPay(id);
         if (this.payMessage == null)
             return false;
-        ticketArray.remove(exitVehicle);
+        exitVehicle.replace("isValid", false);
         log.info("Car leave the parking {},{}", exitVehicle, payMessage);
         updateParking();
         return true;

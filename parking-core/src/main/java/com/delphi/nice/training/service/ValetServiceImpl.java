@@ -1,16 +1,14 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.ticket.TicketDao;
 import com.delphi.nice.training.writer.JSONWriter;
 import com.delphi.nice.training.writer.Writer;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -18,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ValetImpl implements Valet {
+public class ValetServiceImpl implements ValetService {
 
     private final ExitService exitService;
     private final TicketDao ticketService;
@@ -27,11 +25,11 @@ public class ValetImpl implements Valet {
     @Value("${car.threshold}")
     private int carThreshold;
 
-
     @Override
     public Ticket parkTheCar() {
         List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
-        if (tickets.size()<carThreshold) {
+        long validTicketsCount = tickets.stream().filter(ticket -> ticket.containsValue(true)).count();
+        if (validTicketsCount<carThreshold) {
             Writer writer = new JSONWriter(filePath);
             HashMap<String, Object> ticket = new HashMap<>();
             Ticket ticketDao = new Ticket();
