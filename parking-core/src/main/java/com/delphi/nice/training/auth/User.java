@@ -1,17 +1,31 @@
 package com.delphi.nice.training.auth;
 
+import com.delphi.nice.training.security.UserRole;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
+import java.util.Collections;
 @ToString
+@EqualsAndHashCode
+@Entity
 public class User implements UserDetails {
 
+    @Id
+    @SequenceGenerator(name = "user_sequence",
+    sequenceName = "user_sequence",
+    allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence")
+    private long id;
     private final String username;
     private final String password;
-    private final Set<? extends GrantedAuthority> authorities;
+    @Enumerated(EnumType.STRING)
+    private final UserRole userRole;
     private final boolean isAccountNonExpired;
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
@@ -19,14 +33,14 @@ public class User implements UserDetails {
 
     public User(String username,
                 String password,
-                Set<? extends GrantedAuthority> authorities,
+                UserRole userRole,
                 boolean isAccountNonExpired,
                 boolean isAccountNonLocked,
                 boolean isCredentialsNonExpired,
                 boolean isEnabled) {
         this.password = password;
         this.username = username;
-        this.authorities = authorities;
+        this.userRole = userRole;
         this.isAccountNonExpired = isAccountNonExpired;
         this.isAccountNonLocked = isAccountNonLocked;
         this.isCredentialsNonExpired = isCredentialsNonExpired;
@@ -35,7 +49,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return Collections.singletonList(new SimpleGrantedAuthority(userRole.name()));
     }
 
     @Override

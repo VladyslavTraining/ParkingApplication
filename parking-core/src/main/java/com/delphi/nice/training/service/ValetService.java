@@ -4,7 +4,7 @@ import com.delphi.nice.training.ticket.Ticket;
 
 import java.util.List;
 
-public interface Valet {
+public interface ValetService {
     Ticket parkTheCar();
     String exitTheCar(long uuid);
     Ticket getTicketById(long uuid);
