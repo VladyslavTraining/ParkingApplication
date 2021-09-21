@@ -1,10 +1,9 @@
 package com.delphi.nice.training.controller;
 
-import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.service.Valet;
+import com.delphi.nice.training.ticket.Ticket;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +25,6 @@ public class TicketController {
     @GetMapping("api/ticket/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Ticket> getAllTickets() {
-        System.out.println(valet.getAllTickets());
         return valet.getAllTickets();
     }
 

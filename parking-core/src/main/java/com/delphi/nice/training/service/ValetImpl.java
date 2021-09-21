@@ -1,16 +1,14 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.ticket.TicketDao;
 import com.delphi.nice.training.writer.JSONWriter;
 import com.delphi.nice.training.writer.Writer;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

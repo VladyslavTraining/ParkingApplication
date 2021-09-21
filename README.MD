@@ -20,4 +20,4 @@ RestFul
 Command pattern
 docker and sql
 sql manager studio
-parteiner - proga
+portainer - proga
