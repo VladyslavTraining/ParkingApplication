@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="a59a8874-1392-4650-9b86-fe1ceae271d4" name="ParkingApplication" url="jdbc:sqlserver://localhost:1433;databaseName=parking_db;integratedSecurity=true" driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+    </data-sources>
+  </component>
+</project>

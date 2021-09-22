@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mssql">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="a59a8874-1392-4650-9b86-fe1ceae271d4" />
+    <option name="reLastEntityCreationPackage" value="parking-ms/src/main/java/com/delphi/nice/training/security" />
+  </component>
+</project>
