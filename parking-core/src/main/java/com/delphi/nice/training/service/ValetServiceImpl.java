@@ -1,64 +1,62 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.exception.UserNotFoundException;
-import com.delphi.nice.training.reader.JSONReader;
+import com.delphi.nice.training.exception.HaveNoParkingSlotException;
 import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.ticket.TicketDao;
-import com.delphi.nice.training.writer.JSONWriter;
-import com.delphi.nice.training.writer.Writer;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
-public class ValetServiceImpl implements ValetService {
+public class ValetServiceImpl extends JdbcDaoSupport implements ValetService {
 
     private final ExitService exitService;
-    private final TicketDao ticketService;
-    @Value("${path.ticket}")
-    private String filePath;
+    private final TicketDao ticketDao;
+
     @Value("${car.threshold}")
     private int carThreshold;
 
-    @Override
-    public Ticket parkTheCar() {
-        List<JSONObject> tickets = new JSONReader().getJsonArr(filePath);
-        long validTicketsCount = tickets.stream().filter(ticket -> ticket.containsValue(true)).count();
-        if (validTicketsCount<carThreshold) {
-            Writer writer = new JSONWriter(filePath);
-            HashMap<String, Object> ticket = new HashMap<>();
-            Ticket ticketDao = new Ticket();
-            ticket.put("id", tickets.size()+1);
-            ticket.put("uuid", ticketDao.getUuid());
-            ticket.put("entranceTime", ticketDao.getEntranceDateTime().toString());
-            ticket.put("isValid", ticketDao.isValid());
-            tickets.add(new JSONObject(ticket));
-            writer.writeToFile(tickets);
-            return ticketDao;
-        }
-        throw new IllegalStateException("All parking slots is busy!");
+    @Autowired
+    private DataSource dataSource;
+
+    @PostConstruct
+    private void initialize() {
+        setDataSource(dataSource);
     }
 
     @Override
     public String exitTheCar(long uuid) {
-        if (exitService.exit(uuid))
-            return exitService.getPayMessage();
-        throw new UserNotFoundException(uuid);
+        return exitService.exit(uuid);
     }
 
     @Override
     public Ticket getTicketById(long uuid) {
-        return ticketService.selectTicketByUuid(uuid);
+        return ticketDao.selectTicketByUuid(uuid);
     }
 
     @Override
     public List<Ticket> getAllTickets() {
-        return ticketService.getAllTickets();
+        return ticketDao.getAllTickets();
+    }
+
+    @Override
+    public Ticket parkTheCar() {
+        if (carThreshold > ticketDao.getAllValidTickets().size()) {
+            Ticket ticket = new Ticket();
+            String sql = "INSERT INTO tickets " +
+                    "(uuid, entrance_date_time, isValid) VALUES (?, ?, ?)";
+            Objects.requireNonNull(getJdbcTemplate()).update(sql, ticket.getUuid(), ticket.getEntranceDateTime(), "true");
+            return ticket;
+        }
+        throw new HaveNoParkingSlotException();
     }
 
 }

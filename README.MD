@@ -21,3 +21,6 @@ Command pattern
 docker and sql
 sql manager studio
 portainer - proga
+ACID transaction
+isolation lvl
+propagation lvl

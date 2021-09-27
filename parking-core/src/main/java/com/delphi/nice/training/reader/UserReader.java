@@ -25,14 +25,12 @@ public class UserReader implements Reader {
         for (JSONObject object : new JSONReader().getJsonArr(filepath)) {
             username = (String) object.get("username");
             password = (String) object.get("password");
-            if (object.get("authorities").equals(Lists.newArrayList("user: readAll", "user: read", "user: write", "ROLE_ADMIN")))
-                userRole = UserRole.ADMIN;
-            else userRole = UserRole.USER;
+            userRole = object.containsValue("ROLE_ADMIN") ? UserRole.ADMIN : UserRole.USER;
             isAccountNonExpired = (boolean) object.get("isAccountNonExpired");
             isAccountNonLocked = (boolean) object.get("isAccountNonLocked");
             isCredentialsNonExpired = (boolean) object.get("isCredentialsNonExpired");
             isEnabled = (boolean) object.get("isEnabled");
-            user = new User(username,
+            user = new User(1,username,
                     password,
                     userRole,
                     isAccountNonExpired,

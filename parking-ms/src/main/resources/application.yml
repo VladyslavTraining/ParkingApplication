@@ -1,21 +1,11 @@
-server:
-  port: 1433
 car:
   threshold: 30
 path:
-  ticket: parking-ms/src/main/resources/ticketData.json
   users: parking-ms/src/main/resources/users.json
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;databaseName=parking_db
+    url: jdbc:sqlserver://localhost;databaseName=parking_db
     username: sa
     password: sa
-#  jpa:
-#    hibernate:
-#    ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
 

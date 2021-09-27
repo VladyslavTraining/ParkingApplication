@@ -15,7 +15,7 @@ public class TicketReader implements Reader{
         for(JSONObject object : new JSONReader().getJsonArr(filepath))
         {
             ticket = new Ticket();
-            ticket.setId((long) object.get("id"));
+//            ticket.setId((long) object.get("id"));
             ticket.setUuid((long) object.get("uuid"));
             ticket.setEntranceDateTime(LocalDateTime.parse(object.get("entranceTime").toString()));
             ticket.setValid((boolean) object.get("isValid"));

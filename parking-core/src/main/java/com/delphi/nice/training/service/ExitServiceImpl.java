@@ -1,44 +1,29 @@
 package com.delphi.nice.training.service;
 
-import com.delphi.nice.training.reader.JSONReader;
-import com.delphi.nice.training.writer.JSONWriter;
+import com.delphi.nice.training.exception.TicketIsNotValidException;
+import com.delphi.nice.training.ticket.Ticket;
+import com.delphi.nice.training.ticket.TicketMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
-public class ExitServiceImpl implements ExitService {
+public class ExitServiceImpl extends JdbcDaoSupport implements ExitService {
 
-    private List<JSONObject> ticketArray;
-    private JSONObject exitVehicle;
-    private String payMessage;
-    private final String ticketDataPath;
+    @Autowired
+    private DataSource dataSource;
 
-    public ExitServiceImpl(@Value("${path.ticket}") String ticketDataPath) {
-        this.ticketDataPath = ticketDataPath;
-    }
-
-    private String amountForPay(long id) {
-        ticketArray = new JSONReader().getJsonArr(ticketDataPath);
-        for (JSONObject o : ticketArray) {
-            long uuid = (long) o.get("uuid");
-            if (id == uuid) {
-                String time = (String) o.get("entranceTime");
-                LocalDateTime enter = LocalDateTime.parse(time);
-                LocalDateTime exit = LocalDateTime.now();
-                long seconds = getTime(enter, exit);
-                double cost = seconds * 0.001;
-                exitVehicle = o;
-                return String.format("Need to pay ---> %.2f$", cost);
-            }
-        }
-        throw new IllegalStateException("There is no such ticket with uuid " + id);
+    @PostConstruct
+    private void initialize() {
+        setDataSource(dataSource);
     }
 
     private long getTime(LocalDateTime enter, LocalDateTime exit) {
@@ -47,24 +32,26 @@ public class ExitServiceImpl implements ExitService {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public boolean exit(long id) {
-        this.payMessage = amountForPay(id);
-        if (this.payMessage == null)
-            return false;
-        exitVehicle.replace("isValid", false);
-        log.info("Car leave the parking {},{}", exitVehicle, payMessage);
-        updateParking();
-        return true;
+    public String exit(long uuid) {
+        Ticket ticket = getTicket(uuid);
+        if (ticket.isValid()) {
+            return getPayMessage(uuid, ticket);
+        }
+        throw new TicketIsNotValidException(uuid);
     }
 
-    private void updateParking() {
-        new JSONWriter(ticketDataPath).writeToFile(ticketArray);
+    private String getPayMessage(long uuid, Ticket isTicketValid) {
+        String sql = "UPDATE tickets SET isValid='false' WHERE uuid= ?";
+        Objects.requireNonNull(getJdbcTemplate()).update(sql, uuid);
+        LocalDateTime enter = isTicketValid.getEntranceDateTime();
+        LocalDateTime exit = LocalDateTime.now();
+        double cost = getTime(enter, exit) * 0.001;
+        return String.format("Need to pay ---> %.2f$", cost);
     }
 
-    @Override
-    public String getPayMessage() {
-        return this.payMessage;
+    private Ticket getTicket(long uuid) {
+        String sql = "SELECT * FROM tickets WHERE uuid = ?";
+        return Objects.requireNonNull(getJdbcTemplate()).queryForObject(sql, new Object[]{uuid}, new TicketMapper());
     }
 
 }

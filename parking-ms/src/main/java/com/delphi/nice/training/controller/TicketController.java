@@ -1,8 +1,12 @@
 package com.delphi.nice.training.controller;
 
+import com.delphi.nice.training.exception.HaveNoParkingSlotException;
+import com.delphi.nice.training.exception.TicketIsNotValidException;
+import com.delphi.nice.training.exception.UserNotFoundException;
 import com.delphi.nice.training.service.ValetService;
 import com.delphi.nice.training.ticket.Ticket;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +18,6 @@ import java.util.List;
 public class TicketController {
 
     private final ValetService valetService;
-
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
@@ -40,9 +43,21 @@ public class TicketController {
         return valetService.exitTheCar(uuid);
     }
 
-//    @ExceptionHandler(UserNotFoundException.class)
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    String userNotFoundHandler(UserNotFoundException ex) {
-//        return ex.getMessage();
-//    }
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String userNotFoundHandler(UserNotFoundException ex) {
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String ticketIsNotValidHandler(TicketIsNotValidException ex) {
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String haveNoParkingSlotException(HaveNoParkingSlotException ex) {
+        return ex.getMessage();
+    }
 }

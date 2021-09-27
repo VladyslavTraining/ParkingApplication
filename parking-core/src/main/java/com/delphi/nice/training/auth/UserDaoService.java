@@ -1,5 +1,6 @@
 package com.delphi.nice.training.auth;
 
+import com.delphi.nice.training.connection.Database;
 import com.delphi.nice.training.reader.UserReader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -18,12 +19,7 @@ public class UserDaoService implements UserDao {
 
     @Override
     public Optional<User> selectUserByUsername(String username) {
-        System.out.println(getUsers().stream()
-                .filter(user -> username.equals(user.getUsername()))
-                .findFirst());
-        return getUsers().stream()
-                .filter(user -> username.equals(user.getUsername()))
-                .findFirst();
+        return new Database().getUserByUserName(username);
     }
 
     private List<User> getUsers() {

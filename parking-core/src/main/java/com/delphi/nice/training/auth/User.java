@@ -1,14 +1,13 @@
 package com.delphi.nice.training.auth;
 
 import com.delphi.nice.training.security.UserRole;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Repository;
 
-//import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -16,6 +15,7 @@ import java.util.Collections;
 //@EqualsAndHashCode
 //@NoArgsConstructor
 @ToString
+@NoArgsConstructor
 public class User implements UserDetails {
 
 //    @Id
@@ -24,7 +24,7 @@ public class User implements UserDetails {
 //            allocationSize = 1)
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE,
 //            generator = "user_sequence")
-//    private long id;
+    private long id;
     private String username;
     private String password;
 //    @Enumerated(EnumType.STRING)
@@ -34,13 +34,15 @@ public class User implements UserDetails {
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
 
-    public User(String username,
+    public User(long id,
+            String username,
                 String password,
                 UserRole userRole,
                 boolean isAccountNonExpired,
                 boolean isAccountNonLocked,
                 boolean isCredentialsNonExpired,
                 boolean isEnabled) {
+        this.id = id;
         this.password = password;
         this.username = username;
         this.userRole = userRole;
@@ -50,11 +52,9 @@ public class User implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
-    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        System.out.println(userRole.name());
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+userRole.name()));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+userRole));
     }
 
     @Override
