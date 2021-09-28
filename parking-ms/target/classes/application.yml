@@ -1,0 +1,11 @@
+car:
+  threshold: 30
+path:
+  users: parking-ms/src/main/resources/users.json
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.0.105;databaseName=parking_db
+    username: Zakhar
+    password: zaxarvitali123
+

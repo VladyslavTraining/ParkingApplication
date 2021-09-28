@@ -1,0 +1,6 @@
+car:
+  thresholder: 30
+path:
+  parking: parking-ms/src/test/resources/testParkArea.json
+  ticket: parking-ms/src/test/resources/testTicketData.json
+  users: parking-ms/src/main/resources/users.json

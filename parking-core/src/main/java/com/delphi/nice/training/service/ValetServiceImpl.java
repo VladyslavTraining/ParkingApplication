@@ -51,8 +51,7 @@ public class ValetServiceImpl extends JdbcDaoSupport implements ValetService {
     public Ticket parkTheCar() {
         if (carThreshold > ticketDao.getAllValidTickets().size()) {
             Ticket ticket = new Ticket();
-            String sql = "INSERT INTO tickets " +
-                    "(uuid, entrance_date_time, isValid) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO tickets (uuid, entranceDateTime, isValid) VALUES (?, ?, ?)";
             Objects.requireNonNull(getJdbcTemplate()).update(sql, ticket.getUuid(), ticket.getEntranceDateTime(), "true");
             return ticket;
         }

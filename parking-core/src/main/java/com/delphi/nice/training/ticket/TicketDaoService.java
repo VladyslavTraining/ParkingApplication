@@ -1,5 +1,6 @@
 package com.delphi.nice.training.ticket;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -12,8 +13,12 @@ import java.util.Objects;
 @Repository
 public class TicketDaoService extends JdbcDaoSupport implements TicketDao {
 
-    @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    public TicketDaoService(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @PostConstruct
     private void initialize() {
@@ -32,7 +37,7 @@ public class TicketDaoService extends JdbcDaoSupport implements TicketDao {
         return Objects.requireNonNull(getJdbcTemplate()).query(sql, new TicketMapper());
     }
 
-//    @Override
+    //    @Override
 //    public Integer getAllValidTickets() {
 //        String sql = "SELECT COUNT (isValid) FROM tickets WHERE isValid='true'";
 //        return (Integer) Objects.requireNonNull(getJdbcTemplate()).queryForMap(sql).get("");
