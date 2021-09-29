@@ -5,7 +5,7 @@ path:
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://192.168.0.105;databaseName=parking_db
+    url: jdbc:sqlserver://10.70.63.92;databaseName=parking_db
     username: Zakhar
     password: zaxarvitali123
 
