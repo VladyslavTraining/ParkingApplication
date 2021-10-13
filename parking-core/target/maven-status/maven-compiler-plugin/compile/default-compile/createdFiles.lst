@@ -11,11 +11,11 @@ com\delphi\nice\training\writer\Writer.class
 com\delphi\nice\training\service\ValetService.class
 com\delphi\nice\training\exception\UserNotFoundException.class
 com\delphi\nice\training\reader\TicketReader.class
-com\delphi\nice\training\ticket\TicketMapper.class
 com\delphi\nice\training\service\ValetServiceImpl.class
 com\delphi\nice\training\validator\Validator.class
 com\delphi\nice\training\writer\JSONWriter.class
 com\delphi\nice\training\exception\TicketIsNotValidException.class
+com\delphi\nice\training\ticket\TickerRepository.class
 com\delphi\nice\training\auth\User.class
 com\delphi\nice\training\security\PasswordConfig.class
 com\delphi\nice\training\security\UserRole.class

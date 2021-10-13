@@ -9,5 +9,5 @@ public interface ValetService {
     String exitTheCar(long uuid);
     Ticket getTicketById(long uuid);
     List<Ticket> getAllTickets();
-
+    List<Ticket> getAllValid();
 }

@@ -43,6 +43,12 @@ public class TicketController {
         return valetService.exitTheCar(uuid);
     }
 
+    @GetMapping("/allValid")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public List<Ticket> getAllValid() {
+        return valetService.getAllValid();
+    }
+
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     String userNotFoundHandler(UserNotFoundException ex) {

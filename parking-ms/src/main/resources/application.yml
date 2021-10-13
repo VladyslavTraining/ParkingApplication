@@ -5,7 +5,12 @@ path:
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://10.70.63.92;databaseName=parking_db
-    username: Zakhar
-    password: zaxarvitali123
+    url: jdbc:sqlserver://host.docker.internal:1433;databaseName=parking_db
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 

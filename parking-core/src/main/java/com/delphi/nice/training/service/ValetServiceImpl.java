@@ -1,6 +1,7 @@
 package com.delphi.nice.training.service;
 
 import com.delphi.nice.training.exception.HaveNoParkingSlotException;
+import com.delphi.nice.training.ticket.TickerRepository;
 import com.delphi.nice.training.ticket.Ticket;
 import com.delphi.nice.training.ticket.TicketDao;
 import lombok.RequiredArgsConstructor;
@@ -16,21 +17,23 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
-public class ValetServiceImpl extends JdbcDaoSupport implements ValetService {
-
+public class ValetServiceImpl implements ValetService {
     private final ExitService exitService;
     private final TicketDao ticketDao;
-
+    @Autowired
+    private TickerRepository tickerRepository;
     @Value("${car.threshold}")
     private int carThreshold;
 
-    @Autowired
-    private DataSource dataSource;
 
-    @PostConstruct
-    private void initialize() {
-        setDataSource(dataSource);
-    }
+//
+//    @Autowired
+//    private DataSource dataSource;
+//
+//    @PostConstruct
+//    private void initialize() {
+//        setDataSource(dataSource);
+//    }
 
     @Override
     public String exitTheCar(long uuid) {
@@ -47,15 +50,28 @@ public class ValetServiceImpl extends JdbcDaoSupport implements ValetService {
         return ticketDao.getAllTickets();
     }
 
+//    @Override
+//    public Ticket parkTheCar() {
+//        if (carThreshold > ticketDao.getAllValidTickets().size()) {
+//            Ticket ticket = new Ticket();
+//            String sql = "INSERT INTO tickets (uuid, entranceDateTime, isValid) VALUES (?, ?, ?)";
+//            Objects.requireNonNull(getJdbcTemplate()).update(sql, ticket.getUuid(), ticket.getEntranceDateTime(), "true");
+//            return ticket;
+//        }
+//        throw new HaveNoParkingSlotException();
+//    }
+
     @Override
     public Ticket parkTheCar() {
         if (carThreshold > ticketDao.getAllValidTickets().size()) {
             Ticket ticket = new Ticket();
-            String sql = "INSERT INTO tickets (uuid, entranceDateTime, isValid) VALUES (?, ?, ?)";
-            Objects.requireNonNull(getJdbcTemplate()).update(sql, ticket.getUuid(), ticket.getEntranceDateTime(), "true");
+            tickerRepository.save(ticket);
             return ticket;
         }
         throw new HaveNoParkingSlotException();
     }
 
+    public List<Ticket> getAllValid() {
+        return ticketDao.getAllValidTickets();
+    }
 }
